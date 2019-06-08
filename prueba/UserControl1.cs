@@ -20,13 +20,14 @@ namespace prueba
         bool precionado = false;
         Point inicial;
         Point final;
+        PictureBox seleccionado;
                
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             precionado = true;
             inicial = e.Location;
-        
+            seleccionado = (PictureBox)sender;
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -57,36 +58,46 @@ namespace prueba
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            Control control = (Control)sender;
+
+            int ancho = seleccionado.Width;
+            int alto = seleccionado.Height;
+
             if (precionado)
             {
-
                 if (e.KeyCode == Keys.R)
                 {
-                    Image image = pictureBox1.Image;
+                    Image image = seleccionado.Image;
 
                     image.RotateFlip(RotateFlipType.Rotate90FlipY);
 
-                    pictureBox1.Image = image;
+                    cambiarAltoPorAncho(alto, ancho);
+
+                    seleccionado.Image = image; 
+
+
                 }
             }
         }
 
-        private void pictureBox1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+    
+        public void cambiarAltoPorAncho(int alto, int ancho)
         {
-      Image image = pictureBox1.Image;
-
-                                image.RotateFlip(RotateFlipType.Rotate90FlipY);
-
-                                pictureBox1.Image = image;
+            if((seleccionado.Height == alto) && (seleccionado.Width == ancho))
+            {
+                seleccionado.Height = ancho;
+                seleccionado.Width = alto;
+            }
+            else
+            {
+                seleccionado.Height = alto;
+                seleccionado.Width = ancho;
+            }
         }
 
-        private void rotarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UserControl1_Load(object sender, EventArgs e)
         {
-        Image image = pictureBox1.Image;
 
-                            image.RotateFlip(RotateFlipType.Rotate90FlipY);
-
-                            pictureBox1.Image = image;
         }
     }
 }
