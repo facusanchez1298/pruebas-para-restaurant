@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace prueba
@@ -38,8 +32,35 @@ namespace prueba
             if (precionado)
             {
                 control.Top += e.Y - inicial.Y;
-                control.Left += e.X - inicial.X;
+                control.Left += e.X - inicial.X;                
+            }
+
+            if(pictureBox1.Location != inicial)
+            {
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Location = inicial;
+                
+                pictureBox.Image = pictureBox1.Image;
+                pictureBox.Show();
             }
         }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (precionado)
+            {
+
+                if (e.KeyCode == Keys.R)
+                {
+                    Image image = pictureBox1.Image;
+
+                    image.RotateFlip(RotateFlipType.Rotate90FlipY);                   
+
+                    pictureBox1.Image = image;
+                }
+            }
+        }
+
+      
     }
 }
