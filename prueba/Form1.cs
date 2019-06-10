@@ -11,9 +11,8 @@ namespace prueba
             InitializeComponent();
         }
 
-        private void userControl21_Load(object sender, System.EventArgs e)
-        {
+       
 
-        }
+       
     }
 }

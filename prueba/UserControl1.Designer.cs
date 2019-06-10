@@ -37,6 +37,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label = new System.Windows.Forms.Label();
+            this.labelBool = new System.Windows.Forms.Label();
             this.userControl21 = new prueba.UserControl2();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -166,13 +168,41 @@
             this.pictureBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
+            // label
+            // 
+            this.label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(9, 240);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(35, 13);
+            this.label.TabIndex = 2;
+            this.label.Text = "label1";
+            // 
+            // labelBool
+            // 
+            this.labelBool.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelBool.AutoSize = true;
+            this.labelBool.Location = new System.Drawing.Point(9, 205);
+            this.labelBool.Name = "labelBool";
+            this.labelBool.Size = new System.Drawing.Size(35, 13);
+            this.labelBool.TabIndex = 3;
+            this.labelBool.Text = "label1";
+            // 
             // userControl21
             // 
+            this.userControl21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControl21.AutoSize = true;
             this.userControl21.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.userControl21.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.userControl21.Location = new System.Drawing.Point(268, 13);
             this.userControl21.Name = "userControl21";
-            this.userControl21.Size = new System.Drawing.Size(316, 205);
+            this.userControl21.Size = new System.Drawing.Size(316, 279);
             this.userControl21.TabIndex = 1;
             this.userControl21.TabStop = false;
             // 
@@ -180,6 +210,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.Controls.Add(this.labelBool);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox3);
@@ -191,7 +224,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.userControl21);
             this.Name = "UserControl1";
-            this.Size = new System.Drawing.Size(601, 282);
+            this.Size = new System.Drawing.Size(601, 356);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -203,6 +236,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -216,6 +250,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private UserControl2 userControl21;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label labelBool;
+        public UserControl2 userControl21;
     }
 }

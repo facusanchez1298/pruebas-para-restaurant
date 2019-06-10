@@ -47,6 +47,10 @@
             // 
             // userControl11
             // 
+            this.userControl11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControl11.AutoSize = true;
             this.userControl11.Location = new System.Drawing.Point(-1, -2);
             this.userControl11.Name = "userControl11";
             this.userControl11.Size = new System.Drawing.Size(799, 450);
@@ -64,6 +68,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
