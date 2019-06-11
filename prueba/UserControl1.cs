@@ -21,6 +21,7 @@ namespace prueba
         Point inicial;
         Point final;
         PictureBox seleccionado;
+        Image ImageInicial = Properties.Resources._5f6acd2ede815a125e954977821f8ed3;
         
                
 
@@ -31,6 +32,7 @@ namespace prueba
             precionado = true;
             inicial = control.Location;
             seleccionado = (PictureBox)sender;
+           // ImageInicial = (sender as PictureBox).Image;
             
         }
 
@@ -41,12 +43,30 @@ namespace prueba
             precionado = false;
             final = control.Location;
 
-            if (sePuedeColocar()) seleccionado.Location = inicial;
+            if (!sePuedeColocar())
+                seleccionado.Location = inicial;
+            else
+            {
+                Control nuevo = new Control();
+                nuevo.Location = inicial;
+
+                if (!estaEnArea(userControl21, nuevo)) {
+                    PictureBox pictureBox = new PictureBox();
+                    pictureBox.Image = Properties.Resources._5f6acd2ede815a125e954977821f8ed3;
+                    pictureBox.Location = inicial;
+                    pictureBox.Size = new Size(71, 50);
+                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                    pictureBox.TabIndex = 0;
+                    pictureBox.TabStop = false;
+                    DarEventos(pictureBox);
+                    insertarElemento(pictureBox);
+                }
+            }
         }
 
         public bool sePuedeColocar()
         {
-            return (!estaEnArea(userControl21, seleccionado)) || existeElemento();
+            return !((!estaEnArea(userControl21, seleccionado)) || existeElemento());
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -58,15 +78,17 @@ namespace prueba
                 control.Top  +=  e.Y - (control.Width / 2);
                 control.Left +=  e.X - (control.Height / 2);
 
+
+                #region cambio de labels
                 if (!estaEnArea(userControl21, control))
                 {
-                        label.Text = "no se puede fuera del area";
+                    label.Text = "no se puede fuera del area";
                 }
                 else
                 {
                     if (existeElemento())
                     {
-                       
+
                         labelBool.Text = "no se puede superposicion";
                     }
                     else
@@ -75,9 +97,27 @@ namespace prueba
                         labelBool.Text = "si se puede espacio libre";
                     }
                 }
-            }
+                #endregion
 
-           
+              
+
+            }           
+        }
+
+        private void insertarElemento(PictureBox pictureBox)
+        {
+            UserControl2 userControl2 = userControl21;
+
+            //this.Controls.Remove(userControl21);
+            this.Controls.Add(pictureBox);
+            this.Controls.Add(userControl2);
+        }
+
+        private void DarEventos(PictureBox pictureBox)
+        {
+            pictureBox.MouseDown += pictureBox1_MouseDown;
+            pictureBox.MouseUp += pictureBox1_MouseUp;
+            pictureBox.MouseMove += pictureBox1_MouseMove;
         }
 
         /// <summary>
@@ -188,18 +228,26 @@ namespace prueba
             int CampoXMinima = control.Location.X;
             int CampoYMaxima = control.Location.Y + control.Height;
             int CampoXMaxima = control.Location.X + control.Width;
+            //int campoXMedio = CampoXMaxima - CampoXMinima;
+            //int campoYMedio = CampoYMaxima - CampoYMinima;
 
             int imagenXMinima = seleccionado.Location.X;
             int imagenYMinima = seleccionado.Location.Y;
             int imagenXMaxima = seleccionado.Location.X + seleccionado.Width;
-            int imagenYMaxima = seleccionado.Location.Y + seleccionado.Height;            
+            int imagenYMaxima = seleccionado.Location.Y + seleccionado.Height;
+            int imagenXMedia = imagenXMaxima - imagenXMinima;
+            int imagenYMedia = imagenYMaxima - imagenYMinima;
 
             if ((CampoXMinima <= imagenXMinima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima <= imagenYMinima) && (CampoYMaxima >= imagenYMaxima)) return true;
-           
+
             else if ((CampoYMinima <= imagenYMinima) && (CampoYMaxima >= imagenYMinima) && (CampoXMinima <= imagenXMinima) && (CampoXMaxima >= imagenXMinima)) return true;
-            else if ((CampoXMinima <= imagenXMaxima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima <= imagenYMaxima) && (CampoYMaxima >= imagenYMaxima)) return true;            
+            else if ((CampoXMinima <= imagenXMaxima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima <= imagenYMaxima) && (CampoYMaxima >= imagenYMaxima)) return true;
             else if ((CampoXMinima <= imagenXMinima) && (CampoXMaxima >= imagenXMinima) && (CampoYMinima <= imagenYMaxima) && (CampoYMaxima >= imagenYMaxima)) return true;
             else if ((CampoXMinima <= imagenXMaxima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima <= imagenYMinima) && (CampoYMaxima >= imagenYMinima)) return true;
+
+            else if ((CampoXMinima <= imagenXMedia) && (CampoXMaxima >= imagenXMedia) && (CampoYMinima >= imagenYMedia) && (CampoYMaxima <= imagenYMedia)) return true;
+           // else if ((CampoXMinima <= imagenYMinima) && (CampoXMaxima >= imagenXMaxima) && 
+
             else return false;
         }
 
