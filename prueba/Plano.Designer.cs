@@ -1,6 +1,6 @@
 ﻿namespace prueba
 {
-    partial class UserControl2
+    partial class Plano
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

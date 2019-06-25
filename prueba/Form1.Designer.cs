@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.userControl11 = new prueba.UserControl1();
+            this.userControl11 = new prueba.Base();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,20 +51,21 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControl11.AutoSize = true;
-            this.userControl11.Location = new System.Drawing.Point(-1, -2);
+            this.userControl11.Location = new System.Drawing.Point(-1, -1);
             this.userControl11.Name = "userControl11";
-            this.userControl11.Size = new System.Drawing.Size(799, 450);
+            this.userControl11.Size = new System.Drawing.Size(783, 489);
             this.userControl11.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(784, 491);
             this.Controls.Add(this.userControl11);
             this.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.IsMdiContainer = true;
             this.Name = "Form1";
+            this.ShowInTaskbar = false;
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -75,7 +76,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private UserControl1 userControl11;
+        private Base userControl11;
     }
 }
 

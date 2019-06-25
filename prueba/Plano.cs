@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace prueba
 {
-    public partial class UserControl2 : UserControl
+    public partial class Plano : UserControl
     {
-        public UserControl2()
+        public Plano()
         {
             InitializeComponent();
         }
