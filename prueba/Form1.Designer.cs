@@ -65,10 +65,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.editor.AutoSize = true;
+            this.editor.BackColor = System.Drawing.Color.Transparent;
             this.editor.Location = new System.Drawing.Point(-1, -1);
             this.editor.Name = "editor";
             this.editor.Size = new System.Drawing.Size(783, 494);
             this.editor.TabIndex = 1;
+            this.editor.Tag = "Mesa";
             this.editor.Click += new System.EventHandler(this.editor_Click);
             // 
             // Form1
@@ -82,6 +84,7 @@
             this.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.IsMdiContainer = true;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

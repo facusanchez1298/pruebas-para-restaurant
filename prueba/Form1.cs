@@ -15,29 +15,40 @@ namespace prueba
             this.Plano = padre.plano1;
             InitializeComponent();
             actualizarControles();
-            
+
+            this.editor.panel.SendToBack();
         }
 
         private void button1_Click(object sender, System.EventArgs e)
         {
             for (int i = 0; i < editor.Controls.Count; i++)
             {
-                if (editor.Controls[i].GetType() == typeof(PictureBox))
+                if (editor.Controls[i].GetType().Equals(typeof(PictureBox)))
                 {
+
+                    MessageBox.Show(i + "");
                     PictureBox pictureBox = (PictureBox)editor.Controls[i];
 
-                    pictureBox.Location = new Point(pictureBox.Location.X - editor.panel.Left, pictureBox.Location.Y - editor.panel.Top);
+                    pictureBox.Location = new Point(pictureBox.Location.X, pictureBox.Location.Y);
 
-                    pictureBox.Show();
-                    padre.plano1.Controls.Add(pictureBox);                    
+                    pictureBox.MouseDown -= this.editor.itemPanel_MouseDown;
+                    pictureBox.MouseUp -= this.editor.item_MouseUp;
+
+                    if(!editor.Controls[i].Tag.Equals("Pared"))
+                        pictureBox.DoubleClick += editor.item_DoubleClick;
+
+                    padre.Controls.Add(pictureBox);
+                    
+
                 }
             }
 
             this.Close();
             padre.Show();
-            padre.Refresh();
-            padre.plano1.Refresh();
+            padre.plano1.SendToBack();           
         }
+
+       
 
         private void editor_Click(object sender, System.EventArgs e)
         {
@@ -50,10 +61,11 @@ namespace prueba
             {
                 if (padre.Controls[i].GetType() == typeof(PictureBox))
                 {
+                    this.editor.DarEventos(padre.Controls[i] as PictureBox);                    
                     this.editor.Controls.Add(padre.Controls[i]);
-                }
-                
+                }                
             }
+            editor.panel.SendToBack();
         }
     }
 }

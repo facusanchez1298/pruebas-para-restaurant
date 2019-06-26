@@ -24,21 +24,26 @@ namespace prueba
             labelDia.Text = DateTime.Now.ToString("dddd");
         }
 
-        private void labelHora_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1( this);
+            Form1 form1 = new Form1(this);            
             form1.Show();
             this.Hide();
         }
 
-        private void plano1_Load(object sender, EventArgs e)
+        private void Ver_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.label1.Text = "";
+
+            this.Controls.Cast<Control>().ToList().ForEach(q =>
+            {
+                label1.Text += " " + q.GetType().Name;
+            });
         }
     }
 }

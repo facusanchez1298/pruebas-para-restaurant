@@ -73,6 +73,46 @@ namespace prueba.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mesa_cuadrada {
+            get {
+                object obj = ResourceManager.GetObject("mesa cuadrada", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mesa_grande_negra {
+            get {
+                object obj = ResourceManager.GetObject("mesa grande negra", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mesa_grande_negra_recorte {
+            get {
+                object obj = ResourceManager.GetObject("mesa grande negra recorte", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mesa_grande_negra1 {
+            get {
+                object obj = ResourceManager.GetObject("mesa grande negra1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mesa_negra {
             get {
                 object obj = ResourceManager.GetObject("mesa negra", resourceCulture);
@@ -96,6 +136,16 @@ namespace prueba.Properties {
         internal static System.Drawing.Bitmap mesa_redonda_normal {
             get {
                 object obj = ResourceManager.GetObject("mesa redonda normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pared_roja {
+            get {
+                object obj = ResourceManager.GetObject("pared roja", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

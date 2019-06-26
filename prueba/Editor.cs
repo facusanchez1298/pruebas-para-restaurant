@@ -34,7 +34,7 @@ namespace prueba
             }
         }
 
-        private void itemPanel_MouseDown(object sender, MouseEventArgs e)
+        public void itemPanel_MouseDown(object sender, MouseEventArgs e)
         {
             Control control = (Control)sender;
             precionado = true;
@@ -49,27 +49,48 @@ namespace prueba
             precionado = true;
             inicial = control.Location;
 
+
             seleccionado = new PictureBox();
             DarEventos(seleccionado);
             seleccionado.BackColor = Color.Transparent;
             seleccionado.Image = (sender as PictureBox).Image;
-            seleccionado.Size = new Size(50, 50);
             seleccionado.Location = control.Location;
-            seleccionado.SizeMode = PictureBoxSizeMode.Zoom;
-                                                                  //this.ImageInicial = seleccionado.Image;
+            seleccionado.SizeMode = seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            switch (control.Tag)
+            {
+                case "Mesa":
+                    seleccionado.Size = new Size(50, 50);
+                    seleccionado.Tag = "Mesa";
+                    break;
+
+                case "Pared":
+                    seleccionado.Size = new Size(180, 40);
+                    seleccionado.Tag = "Pared";
+                    break;
+
+                case "Mesa Grande":
+                    seleccionado.Size = new Size(100, 100);
+                    seleccionado.Tag = "Mesa Grande";
+                    break;
+                     
+                default:
+                    seleccionado.Size = new Size(50, 50);
+                    break;
+            }
+                                         
             seleccionado.Show();
-            insertarElemento(seleccionado);
+            this.Controls.Add(seleccionado);
             seleccionado.BringToFront();
         }
 
-        private void item_MouseMove(object sender, MouseEventArgs e)
+        public void item_MouseMove(object sender, MouseEventArgs e)
         {
             Control control = (Control)sender;
             if (precionado)
-            {                
-                labelBool.Text = "ubicacion imagen = " + seleccionado.Location.ToString();
-                seleccionado.Top = e.Y + control.Location.Y - (seleccionado.Width / 2);
-                seleccionado.Left = e.X + control.Location.X - (seleccionado.Height / 2);
+            {
+                seleccionado.Top = e.Y + control.Top - (seleccionado.Height / 2);
+                seleccionado.Left = e.X + control.Left - (seleccionado.Width / 2);
 
                 if (!sePuedeColocar())
                 {
@@ -79,27 +100,32 @@ namespace prueba
             }
         }
 
-        private void item_MouseUp(object sender, MouseEventArgs e)
+        public void item_MouseUp(object sender, MouseEventArgs e)
         {
             Control control = (Control)sender;
 
             precionado = false;
             final = control.Location;
-
-            if (!sePuedeColocar())
-            {  
-                seleccionado.Location = inicial;
+            if(seleccionado != null){
                 seleccionado.BackColor = SystemColors.ActiveCaption;
+                if (!sePuedeColocar())
+                {
+                    seleccionado.Location = inicial;
 
-                if (!estaEnArea(panel, seleccionado))
-                {                    
-                    borrarControl(seleccionado);
+                    if (!estaEnArea(panel, seleccionado))
+                    {
+                        borrarControl(seleccionado);
+                    }
                 }
             }
             else
             {
+                this.label.Text = "" + this.Controls.Count;
 
-                seleccionado.BackColor = SystemColors.ActiveCaption;
+                this.Controls.Cast<Control>().ToList().ForEach(q =>
+                {
+                    label.Text += " " + q.GetType().Name;
+                });
             }
         }
 
@@ -123,15 +149,15 @@ namespace prueba
             control.Hide();
         }
 
-        private void DarEventos(PictureBox pictureBox)
+        public void DarEventos(PictureBox pictureBox)
         {
             pictureBox.MouseDown += itemPanel_MouseDown;
             pictureBox.MouseUp += item_MouseUp;
             pictureBox.MouseMove += item_MouseMove;
-            pictureBox.DoubleClick += item_DoubleClick;
+           
         }
 
-        private void item_DoubleClick(object sender, EventArgs e)
+        public void item_DoubleClick(object sender, EventArgs e)
         {
             Datos datos = new Datos();
             datos.ShowDialog();
@@ -164,6 +190,8 @@ namespace prueba
                     cambiarAltoPorAncho(alto, ancho);
 
                     seleccionado.Image = image;
+
+                    if (seleccionado.Tag.Equals("Pared")) seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
                 else if (e.KeyCode == Keys.D)
                 {

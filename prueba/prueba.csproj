@@ -134,5 +134,14 @@
   <ItemGroup>
     <None Include="Resources\mesa redonda normal.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pared roja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mesa grande negra1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mesa grande negra recorte.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
