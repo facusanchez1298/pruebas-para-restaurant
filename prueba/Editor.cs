@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace prueba
 {
-    public partial class Base : UserControl
+    public partial class Editor : UserControl
     {
-        public Base()
+        public Editor()
         {
             InitializeComponent();
-            
+
         }
 
         bool precionado = false;
@@ -30,16 +30,17 @@ namespace prueba
             {
 
                 borrarControl((sender as Control));
-                
+
             }
         }
-        
+
         private void itemPanel_MouseDown(object sender, MouseEventArgs e)
         {
             Control control = (Control)sender;
             precionado = true;
             inicial = control.Location;
             seleccionado = (PictureBox)control;
+            seleccionado.BringToFront();
         }
 
         private void item_MouseDown(object sender, MouseEventArgs e)
@@ -49,27 +50,33 @@ namespace prueba
             inicial = control.Location;
 
             seleccionado = new PictureBox();
-            DarEventos(seleccionado);    
+            DarEventos(seleccionado);
+            seleccionado.BackColor = Color.Transparent;
             seleccionado.Image = (sender as PictureBox).Image;
+            seleccionado.Size = new Size(50, 50);
             seleccionado.Location = control.Location;
-            seleccionado.SizeMode = PictureBoxSizeMode.AutoSize;            
-            seleccionado.Show();           
-
-           
+            seleccionado.SizeMode = PictureBoxSizeMode.Zoom;
+                                                                  //this.ImageInicial = seleccionado.Image;
+            seleccionado.Show();
             insertarElemento(seleccionado);
             seleccionado.BringToFront();
         }
 
         private void item_MouseMove(object sender, MouseEventArgs e)
         {
-            
             Control control = (Control)sender;
             if (precionado)
-            {
+            {                
                 labelBool.Text = "ubicacion imagen = " + seleccionado.Location.ToString();
-                seleccionado.Top = e.Y + control.Location.Y  - (control.Width / 2);
-                seleccionado.Left = e.X + control.Location.X - (control.Height / 2);
-            }           
+                seleccionado.Top = e.Y + control.Location.Y - (seleccionado.Width / 2);
+                seleccionado.Left = e.X + control.Location.X - (seleccionado.Height / 2);
+
+                if (!sePuedeColocar())
+                {
+                    seleccionado.BackColor = Color.Red;
+                }
+                else seleccionado.BackColor = Color.Green;
+            }
         }
 
         private void item_MouseUp(object sender, MouseEventArgs e)
@@ -80,39 +87,26 @@ namespace prueba
             final = control.Location;
 
             if (!sePuedeColocar())
-            {
+            {  
                 seleccionado.Location = inicial;
-                if(!estaEnArea(panel, seleccionado))
-                {
+                seleccionado.BackColor = SystemColors.ActiveCaption;
+
+                if (!estaEnArea(panel, seleccionado))
+                {                    
                     borrarControl(seleccionado);
                 }
             }
             else
             {
-                Control nuevo = new Control();
-                nuevo.Location = inicial;
 
-                //if (!estaEnArea(panel, nuevo))
-                //{
-                //    PictureBox pictureBox = new PictureBox();
-                //    pictureBox.Image = Properties.Resources._5f6acd2ede815a125e954977821f8ed3;
-                //    pictureBox.Location = inicial;
-                //    pictureBox.Size = new Size(71, 50);
-                //    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                //    pictureBox.TabIndex = 0;
-                //    pictureBox.TabStop = false;
-
-                //    DarEventos(seleccionado);
-                //    insertarElemento(pictureBox);
-                //}
-
+                seleccionado.BackColor = SystemColors.ActiveCaption;
             }
         }
 
         public bool sePuedeColocar()
         {
             return !((!estaEnArea(panel, seleccionado)) || existeElemento());
-        }       
+        }
 
         private void insertarElemento(PictureBox pictureBox)
         {
@@ -169,12 +163,12 @@ namespace prueba
 
                     cambiarAltoPorAncho(alto, ancho);
 
-                    seleccionado.Image = image; 
+                    seleccionado.Image = image;
                 }
-                else if(e.KeyCode == Keys.D)
+                else if (e.KeyCode == Keys.D)
                 {
-                    if(seleccionado != null)
-                    borrarControl(seleccionado);
+                    if (seleccionado != null)
+                        borrarControl(seleccionado);
                 }
             }
         }
@@ -186,7 +180,7 @@ namespace prueba
         /// <param name="ancho"></param>
         public void cambiarAltoPorAncho(int alto, int ancho)
         {
-            if((seleccionado.Height == alto) && (seleccionado.Width == ancho))
+            if ((seleccionado.Height == alto) && (seleccionado.Width == ancho))
             {
                 seleccionado.Height = ancho;
                 seleccionado.Width = alto;
@@ -206,7 +200,7 @@ namespace prueba
         /// <returns>retorna true si estan superpuestas y false en caso contrario</returns>
         public bool estaEnArea(Control control, Control imagen)
         {
-            if((control == null) || (imagen == null)) return false;
+            if ((control == null) || (imagen == null)) return false;
             //marco
             int CampoYMinima = control.Location.Y;
             int CampoXMinima = control.Location.X;
@@ -222,22 +216,22 @@ namespace prueba
             if ((CampoXMinima <= imagenXMinima) && (CampoYMinima <= imagenYMinima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMaxima >= imagenYMaxima)) return true;
             else return false;
         }
-        
+
         /// <summary>
         /// verifica que no se pisen entre elementos
         /// </summary>
         /// <returns></returns>
         public bool existeElemento()
         {
-            List<Control> controles = 
+            List<Control> controles =
                 this.Controls.OfType<Control>().ToList<Control>().FindAll(q => q.GetType().Equals(typeof(PictureBox)));
             controles.Remove(seleccionado);
 
             foreach (Control control in controles)
             {
                 if (estaEnRango(control))
-                {                    
-                     return true;                   
+                {
+                    return true;
                 }
             }
             return false;
@@ -248,7 +242,7 @@ namespace prueba
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-       private bool estaEnRango(Control control)
+        private bool estaEnRango(Control control)
         {
             if (seleccionado == null) return false;
 

@@ -28,10 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.userControl11 = new prueba.Base();
+            this.editor = new prueba.Editor();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(697, 456);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.TabStop = false;
+            this.button1.Text = "Aceptar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -45,27 +59,29 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // userControl11
+            // editor
             // 
-            this.userControl11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.editor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.userControl11.AutoSize = true;
-            this.userControl11.Location = new System.Drawing.Point(-1, -1);
-            this.userControl11.Name = "userControl11";
-            this.userControl11.Size = new System.Drawing.Size(783, 489);
-            this.userControl11.TabIndex = 1;
+            this.editor.AutoSize = true;
+            this.editor.Location = new System.Drawing.Point(-1, -1);
+            this.editor.Name = "editor";
+            this.editor.Size = new System.Drawing.Size(783, 494);
+            this.editor.TabIndex = 1;
+            this.editor.Click += new System.EventHandler(this.editor_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 491);
-            this.Controls.Add(this.userControl11);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.editor);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.IsMdiContainer = true;
             this.Name = "Form1";
-            this.ShowInTaskbar = false;
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -76,7 +92,8 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Base userControl11;
+        private Editor editor;
+        private System.Windows.Forms.Button button1;
     }
 }
 
