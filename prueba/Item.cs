@@ -9,10 +9,16 @@ namespace prueba
 {
 
     
-    class Item  : PictureBox
+    public class Item  : PictureBox
     {
 
         public int index;
+        public bool ocupado;
+
+        public void estaOcupado(bool ocupado)
+        {
+            this.ocupado = ocupado;
+        }
 
         public void darIndex(int index)
         {

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using prueba.Properties;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,7 +13,9 @@ namespace prueba
 {
     class Conexion
     {
-        #region
+        
+        #region tablas
+
         string tablaMesa =          "create table if not exists Mesa(" +
                                     "numero integer," +
                                     "dia int," +
@@ -21,7 +25,9 @@ namespace prueba
                                     "ancho int," +
                                     "tag varchar," +
                                     "ocupada boolean," +
-                                    "primary key(dia, numero) );"; 
+                                    "primary key(dia, numero) );";
+
+      
 
         string tablaPedido =         "create table if not exists Pedido(" +
                                      "numeroPedido int," +
@@ -33,6 +39,8 @@ namespace prueba
                                     "nombre varchar," +
                                     "precio float);";
 
+       
+
         string tablaPedidoComida =  "create table if not exists Pedido_Comida(" +
                                     "numeroPedido int," +
                                     "id_comida int," +
@@ -43,10 +51,7 @@ namespace prueba
 
         #endregion
 
-
-
-
-
+        #region propiedades
         /// <summary>
         /// el objeto que se encarga de manejar la conexion con la base de datos
         /// </summary>
@@ -62,11 +67,14 @@ namespace prueba
         /// </summary>
         SQLiteDataAdapter dataAdapter;
 
-
         /// <summary>
         /// lo usamos para pasarle datos a una tabla
         /// </summary>
         DataSet dataSet;
+
+        #endregion
+
+        #region conectar, desconectar y crear
 
         /// <summary>
         /// conectamos al objeto connection, ahora ya estamos conectados a la base de datos
@@ -143,6 +151,10 @@ namespace prueba
 
         }
 
+        
+
+        #endregion
+
         /// <summary>
         /// guarda una mesa
         /// </summary>
@@ -182,13 +194,164 @@ namespace prueba
                 desconectar();
             }
         }
+        
+        /// <summary>
+        /// carga las mesas en un form
+        /// </summary>
+        /// <param name="ver"></param>
+        /// <param name="plantilla"></param>
+        internal void cargarMesas(Ver ver, int plantilla)
+        {
+           
 
-        //devuelve el numero de mesas dentro de un dia/modo edicion
-        private int nroMesa(int dia)
+            
+            conectar();
+            String consulta = "select * from mesa where dia = " + plantilla;
+           
+
+            SQLiteCommand command = new SQLiteCommand(consulta, connection);
+
+
+            try
+            {
+                SQLiteDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                   
+                    int numero = lector.GetInt32(0);
+                    int dia = lector.GetInt32(1);
+                    int y = lector.GetInt32(2);
+                    int x = lector.GetInt32(3);
+                    int alto = lector.GetInt32(4);
+                    int ancho = lector.GetInt32(5);
+                    string tag = lector.GetString(6);
+                    bool ocupado = false; // lector.GetBoolean(7);
+
+
+                    Item item = new Item();
+                    item.darIndex(numero);
+                    item.Location = new Point(x, y);
+                    item.Size = new Size(ancho, alto);
+                    item.Tag = tag;
+                    item.estaOcupado(ocupado);
+                    item.BackColor = SystemColors.ActiveCaption;
+                    item.Show();
+                   
+                    switch (tag)
+                    {
+                        case "Mesa": 
+                            item.Image = Resources.mesa_redonda_normal;
+                            item.SizeMode = PictureBoxSizeMode.Zoom;
+                            item.DoubleClick += ver.item_DoubleClick;
+                            break;
+                        case "Mesa Grande":
+                            item.Image = Resources.mesa_grande_negra_recorte;
+                            item.SizeMode = PictureBoxSizeMode.Zoom;
+                            item.DoubleClick += ver.item_DoubleClick;
+                            break;
+                        case "Pared":
+                            item.Image = Resources.pared_roja;
+                            item.SizeMode = PictureBoxSizeMode.StretchImage;
+                            break;
+                    }
+                    ver.Controls.Add(item);                                     
+
+                }
+
+                lector.Close();
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                command.Connection.Close();
+                throw new Exception("no se pudo realizar la coneccion: " + e);
+            }
+            finally
+            {
+                command.Connection.Close();
+            }
+        }
+
+        /// <summary>
+        /// carga las mesas en un userControl.Editor
+        /// </summary>
+        /// <param name="editor"></param>
+        /// <param name="v"></param>
+        internal void cargarMesas(Editor editor, int plantilla)
         {
             conectar();
-            string sql = "SELECT max(numero) FROM Mesa where dia = " + dia + " ORDER BY numero DESC";
-            //SELECT max(numeroidentificador) FROM elementodelplancontables ORDER BY Id DESC;
+            String consulta = "select * from mesa where dia = " + plantilla;
+
+
+            SQLiteCommand command = new SQLiteCommand(consulta, connection);
+            
+            try
+            {
+                SQLiteDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+
+                    int numero = lector.GetInt32(0);
+                    int dia = lector.GetInt32(1);
+                    int y = lector.GetInt32(2);
+                    int x = lector.GetInt32(3);
+                    int alto = lector.GetInt32(4);
+                    int ancho = lector.GetInt32(5);
+                    string tag = lector.GetString(6);
+                    bool ocupado = false; // lector.GetBoolean(7);
+
+
+                    Item item = new Item();
+                    item.darIndex(numero);
+                    item.Location = new Point(x, y);
+                    item.Size = new Size(ancho, alto);
+                    item.Tag = tag;
+                    item.estaOcupado(ocupado);
+                    item.BackColor = SystemColors.ActiveCaption;
+                    item.Show();
+
+                    switch (tag)
+                    {
+                        case "Mesa":
+                            item.Image = Resources.mesa_redonda_normal;
+                            item.SizeMode = PictureBoxSizeMode.Zoom;
+                            break;
+                        case "Mesa Grande":
+                            item.Image = Resources.mesa_grande_negra_recorte;
+                            item.SizeMode = PictureBoxSizeMode.Zoom;
+                            break;
+                    }
+                    editor.Controls.Add(item);
+
+                }
+
+                lector.Close();
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                command.Connection.Close();
+                throw new Exception("no se pudo realizar la coneccion: " + e);
+            }
+            finally
+            {
+                command.Connection.Close();
+            }
+        }
+
+        /// <summary>
+        /// devuelve el numero de mesas dentro de una plantilla de edicion
+        /// </summary>
+        /// <param name="plantilla"></param>
+        /// <returns></returns>
+        private int nroMesa(int plantilla)
+        {
+            conectar();
+            string sql = "SELECT max(numero) FROM Mesa where dia = " + plantilla + " ORDER BY numero DESC";            
             command = new SQLiteCommand(sql, connection);
 
             SQLiteDataReader lector = command.ExecuteReader();
@@ -215,6 +378,118 @@ namespace prueba
             }
 
         }
+        
+        public void borrarMesa(Item seleccionado, int plantilla)
+        {
+            try
+            {
 
+                conectar();
+
+                string sql = "delete from mesa where numero = " + seleccionado.index + " and dia = " + plantilla;
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        public void cargarTablaMesas(DataGridView dataGridView, int dia)
+        {
+            try
+            {
+                conectar();
+                string sql = "select numero as 'Mesa', ocupada as 'Ocupada' " +
+                    "from mesa " +
+                    "where dia = " + dia +
+                    " and tag != 'Pared'";
+                dataAdapter = new SQLiteDataAdapter(sql, connection);
+
+                dataSet = new DataSet();
+                dataSet.Reset();
+
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dataSet);
+
+                dt = dataSet.Tables[0];
+
+                dataGridView.DataSource = dt;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal void ocuparMesa(Item item, int plantilla)
+        {
+            try
+            {
+
+                conectar();
+
+                string sql = "update mesa set ocupada = 'true'" +
+                    "  where numero = " + item.index + " and dia = " + plantilla; ;
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal void editarMesa(Item seleccionado, int plantilla)
+        {
+            try
+            {
+
+                conectar();
+
+                string sql = "update mesa set y = " + seleccionado.Location.Y + ", x = " + seleccionado.Location.X + " ," +
+                    "alto = " + seleccionado.Height + ",ancho = " + seleccionado.Width +
+                    "  where numero = " + seleccionado.index + " and dia = " + plantilla;
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
     }
+
 }
+
+

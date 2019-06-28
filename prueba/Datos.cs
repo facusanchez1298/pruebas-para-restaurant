@@ -12,18 +12,22 @@ namespace prueba
 {
     public partial class Datos : Form
     {
-        public Datos()
+        Item item;
+        Ver ver;
+        Conexion conexion;
+
+        public Datos(Item item, Ver ver)
         {
+            this.ver = ver;
+            conexion = new Conexion();
+            this.item = item;
             InitializeComponent();
+            this.labelNumero.Text = item.index.ToString();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
+            ver.recargar();
             this.Close();
         }
 
@@ -35,6 +39,11 @@ namespace prueba
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            conexion.ocuparMesa(item,ver.plantilla);
         }
     }
 }

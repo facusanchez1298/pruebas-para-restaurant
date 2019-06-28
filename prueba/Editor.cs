@@ -13,33 +13,53 @@ namespace prueba
     public partial class Editor : UserControl
     {
 
-        Conexion conexion;
+        
         public Editor()
         {
             conexion = new Conexion();
             InitializeComponent();
             cantidad = 0;
+            recargar();
 
+            actualizarEventos();
         }
+
+
+        #region Propiedades
+        Conexion conexion;
         int cantidad;
         bool precionado = false;
         Point inicial;
         Point final;
-
         Item seleccionado;
 
-        
+        public int plantilla { get; internal set; }
+        #endregion
 
-        private void item_borrar(object sender, PreviewKeyDownEventArgs e)
+        /// <summary>
+        /// recorre los controles y a todos los item le da sus eventos
+        /// </summary>
+        public void actualizarEventos()
         {
-            if (e.KeyCode == Keys.Q)
+            this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
             {
-
-                borrarControl((sender as Control));
-
+                this.DarEventos(q as Item);
             }
+            );
         }
 
+        /// <summary>
+        /// actualiza los elementos
+        /// </summary>
+        public void recargar()
+        {
+            conexion.cargarMesas(this, plantilla);
+            this.panel.SendToBack();
+            label.Text = this.Controls.Count + "";
+            actualizarEventos();
+        }
+
+      
         public void itemPanel_MouseDown(object sender, MouseEventArgs e)
         {
             Control control = (Control)sender;
@@ -127,46 +147,50 @@ namespace prueba
 
                 else
                 {
-                    this.label.Text = "" + this.Controls.Count;
-
-                    this.Controls.Cast<Control>().ToList().ForEach(q =>
-                    {
-                        label.Text += " " + q.GetType().Name;
-                    });
-
+                   
                     //guardamos en base de datos
-                    conexion.guardarMesa(seleccionado, 1);
+                    
 
-                    if (seleccionado.index == null)
+                    if (seleccionado.index == 0)
                     {
+                        //si no tiene index le colocamos uno y lo guardamos
                         seleccionado.darIndex(cantidad);
                         cantidad += 1;
+                        conexion.guardarMesa(seleccionado, plantilla);
+                    }
+                    else
+                    {
+                        //en caso que si tenga lo modificamos nomas
+                        conexion.editarMesa(seleccionado, plantilla);
                     }
 
                 }
             }
         }
 
+        /// <summary>
+        /// verifica si se puede colocar el control
+        /// </summary>
+        /// <returns></returns>
         public bool sePuedeColocar()
         {
             return !((!estaEnArea(panel, seleccionado)) || existeElemento());
         }
+               
 
-        private void insertarElemento(PictureBox pictureBox)
-        {
-            Plano userControl2 = panel;
-
-            //this.Controls.Remove(userControl21);
-            this.Controls.Add(pictureBox);
-            this.Controls.Add(userControl2);
-        }
-
+        /// <summary>
+        /// elimina un elemento de la lista de controles
+        /// </summary>
+        /// <param name="control"></param>
         public void borrarControl(Control control)
         {
-            this.Controls.Remove(control);
-            control.Hide();
+            this.Controls.Remove(control);            
         }
 
+        /// <summary>
+        /// entrega los eventos para mover un item
+        /// </summary>
+        /// <param name="pictureBox"></param>
         public void DarEventos(PictureBox pictureBox)
         {
             pictureBox.MouseDown += itemPanel_MouseDown;
@@ -174,17 +198,7 @@ namespace prueba
             pictureBox.MouseMove += item_MouseMove;
            
         }
-
-        public void item_DoubleClick(object sender, EventArgs e)
-        {
-            Datos datos = new Datos();
-            datos.ShowDialog();
-        }
-
-
-
-
-
+        
         /// <summary>
         /// hace que la imagen rote con la tecla 'R'
         /// </summary>
@@ -201,20 +215,32 @@ namespace prueba
             {
                 if (e.KeyCode == Keys.R)
                 {
-                    Image image = seleccionado.Image;
+                    if (seleccionado.Image != null)
+                    {
+                        Image image = seleccionado.Image;
 
-                    image.RotateFlip(RotateFlipType.Rotate90FlipY);
+                        image.RotateFlip(RotateFlipType.Rotate90FlipY);
 
-                    cambiarAltoPorAncho(alto, ancho);
+                        cambiarAltoPorAncho(alto, ancho);
 
-                    seleccionado.Image = image;
+                        seleccionado.Image = image;
 
-                    if (seleccionado.Tag.Equals("Pared")) seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
+                        if (seleccionado.Tag.Equals("Pared")) seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                    else
+                    {
+                        borrarControl(seleccionado);
+                        conexion.borrarMesa(seleccionado, plantilla);
+                    }
                 }
                 else if (e.KeyCode == Keys.D)
                 {
                     if (seleccionado != null)
                         borrarControl(seleccionado);
+                    
+                    //MessageBox.Show(seleccionado.index.ToString());
+                    conexion.borrarMesa(seleccionado, plantilla);
+
                 }
             }
         }
