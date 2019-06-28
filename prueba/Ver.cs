@@ -12,9 +12,13 @@ namespace prueba
 {
     public partial class Ver : Form
     {
+
+        Conexion Conexion;
         public Ver()
         {
+            Conexion = new Conexion();
             InitializeComponent();
+            Conexion.crearBaseDeDatos();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

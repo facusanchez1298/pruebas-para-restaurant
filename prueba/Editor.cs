@@ -12,17 +12,23 @@ namespace prueba
 {
     public partial class Editor : UserControl
     {
+
+        Conexion conexion;
         public Editor()
         {
+            conexion = new Conexion();
             InitializeComponent();
+            cantidad = 0;
 
         }
-
+        int cantidad;
         bool precionado = false;
         Point inicial;
         Point final;
-        PictureBox seleccionado;
-        Image ImageInicial = Properties.Resources._5f6acd2ede815a125e954977821f8ed3;
+
+        Item seleccionado;
+
+        
 
         private void item_borrar(object sender, PreviewKeyDownEventArgs e)
         {
@@ -39,7 +45,7 @@ namespace prueba
             Control control = (Control)sender;
             precionado = true;
             inicial = control.Location;
-            seleccionado = (PictureBox)control;
+            seleccionado = (Item)control;
             seleccionado.BringToFront();
         }
 
@@ -50,7 +56,7 @@ namespace prueba
             inicial = control.Location;
 
 
-            seleccionado = new PictureBox();
+            seleccionado = new Item();
             DarEventos(seleccionado);
             seleccionado.BackColor = Color.Transparent;
             seleccionado.Image = (sender as PictureBox).Image;
@@ -106,7 +112,8 @@ namespace prueba
 
             precionado = false;
             final = control.Location;
-            if(seleccionado != null){
+            if (seleccionado != null)
+            {
                 seleccionado.BackColor = SystemColors.ActiveCaption;
                 if (!sePuedeColocar())
                 {
@@ -117,15 +124,26 @@ namespace prueba
                         borrarControl(seleccionado);
                     }
                 }
-            }
-            else
-            {
-                this.label.Text = "" + this.Controls.Count;
 
-                this.Controls.Cast<Control>().ToList().ForEach(q =>
+                else
                 {
-                    label.Text += " " + q.GetType().Name;
-                });
+                    this.label.Text = "" + this.Controls.Count;
+
+                    this.Controls.Cast<Control>().ToList().ForEach(q =>
+                    {
+                        label.Text += " " + q.GetType().Name;
+                    });
+
+                    //guardamos en base de datos
+                    conexion.guardarMesa(seleccionado, 1);
+
+                    if (seleccionado.index == null)
+                    {
+                        seleccionado.darIndex(cantidad);
+                        cantidad += 1;
+                    }
+
+                }
             }
         }
 
