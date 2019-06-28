@@ -16,6 +16,8 @@ namespace prueba
         Ver ver;
         Conexion conexion;
 
+        DateTime llego;
+
         public Datos(Item item, Ver ver)
         {
             this.ver = ver;
@@ -45,11 +47,24 @@ namespace prueba
             {
                 conexion.ocuparMesa(item, ver.plantilla, true);
                 buttonOcupar.Text = "Desocupar";
-            }else
+
+                labelLLego.Text = DateTime.Now.ToLongTimeString();
+                llego = DateTime.Now;
+                labelActual.Text = (DateTime.Now - llego).ToString();
+                timer1.Start();
+            }
+            else
             {
                 conexion.ocuparMesa(item, ver.plantilla, false);
                 buttonOcupar.Text = "Ocupar";
             }
+        }
+
+       
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            labelActual.Text = (DateTime.Now - llego).ToString(@"hh\:mm\:ss");
         }
     }
 }
