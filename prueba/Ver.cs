@@ -21,10 +21,13 @@ namespace prueba
             Conexion.crearBaseDeDatos();
 
             recargar();
-            
-            
+
+
         }
 
+        /// <summary>
+        /// actualiza todos los datos de la ventana
+        /// </summary>
         public void recargar()
         {
 
@@ -36,14 +39,22 @@ namespace prueba
             plano1.SendToBack();
             actualizarTabla();
 
-            
+
         }
 
+        /// <summary>
+        /// actualiza los datos de la tabla
+        /// </summary>
         public void actualizarTabla()
         {
             Conexion.cargarTablaMesas(dataGridView1, plantilla);
         }
 
+        /// <summary>
+        /// un temporizador para el relog
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             labelHora.Text = DateTime.Now.ToLongTimeString();
@@ -51,25 +62,28 @@ namespace prueba
             labelDia.Text = DateTime.Now.ToString("dddd");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// abre la ventana del editor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Editar_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1(this, plantilla);            
+            Form1 form1 = new Form1(this, plantilla);
             form1.Show();
             this.Hide();
         }
 
+        /// <summary>
+        /// abre la ventana para cargar las ordenes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void item_DoubleClick(object sender, EventArgs e)
         {
-            
             Datos datos = new Datos(sender as Item, this);
             datos.ShowDialog();
         }
-        
-        private void button2_Click(object sender, EventArgs e)
-        {
-            recargar();
-        }
-
 
         #region cambio de plantilla
         private void button3_Click(object sender, EventArgs e)
@@ -107,6 +121,20 @@ namespace prueba
             plantilla = 6;
             recargar();
         }
+
+
         #endregion
+
+        internal void Mouse_hover(object sender, EventArgs e)
+        {            
+            (sender as Item).BackColor = (sender as Item).ocupado ? Color.Red : Color.Green;
+        }
+
+        internal void Mouse_Leave(object sender, EventArgs e)
+        {
+            (sender as Item).BackColor = SystemColors.ActiveCaption;
+        }
+    
     }
 }
+

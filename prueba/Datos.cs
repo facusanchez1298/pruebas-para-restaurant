@@ -23,6 +23,12 @@ namespace prueba
             this.item = item;
             InitializeComponent();
             this.labelNumero.Text = item.index.ToString();
+
+            if (item.ocupado.Equals(true))
+            {
+                buttonOcupar.Text = "Desocupar";
+            }
+            else buttonOcupar.Text = "Ocupar";
         }
         
         private void button1_Click(object sender, EventArgs e)
@@ -31,19 +37,19 @@ namespace prueba
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            conexion.ocuparMesa(item,ver.plantilla);
+            if (buttonOcupar.Text.Equals("Ocupar"))
+            {
+                conexion.ocuparMesa(item, ver.plantilla, true);
+                buttonOcupar.Text = "Desocupar";
+            }else
+            {
+                conexion.ocuparMesa(item, ver.plantilla, false);
+                buttonOcupar.Text = "Ocupar";
+            }
         }
     }
 }

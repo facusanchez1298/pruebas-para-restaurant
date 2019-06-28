@@ -226,7 +226,7 @@ namespace prueba
                     int alto = lector.GetInt32(4);
                     int ancho = lector.GetInt32(5);
                     string tag = lector.GetString(6);
-                    bool ocupado = false; // lector.GetBoolean(7);
+                    bool ocupado = bool.Parse(lector.GetString(7));
 
 
                     Item item = new Item();
@@ -237,18 +237,24 @@ namespace prueba
                     item.estaOcupado(ocupado);
                     item.BackColor = SystemColors.ActiveCaption;
                     item.Show();
+
                    
+
                     switch (tag)
                     {
                         case "Mesa": 
                             item.Image = Resources.mesa_redonda_normal;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             item.DoubleClick += ver.item_DoubleClick;
+                            item.MouseHover += ver.Mouse_hover;
+                            item.MouseLeave += ver.Mouse_Leave;
                             break;
                         case "Mesa Grande":
                             item.Image = Resources.mesa_grande_negra_recorte;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             item.DoubleClick += ver.item_DoubleClick;
+                            item.MouseHover += ver.Mouse_hover;
+                            item.MouseLeave += ver.Mouse_Leave;
                             break;
                         case "Pared":
                             item.Image = Resources.pared_roja;
@@ -436,14 +442,14 @@ namespace prueba
             }
         }
 
-        internal void ocuparMesa(Item item, int plantilla)
+        internal void ocuparMesa(Item item, int plantilla, bool estado)
         {
             try
             {
 
                 conectar();
 
-                string sql = "update mesa set ocupada = 'true'" +
+                string sql = "update mesa set ocupada = '" + estado + "'" +
                     "  where numero = " + item.index + " and dia = " + plantilla; ;
 
                 command = new SQLiteCommand(sql, connection);

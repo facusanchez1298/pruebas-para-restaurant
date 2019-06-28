@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label = new System.Windows.Forms.Label();
-            this.labelBool = new System.Windows.Forms.Label();
             this.selector = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -41,6 +39,8 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.panel = new prueba.Plano();
+            this.label = new System.Windows.Forms.Label();
+            this.labelBool = new System.Windows.Forms.Label();
             this.selector.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -53,33 +53,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
-            // label
-            // 
-            this.label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(12, 428);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(35, 13);
-            this.label.TabIndex = 2;
-            this.label.Text = "label1";
-            // 
-            // labelBool
-            // 
-            this.labelBool.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelBool.AutoSize = true;
-            this.labelBool.Location = new System.Drawing.Point(12, 444);
-            this.labelBool.Name = "labelBool";
-            this.labelBool.Size = new System.Drawing.Size(35, 13);
-            this.labelBool.TabIndex = 3;
-            this.labelBool.Text = "label1";
-            // 
             // selector
             // 
             this.selector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.selector.AutoScroll = true;
             this.selector.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.selector.BackColor = System.Drawing.SystemColors.GrayText;
+            this.selector.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.selector.Controls.Add(this.pictureBox1);
             this.selector.Controls.Add(this.pictureBox4);
             this.selector.Controls.Add(this.pictureBox5);
@@ -97,7 +77,6 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Image = global::prueba.Properties.Resources.mesa_negra;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
@@ -114,7 +93,6 @@
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox4.Image = global::prueba.Properties.Resources.mesa_redonda_normal;
             this.pictureBox4.Location = new System.Drawing.Point(105, 0);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(0);
@@ -131,7 +109,6 @@
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox5.Image = global::prueba.Properties.Resources.mesa_cuadrada;
             this.pictureBox5.Location = new System.Drawing.Point(0, 105);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(0);
@@ -148,7 +125,6 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox2.Image = global::prueba.Properties.Resources.mesa_grande_negra_recorte;
             this.pictureBox2.Location = new System.Drawing.Point(105, 105);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
@@ -165,7 +141,6 @@
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox7.Image = global::prueba.Properties.Resources.pared_roja;
             this.pictureBox7.InitialImage = global::prueba.Properties.Resources._5f6acd2ede815a125e954977821f8ed3;
             this.pictureBox7.Location = new System.Drawing.Point(0, 210);
@@ -182,8 +157,7 @@
             // 
             // pictureBox8
             // 
-            this.pictureBox8.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox8.Image = global::prueba.Properties.Resources._5f6acd2ede815a125e954977821f8ed3;
             this.pictureBox8.Location = new System.Drawing.Point(105, 210);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(0);
@@ -198,8 +172,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::prueba.Properties.Resources._5f6acd2ede815a125e954977821f8ed3;
             this.pictureBox3.Location = new System.Drawing.Point(0, 315);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(0);
@@ -214,8 +187,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::prueba.Properties.Resources._5f6acd2ede815a125e954977821f8ed3;
             this.pictureBox6.Location = new System.Drawing.Point(105, 315);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(0);
@@ -230,8 +202,7 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pictureBox9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox9.Image = global::prueba.Properties.Resources._5f6acd2ede815a125e954977821f8ed3;
             this.pictureBox9.Location = new System.Drawing.Point(0, 420);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(0);
@@ -255,16 +226,36 @@
             this.panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel.Location = new System.Drawing.Point(284, 13);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(486, 412);
+            this.panel.Size = new System.Drawing.Size(488, 410);
             this.panel.TabIndex = 1;
             this.panel.TabStop = false;
+            // 
+            // label
+            // 
+            this.label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(12, 428);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(35, 13);
+            this.label.TabIndex = 2;
+            this.label.Text = "label1";
+            // 
+            // labelBool
+            // 
+            this.labelBool.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelBool.AutoSize = true;
+            this.labelBool.Location = new System.Drawing.Point(12, 444);
+            this.labelBool.Name = "labelBool";
+            this.labelBool.Size = new System.Drawing.Size(35, 13);
+            this.labelBool.TabIndex = 3;
+            this.labelBool.Text = "label1";
             // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackColor = System.Drawing.Color.Azure;
             this.Controls.Add(this.selector);
             this.Controls.Add(this.labelBool);
             this.Controls.Add(this.label);
@@ -298,9 +289,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label;
-        private System.Windows.Forms.Label labelBool;
         public Plano panel;
         private System.Windows.Forms.FlowLayoutPanel selector;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label labelBool;
     }
 }

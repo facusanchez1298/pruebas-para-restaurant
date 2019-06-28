@@ -37,13 +37,13 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonEditar = new System.Windows.Forms.Button();
-            this.plano1 = new prueba.Plano();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.plano1 = new prueba.Plano();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -134,19 +134,7 @@
             this.buttonEditar.TabIndex = 5;
             this.buttonEditar.Text = "Editar";
             this.buttonEditar.UseVisualStyleBackColor = true;
-            this.buttonEditar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // plano1
-            // 
-            this.plano1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.plano1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.plano1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.plano1.Location = new System.Drawing.Point(290, 13);
-            this.plano1.Name = "plano1";
-            this.plano1.Size = new System.Drawing.Size(488, 410);
-            this.plano1.TabIndex = 0;
+            this.buttonEditar.Click += new System.EventHandler(this.Editar_Click);
             // 
             // button6
             // 
@@ -227,6 +215,18 @@
             this.button1.UseCompatibleTextRendering = true;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // plano1
+            // 
+            this.plano1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.plano1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.plano1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.plano1.Location = new System.Drawing.Point(290, 13);
+            this.plano1.Name = "plano1";
+            this.plano1.Size = new System.Drawing.Size(488, 410);
+            this.plano1.TabIndex = 0;
             // 
             // Ver
             // 

@@ -43,7 +43,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonOcupar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,7 +120,6 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 20);
             this.label4.TabIndex = 0;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -130,7 +129,6 @@
             this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "Total a pagar:";
-            this.label5.Click += new System.EventHandler(this.label4_Click);
             // 
             // button4
             // 
@@ -140,7 +138,6 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "Agregar Pedido";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button3_Click);
             // 
             // label7
             // 
@@ -178,15 +175,15 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Mozo:";
             // 
-            // button3
+            // buttonOcupar
             // 
-            this.button3.Location = new System.Drawing.Point(205, 439);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(92, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Ocupar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            this.buttonOcupar.Location = new System.Drawing.Point(205, 439);
+            this.buttonOcupar.Name = "buttonOcupar";
+            this.buttonOcupar.Size = new System.Drawing.Size(92, 23);
+            this.buttonOcupar.TabIndex = 3;
+            this.buttonOcupar.Text = "Ocupar";
+            this.buttonOcupar.UseVisualStyleBackColor = true;
+            this.buttonOcupar.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // Datos
             // 
@@ -199,7 +196,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.buttonOcupar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
@@ -234,6 +231,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonOcupar;
     }
 }
