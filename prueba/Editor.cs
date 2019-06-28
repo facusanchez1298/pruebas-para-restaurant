@@ -12,19 +12,6 @@ namespace prueba
 {
     public partial class Editor : UserControl
     {
-
-        
-        public Editor()
-        {
-            conexion = new Conexion();
-            InitializeComponent();
-            cantidad = 0;
-            recargar();
-
-            actualizarEventos();
-        }
-
-
         #region Propiedades
         Conexion conexion;
         int cantidad;
@@ -36,6 +23,18 @@ namespace prueba
         public int plantilla { get; internal set; }
         #endregion
 
+
+        public Editor()
+        {
+            conexion = new Conexion();
+            InitializeComponent();
+            cantidad = 0;
+            recargar();
+            actualizarEventos();
+        }
+
+
+       
         /// <summary>
         /// recorre los controles y a todos los item le da sus eventos
         /// </summary>
@@ -48,6 +47,18 @@ namespace prueba
             );
         }
 
+
+
+        public void mostrar()
+        {
+            this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
+            {
+                q.Show();
+            });
+
+        }
+
+
         /// <summary>
         /// actualiza los elementos
         /// </summary>
@@ -59,7 +70,7 @@ namespace prueba
             actualizarEventos();
         }
 
-      
+
         public void itemPanel_MouseDown(object sender, MouseEventArgs e)
         {
             Control control = (Control)sender;
@@ -81,30 +92,103 @@ namespace prueba
             seleccionado.BackColor = Color.Transparent;
             seleccionado.Image = (sender as PictureBox).Image;
             seleccionado.Location = control.Location;
-            seleccionado.SizeMode = seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
+            seleccionado.SizeMode = PictureBoxSizeMode.Zoom;
+
+            #region tamaños
+            Size mesaNormal = new Size(40, 40);
+            Size MesaGrande = new Size(80, 80);
+            Size MesaRectangular = new Size(60, 40);
+            Size silla = new Size(20, 20);
+            Size pared = new Size(180, 30);
+            Size mesita = new Size(30, 30);
+            Size TablaBar = new Size(180, 20);
+            #endregion
+
 
             switch (control.Tag)
             {
-                case "Mesa":
-                    seleccionado.Size = new Size(50, 50);
-                    seleccionado.Tag = "Mesa";
+                case "Mesa Redonda":
+                    seleccionado.Size = mesaNormal;
+                    seleccionado.Tag = "Mesa Redonda";
+                    break;
+
+                case "Tabla Bar":
+                    seleccionado.Size = TablaBar;
+                    seleccionado.Tag = "Tabla Bar";
+                    break;
+
+                case "Tabla Cocina":
+                    seleccionado.Size = pared;
+                    seleccionado.Tag = "Tabla Cocina";
+                    break;
+
+                case "Mesita":
+                    seleccionado.Size = mesita;
+                    seleccionado.Tag = "Mesita";
+                    break;
+
+                case "Mesa Redonda Transparente":
+                    seleccionado.Size = mesaNormal;
+                    seleccionado.Tag = "Mesa Redonda Transparente";
+                    break;
+
+                case "Mesa Redonda Negra":
+                    seleccionado.Size = MesaRectangular;
+                    seleccionado.Tag = "Mesa Redonda Negra";
+                    break;
+
+                case "Mesa Redonda Madera":
+                    seleccionado.Size = mesaNormal;
+                    seleccionado.Tag = "Mesa Redonda Madera";
+                    break;
+
+                case "Mesa Cuadrada":
+                    seleccionado.Size = mesaNormal;
+                    seleccionado.Tag = "Mesa Cuadrada";
+                    break;
+
+                case "Mesa cuadrada 4 sillas":
+                    seleccionado.Size = mesaNormal;
+                    seleccionado.Tag = "Mesa cuadrada 4 sillas";
+                    break;
+
+                case "Mesa Rectangular":
+                    seleccionado.Size = MesaRectangular;
+                    seleccionado.Tag = "Mesa Rectangular";
+                    break;
+
+                case "Mesa Redonda 8 sillas":
+                    seleccionado.Size = MesaRectangular;
+                    seleccionado.Tag = "Mesa Redonda 8 sillas";
+                    break;
+
+                case "Mesa Redonda 6 sillas":
+                    seleccionado.Size = MesaGrande;
+                    seleccionado.Tag = "Mesa Redonda 6 sillas";
                     break;
 
                 case "Pared":
-                    seleccionado.Size = new Size(180, 40);
+                    seleccionado.Size = pared;
                     seleccionado.Tag = "Pared";
+                    seleccionado.SizeMode = seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
                     break;
 
                 case "Mesa Grande":
-                    seleccionado.Size = new Size(100, 100);
+                    seleccionado.Size = MesaGrande;
                     seleccionado.Tag = "Mesa Grande";
                     break;
-                     
-                default:
-                    seleccionado.Size = new Size(50, 50);
+
+                case "Silla":
+                    seleccionado.Size = silla;
+                    seleccionado.Tag = "Silla";
+                    break;
+
+                case "Silla Roja":
+                    seleccionado.Size = silla;
+                    seleccionado.Tag = "Silla Roja";
                     break;
             }
-                                         
+
             seleccionado.Show();
             this.Controls.Add(seleccionado);
             seleccionado.BringToFront();
@@ -147,9 +231,9 @@ namespace prueba
 
                 else
                 {
-                   
+
                     //guardamos en base de datos
-                    
+
 
                     if (seleccionado.index == 0)
                     {
@@ -174,9 +258,8 @@ namespace prueba
         /// <returns></returns>
         public bool sePuedeColocar()
         {
-            return !((!estaEnArea(panel, seleccionado)) || existeElemento());
+            return ((estaEnArea(panel, seleccionado)) && !existeElemento());
         }
-               
 
         /// <summary>
         /// elimina un elemento de la lista de controles
@@ -184,7 +267,7 @@ namespace prueba
         /// <param name="control"></param>
         public void borrarControl(Control control)
         {
-            this.Controls.Remove(control);            
+            this.Controls.Remove(control);
         }
 
         /// <summary>
@@ -196,9 +279,9 @@ namespace prueba
             pictureBox.MouseDown += itemPanel_MouseDown;
             pictureBox.MouseUp += item_MouseUp;
             pictureBox.MouseMove += item_MouseMove;
-           
+
         }
-        
+
         /// <summary>
         /// hace que la imagen rote con la tecla 'R'
         /// </summary>
@@ -219,7 +302,7 @@ namespace prueba
                     {
                         Image image = seleccionado.Image;
 
-                        image.RotateFlip(RotateFlipType.Rotate90FlipY);
+                        image.RotateFlip(RotateFlipType.Rotate90FlipNone);
 
                         cambiarAltoPorAncho(alto, ancho);
 
@@ -237,7 +320,7 @@ namespace prueba
                 {
                     if (seleccionado != null)
                         borrarControl(seleccionado);
-                    
+
                     //MessageBox.Show(seleccionado.index.ToString());
                     conexion.borrarMesa(seleccionado, plantilla);
 
@@ -296,11 +379,12 @@ namespace prueba
         public bool existeElemento()
         {
             List<Control> controles =
-                this.Controls.OfType<Control>().ToList<Control>().FindAll(q => q.GetType().Equals(typeof(PictureBox)));
+                this.Controls.OfType<Control>().ToList<Control>().FindAll(q => q.GetType().Equals(typeof(Item)));
             controles.Remove(seleccionado);
 
             foreach (Control control in controles)
             {
+
                 if (estaEnRango(control))
                 {
                     return true;
@@ -356,6 +440,6 @@ namespace prueba
             else return false;
         }
 
-       
+
     }
 }

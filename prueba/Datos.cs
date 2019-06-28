@@ -31,6 +31,13 @@ namespace prueba
                 buttonOcupar.Text = "Desocupar";
             }
             else buttonOcupar.Text = "Ocupar";
+
+
+            if (item.Llegada != null)
+            {
+                llego = item.Llegada;
+            }
+            else timer1.Stop();
         }
         
         private void button1_Click(object sender, EventArgs e)
@@ -52,11 +59,13 @@ namespace prueba
                 llego = DateTime.Now;
                 labelActual.Text = (DateTime.Now - llego).ToString();
                 timer1.Start();
+                conexion.EditarIngreso(DateTime.Now, item, ver.plantilla);
             }
             else
             {
                 conexion.ocuparMesa(item, ver.plantilla, false);
                 buttonOcupar.Text = "Ocupar";
+                conexion.guardarSalida(item, ver.plantilla);
                 timer1.Stop();
             }
         }

@@ -11,7 +11,7 @@ namespace prueba
     
     public class Item  : PictureBox
     {
-
+        public DateTime Llegada;
         public int index;
         public bool ocupado;
 

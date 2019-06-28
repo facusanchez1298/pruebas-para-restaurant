@@ -118,52 +118,112 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mesa grande negra recorte" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mesa grande negra recorte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mesa grande negra" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mesa grande negra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mesa cuadrada" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mesa cuadrada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="5f6acd2ede815a125e954977821f8ed3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\5f6acd2ede815a125e954977821f8ed3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pared roja" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pared roja.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mesa negra" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mesa negra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mesa grande negra1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mesa grande negra1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mesa negra1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mesa negra1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="number6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\number6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MesaRedondaMadera1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MesaRedondaMadera1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa negra" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa negra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa cuadrada" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa cuadrada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mesa redonda normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mesa redonda normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="silla Roja" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\silla Roja.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Silla1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Silla1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa negra2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa negra2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dining-table" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dining-table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa cuadrada 4 sillas1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa cuadrada 4 sillas1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa grande negra recorte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa grande negra recorte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa cuadrada 4 sillas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa cuadrada 4 sillas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa redonda 4 sillas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa redonda 4 sillas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pared roja" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pared roja.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MesaP6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MesaP6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa redonda 8 sillas1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa redonda 8 sillas1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Silla" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Silla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa redonda 6 sillas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa redonda 6 sillas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="5f6acd2ede815a125e954977821f8ed3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\5f6acd2ede815a125e954977821f8ed3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MesaP8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MesaP8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MesaRedondaMadera" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MesaRedondaMadera.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa redonda 8 sillas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa redonda 8 sillas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tabla bar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tabla bar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesita redonda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesita redonda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tabla grande" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tabla grande.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa grande negra" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa grande negra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MesaCuadrada grande" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MesaCuadrada grande.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mesa negra1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mesa negra1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tabla bar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tabla bar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
