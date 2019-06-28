@@ -57,6 +57,7 @@ namespace prueba
             {
                 conexion.ocuparMesa(item, ver.plantilla, false);
                 buttonOcupar.Text = "Ocupar";
+                timer1.Stop();
             }
         }
 
