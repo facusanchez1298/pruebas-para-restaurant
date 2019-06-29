@@ -13,7 +13,7 @@ namespace prueba
         public Form1( Ver padre, int numero)
         {
             conexion = new Conexion();
-            this.padre = padre;            
+            this.padre = padre;
             InitializeComponent();
             editor.plantilla = numero;
             editor.recargar();
@@ -24,13 +24,13 @@ namespace prueba
             this.Close();
             padre.Show();
             padre.recargar();
-        }       
+        }
 
         private void editor_Click(object sender, System.EventArgs e)
         {
             editor.Focus();
         }
 
-       
+
     }
 }

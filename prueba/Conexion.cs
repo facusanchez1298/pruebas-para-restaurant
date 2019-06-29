@@ -335,7 +335,16 @@ namespace prueba
                             break;
 
                         case "Mesa Redonda 6 sillas":
-                            item.Image = Resources.mesa_redonda_8_sillas;
+                            item.Image = Resources.mesa_redonda_6_sillas;
+                            item.SizeMode = PictureBoxSizeMode.Zoom;
+                            item.DoubleClick += ver.item_DoubleClick;
+                            item.MouseHover += ver.Mouse_hover;
+                            item.MouseLeave += ver.Mouse_Leave;
+                            break;
+                        
+
+                        case "Mesa Redonda 4 sillas":
+                            item.Image = Resources.mesa_redonda_4_sillas;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             item.DoubleClick += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
@@ -500,7 +509,12 @@ namespace prueba
                             break;
 
                         case "Mesa Redonda 6 sillas":
-                            item.Image = Resources.mesa_redonda_8_sillas;
+                            item.Image = Resources.mesa_redonda_6_sillas;
+                            item.SizeMode = PictureBoxSizeMode.Zoom;
+                            break;
+
+                        case "Mesa Redonda 4 sillas":
+                            item.Image = Resources.mesa_redonda_4_sillas;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             break;
 

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
+﻿using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace prueba
@@ -16,9 +12,11 @@ namespace prueba
         Conexion conexion;
         int cantidad;
         bool precionado = false;
+        bool ctrPresionado = false;
         Point inicial;
         Point final;
         Item seleccionado;
+
 
         public int plantilla { get; internal set; }
         #endregion
@@ -47,8 +45,9 @@ namespace prueba
             );
         }
 
-
-
+        /// <summary>
+        /// muestra todos los controles cargados
+        /// </summary>
         public void mostrar()
         {
             this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
@@ -58,24 +57,68 @@ namespace prueba
 
         }
 
-
         /// <summary>
         /// actualiza los elementos
         /// </summary>
         public void recargar()
         {
             conexion.cargarMesas(this, plantilla);
-            this.panel.SendToBack();
-            label.Text = this.Controls.Count + "";
+            this.panel.SendToBack();            
             actualizarEventos();
         }
 
+        /// <summary>
+        /// verifica que tecla dejamos de tocar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Editor_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.ControlKey) ctrPresionado = false;
+        }
+
+        /// <summary>
+        /// verifica que tecla tocamos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tocarBoton(object sender, KeyEventArgs e)
+        {
+            Control control = (Control)sender;
+
+            if (e.KeyCode == Keys.ControlKey) ctrPresionado = true;   
+
+            if (precionado)
+            {
+                if (e.KeyCode == Keys.R)
+                {
+                    if (seleccionado.Image != null)
+                    {
+                        rotarSeleccionado();
+                    }
+                    else
+                    {
+                        borrarControl(seleccionado);
+                        conexion.borrarMesa(seleccionado, plantilla);
+                    }
+                }
+                else if (e.KeyCode == Keys.D)
+                {
+                    if (seleccionado != null)
+                    {
+                        borrarControl(seleccionado);
+                    }
+                }
+            }
+        }
 
         public void itemPanel_MouseDown(object sender, MouseEventArgs e)
         {
             Control control = (Control)sender;
+
+
+            if (!precionado) inicial = new Point(control.Location.X, control.Location.Y);
             precionado = true;
-            inicial = control.Location;
             seleccionado = (Item)control;
             seleccionado.BringToFront();
         }
@@ -84,114 +127,9 @@ namespace prueba
         {
             Control control = (Control)sender;
             precionado = true;
-            inicial = control.Location;
+            inicial = new Point(control.Location.X, control.Location.Y);
 
-
-            seleccionado = new Item();
-            DarEventos(seleccionado);
-            seleccionado.BackColor = Color.Transparent;
-            seleccionado.Image = (sender as PictureBox).Image;
-            seleccionado.Location = control.Location;
-            seleccionado.SizeMode = PictureBoxSizeMode.Zoom;
-
-            #region tamaños
-            Size mesaNormal = new Size(40, 40);
-            Size MesaGrande = new Size(80, 80);
-            Size MesaRectangular = new Size(60, 40);
-            Size silla = new Size(20, 20);
-            Size pared = new Size(180, 30);
-            Size mesita = new Size(30, 30);
-            Size TablaBar = new Size(180, 20);
-            #endregion
-
-
-            switch (control.Tag)
-            {
-                case "Mesa Redonda":
-                    seleccionado.Size = mesaNormal;
-                    seleccionado.Tag = "Mesa Redonda";
-                    break;
-
-                case "Tabla Bar":
-                    seleccionado.Size = TablaBar;
-                    seleccionado.Tag = "Tabla Bar";
-                    break;
-
-                case "Tabla Cocina":
-                    seleccionado.Size = pared;
-                    seleccionado.Tag = "Tabla Cocina";
-                    break;
-
-                case "Mesita":
-                    seleccionado.Size = mesita;
-                    seleccionado.Tag = "Mesita";
-                    break;
-
-                case "Mesa Redonda Transparente":
-                    seleccionado.Size = mesaNormal;
-                    seleccionado.Tag = "Mesa Redonda Transparente";
-                    break;
-
-                case "Mesa Redonda Negra":
-                    seleccionado.Size = MesaRectangular;
-                    seleccionado.Tag = "Mesa Redonda Negra";
-                    break;
-
-                case "Mesa Redonda Madera":
-                    seleccionado.Size = mesaNormal;
-                    seleccionado.Tag = "Mesa Redonda Madera";
-                    break;
-
-                case "Mesa Cuadrada":
-                    seleccionado.Size = mesaNormal;
-                    seleccionado.Tag = "Mesa Cuadrada";
-                    break;
-
-                case "Mesa cuadrada 4 sillas":
-                    seleccionado.Size = mesaNormal;
-                    seleccionado.Tag = "Mesa cuadrada 4 sillas";
-                    break;
-
-                case "Mesa Rectangular":
-                    seleccionado.Size = MesaRectangular;
-                    seleccionado.Tag = "Mesa Rectangular";
-                    break;
-
-                case "Mesa Redonda 8 sillas":
-                    seleccionado.Size = MesaRectangular;
-                    seleccionado.Tag = "Mesa Redonda 8 sillas";
-                    break;
-
-                case "Mesa Redonda 6 sillas":
-                    seleccionado.Size = MesaGrande;
-                    seleccionado.Tag = "Mesa Redonda 6 sillas";
-                    break;
-
-                case "Pared":
-                    seleccionado.Size = pared;
-                    seleccionado.Tag = "Pared";
-                    seleccionado.SizeMode = seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
-                    break;
-
-                case "Mesa Grande":
-                    seleccionado.Size = MesaGrande;
-                    seleccionado.Tag = "Mesa Grande";
-                    break;
-
-                case "Silla":
-                    seleccionado.Size = silla;
-                    seleccionado.Tag = "Silla";
-                    break;
-
-                case "Silla Roja":
-                    seleccionado.Size = silla;
-                    seleccionado.Tag = "Silla Roja";
-                    break;
-            }
-
-            seleccionado.Show();
-            this.Controls.Add(seleccionado);
-            seleccionado.BringToFront();
+            crearItem(control);            
         }
 
         public void item_MouseMove(object sender, MouseEventArgs e)
@@ -199,8 +137,21 @@ namespace prueba
             Control control = (Control)sender;
             if (precionado)
             {
-                seleccionado.Top = e.Y + control.Top - (seleccionado.Height / 2);
-                seleccionado.Left = e.X + control.Left - (seleccionado.Width / 2);
+                label1.Text = inicial + "    " + control.Location.X + " " + control.Location.Y ;
+                label2.Text = inicial.Y - control.Location.Y + "";
+                
+                if (ctrPresionado)
+                {
+                    seleccionado.Height = (inicial.Y - control.Location.Y) + e.Y;
+                    seleccionado.Width  = (inicial.X - control.Location.X) + e.X;                  
+                }
+                else
+                {
+                    seleccionado.Top =  e.Y + control.Top  - (seleccionado.Height / 2);
+                    seleccionado.Left = e.X + control.Left - (seleccionado.Width / 2);
+                }
+                                             
+               
 
                 if (!sePuedeColocar())
                 {
@@ -223,10 +174,10 @@ namespace prueba
                 {
                     seleccionado.Location = inicial;
 
-                    if (!estaEnArea(panel, seleccionado))
-                    {
-                        borrarControl(seleccionado);
-                    }
+                    //if (!estaEnArea(panel, seleccionado))
+                    //{
+                    //    borrarControl(seleccionado);
+                    //}
                 }
 
                 else
@@ -268,6 +219,7 @@ namespace prueba
         public void borrarControl(Control control)
         {
             this.Controls.Remove(control);
+            conexion.borrarMesa(seleccionado, plantilla);
         }
 
         /// <summary>
@@ -281,53 +233,7 @@ namespace prueba
             pictureBox.MouseMove += item_MouseMove;
 
         }
-
-        /// <summary>
-        /// hace que la imagen rote con la tecla 'R'
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void rotar(object sender, KeyEventArgs e)
-        {
-            Control control = (Control)sender;
-
-            int ancho = seleccionado.Width;
-            int alto = seleccionado.Height;
-
-            if (precionado)
-            {
-                if (e.KeyCode == Keys.R)
-                {
-                    if (seleccionado.Image != null)
-                    {
-                        Image image = seleccionado.Image;
-
-                        image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-
-                        cambiarAltoPorAncho(alto, ancho);
-
-                        seleccionado.Image = image;
-
-                        if (seleccionado.Tag.Equals("Pared")) seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }
-                    else
-                    {
-                        borrarControl(seleccionado);
-                        conexion.borrarMesa(seleccionado, plantilla);
-                    }
-                }
-                else if (e.KeyCode == Keys.D)
-                {
-                    if (seleccionado != null)
-                        borrarControl(seleccionado);
-
-                    //MessageBox.Show(seleccionado.index.ToString());
-                    conexion.borrarMesa(seleccionado, plantilla);
-
-                }
-            }
-        }
-
+        
         /// <summary>
         /// invierte las proporciones del elemento seleccionado
         /// </summary>
@@ -440,6 +346,136 @@ namespace prueba
             else return false;
         }
 
+        /// <summary>
+        ///rota el item seleccionado del obj seleccionado 
+        /// </summary>
+        public void rotarSeleccionado()
+        {
+            int ancho = seleccionado.Width;
+            int alto = seleccionado.Height;
 
+            Image image = seleccionado.Image;
+
+            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+
+            cambiarAltoPorAncho(alto, ancho);
+            seleccionado.Image = image;
+
+            if (seleccionado.Tag.Equals("Pared")) seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
+            
+        }
+
+        public void crearItem(Control control)
+        {
+            seleccionado = new Item();
+            DarEventos(seleccionado);
+            seleccionado.BackColor = Color.Transparent;
+            seleccionado.Image = (control as PictureBox).Image;
+            seleccionado.Location = control.Location;
+            seleccionado.SizeMode = PictureBoxSizeMode.Zoom;
+
+            #region tamaños
+            Size mesaNormal = new Size(40, 40);
+            Size MesaGrande = new Size(80, 80);
+            Size MesaRectangular = new Size(60, 40);
+            Size silla = new Size(20, 20);
+            Size pared = new Size(180, 30);
+            Size mesita = new Size(30, 30);
+            Size TablaBar = new Size(180, 20);
+            #endregion
+
+            switch (control.Tag)
+            {
+                case "Mesa Redonda":
+                    seleccionado.Size = mesaNormal;
+                    seleccionado.Tag = "Mesa Redonda";
+                    break;
+
+                case "Tabla Bar":
+                    seleccionado.Size = TablaBar;
+                    seleccionado.Tag = "Tabla Bar";
+                    break;
+
+                case "Tabla Cocina":
+                    seleccionado.Size = pared;
+                    seleccionado.Tag = "Tabla Cocina";
+                    break;
+
+                case "Mesita":
+                    seleccionado.Size = mesita;
+                    seleccionado.Tag = "Mesita";
+                    break;
+
+                case "Mesa Redonda Transparente":
+                    seleccionado.Size = mesaNormal;
+                    seleccionado.Tag = "Mesa Redonda Transparente";
+                    break;
+
+                case "Mesa Redonda Negra":
+                    seleccionado.Size = MesaRectangular;
+                    seleccionado.Tag = "Mesa Redonda Negra";
+                    break;
+
+                case "Mesa Redonda Madera":
+                    seleccionado.Size = mesaNormal;
+                    seleccionado.Tag = "Mesa Redonda Madera";
+                    break;
+
+                case "Mesa Cuadrada":
+                    seleccionado.Size = mesaNormal;
+                    seleccionado.Tag = "Mesa Cuadrada";
+                    break;
+
+                case "Mesa cuadrada 4 sillas":
+                    seleccionado.Size = mesaNormal;
+                    seleccionado.Tag = "Mesa cuadrada 4 sillas";
+                    break;
+
+                case "Mesa Rectangular":
+                    seleccionado.Size = MesaRectangular;
+                    seleccionado.Tag = "Mesa Rectangular";
+                    break;
+
+                case "Mesa Redonda 8 sillas":
+                    seleccionado.Size = MesaRectangular;
+                    seleccionado.Tag = "Mesa Redonda 8 sillas";
+                    break;
+
+                case "Mesa Redonda 6 sillas":
+                    seleccionado.Size = MesaGrande;
+                    seleccionado.Tag = "Mesa Redonda 6 sillas";
+                    break;                
+
+                case "Mesa Redonda 4 sillas":
+                    seleccionado.Size = mesaNormal;
+                    seleccionado.Tag = "Mesa Redonda 4 sillas";
+                    break;
+
+                case "Pared":
+                    seleccionado.Size = pared;
+                    seleccionado.Tag = "Pared";
+                    seleccionado.SizeMode = seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
+                    break;
+
+                case "Mesa Grande":
+                    seleccionado.Size = MesaGrande;
+                    seleccionado.Tag = "Mesa Grande";
+                    break;
+
+                case "Silla":
+                    seleccionado.Size = silla;
+                    seleccionado.Tag = "Silla";
+                    break;
+
+                case "Silla Roja":
+                    seleccionado.Size = silla;
+                    seleccionado.Tag = "Silla Roja";
+                    break;
+            }
+
+            seleccionado.Show();
+            this.Controls.Add(seleccionado);
+            seleccionado.BringToFront();
+        }
     }
 }
