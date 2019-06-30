@@ -51,144 +51,111 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 20);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Personas:";
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(82, 18);
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(65, 20);
-            this.textBox1.TabIndex = 1;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.MintCream;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 96);
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(379, 337);
-            this.dataGridView1.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(306, 439);
+            this.button1.BackColor = System.Drawing.Color.Azure;
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(104, 439);
+            this.button2.BackColor = System.Drawing.Color.Azure;
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Editar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // labelNumero
             // 
-            this.labelNumero.AutoSize = true;
+            resources.ApplyResources(this.labelNumero, "labelNumero");
             this.labelNumero.BackColor = System.Drawing.SystemColors.Window;
             this.labelNumero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelNumero.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumero.Location = new System.Drawing.Point(335, 18);
             this.labelNumero.Name = "labelNumero";
-            this.labelNumero.Size = new System.Drawing.Size(58, 48);
-            this.labelNumero.TabIndex = 0;
-            this.labelNumero.Text = "10";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(340, 67);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Mesa nº";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(3, 439);
+            this.button4.BackColor = System.Drawing.Color.Azure;
+            resources.ApplyResources(this.button4, "button4");
+            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(92, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Agregar Pedido";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(153, 20);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Total a pagar:";
             // 
             // label8
             // 
             this.label8.BackColor = System.Drawing.SystemColors.Window;
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Location = new System.Drawing.Point(232, 18);
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(92, 20);
-            this.label8.TabIndex = 7;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 46);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Llego:";
             // 
             // buttonOcupar
             // 
-            this.buttonOcupar.Location = new System.Drawing.Point(205, 439);
+            this.buttonOcupar.BackColor = System.Drawing.Color.Azure;
+            resources.ApplyResources(this.buttonOcupar, "buttonOcupar");
+            this.buttonOcupar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.buttonOcupar.Name = "buttonOcupar";
-            this.buttonOcupar.Size = new System.Drawing.Size(92, 23);
-            this.buttonOcupar.TabIndex = 3;
-            this.buttonOcupar.Text = "Ocupar";
-            this.buttonOcupar.UseVisualStyleBackColor = true;
+            this.buttonOcupar.UseVisualStyleBackColor = false;
             this.buttonOcupar.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 74);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Tiempo:";
             // 
             // labelLLego
             // 
             this.labelLLego.BackColor = System.Drawing.SystemColors.Window;
             this.labelLLego.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelLLego.Location = new System.Drawing.Point(82, 46);
+            this.labelLLego.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            resources.ApplyResources(this.labelLLego, "labelLLego");
+            this.labelLLego.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.labelLLego.Name = "labelLLego";
-            this.labelLLego.Size = new System.Drawing.Size(242, 20);
-            this.labelLLego.TabIndex = 8;
-            this.labelLLego.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelActual
             // 
             this.labelActual.BackColor = System.Drawing.SystemColors.Window;
             this.labelActual.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelActual.Location = new System.Drawing.Point(82, 74);
+            this.labelActual.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            resources.ApplyResources(this.labelActual, "labelActual");
+            this.labelActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.labelActual.Name = "labelActual";
-            this.labelActual.Size = new System.Drawing.Size(242, 20);
-            this.labelActual.TabIndex = 8;
-            this.labelActual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // timer1
             // 
@@ -197,9 +164,9 @@
             // 
             // Datos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 474);
+            this.BackColor = System.Drawing.Color.Azure;
             this.Controls.Add(this.labelActual);
             this.Controls.Add(this.labelLLego);
             this.Controls.Add(this.label2);
@@ -215,10 +182,11 @@
             this.Controls.Add(this.labelNumero);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Datos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Datos";
+            this.ShowIcon = false;
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.Datos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

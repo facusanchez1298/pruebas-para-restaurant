@@ -174,10 +174,10 @@ namespace prueba
                 {
                     seleccionado.Location = inicial;
 
-                    //if (!estaEnArea(panel, seleccionado))
-                    //{
-                    //    borrarControl(seleccionado);
-                    //}
+                    if (!estaEnArea(panel, seleccionado))
+                    {
+                        borrarControl(seleccionado);
+                    }
                 }
 
                 else

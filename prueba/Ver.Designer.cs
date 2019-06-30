@@ -43,6 +43,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.panelDatos = new System.Windows.Forms.Panel();
             this.plano1 = new prueba.Plano();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -124,6 +125,7 @@
             // buttonEditar
             // 
             this.buttonEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonEditar.BackColor = System.Drawing.Color.Azure;
             this.buttonEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonEditar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -133,16 +135,16 @@
             this.buttonEditar.Size = new System.Drawing.Size(276, 76);
             this.buttonEditar.TabIndex = 5;
             this.buttonEditar.Text = "Editar";
-            this.buttonEditar.UseVisualStyleBackColor = true;
+            this.buttonEditar.UseVisualStyleBackColor = false;
             this.buttonEditar.Click += new System.EventHandler(this.Editar_Click);
             // 
             // button6
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button6.Image = global::prueba.Properties.Resources.number6;
             this.button6.Location = new System.Drawing.Point(695, 424);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(81, 76);
             this.button6.TabIndex = 8;
@@ -151,11 +153,11 @@
             // 
             // button5
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button5.Image = global::prueba.Properties.Resources._5;
             this.button5.Location = new System.Drawing.Point(615, 424);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(81, 76);
             this.button5.TabIndex = 8;
@@ -164,11 +166,11 @@
             // 
             // button4
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Image = global::prueba.Properties.Resources._4;
             this.button4.Location = new System.Drawing.Point(534, 424);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(81, 76);
             this.button4.TabIndex = 8;
@@ -177,11 +179,11 @@
             // 
             // button3
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Image = global::prueba.Properties.Resources._3;
             this.button3.Location = new System.Drawing.Point(453, 424);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
+            this.button3.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(81, 76);
             this.button3.TabIndex = 8;
@@ -190,11 +192,11 @@
             // 
             // button2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Image = global::prueba.Properties.Resources._2;
             this.button2.Location = new System.Drawing.Point(372, 424);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(81, 76);
             this.button2.TabIndex = 8;
@@ -203,12 +205,12 @@
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Image = global::prueba.Properties.Resources._11;
             this.button1.Location = new System.Drawing.Point(291, 424);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(81, 76);
             this.button1.TabIndex = 8;
@@ -216,24 +218,35 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button3_Click);
             // 
+            // panelDatos
+            // 
+            this.panelDatos.AutoSize = true;
+            this.panelDatos.Location = new System.Drawing.Point(785, 13);
+            this.panelDatos.Name = "panelDatos";
+            this.panelDatos.Size = new System.Drawing.Size(403, 474);
+            this.panelDatos.TabIndex = 9;
+            // 
             // plano1
             // 
-            this.plano1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.plano1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.plano1.AutoScroll = true;
+            this.plano1.AutoSize = true;
             this.plano1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.plano1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.plano1.Location = new System.Drawing.Point(290, 13);
             this.plano1.Name = "plano1";
             this.plano1.Size = new System.Drawing.Size(488, 410);
             this.plano1.TabIndex = 0;
+            this.plano1.Click += new System.EventHandler(this.plano1_Click);
             // 
             // Ver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(786, 503);
+            this.ClientSize = new System.Drawing.Size(1196, 503);
+            this.Controls.Add(this.panelDatos);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -248,10 +261,10 @@
             this.Name = "Ver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ver";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -270,5 +283,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Panel panelDatos;
     }
 }

@@ -81,8 +81,7 @@ namespace prueba
         /// <param name="e"></param>
         public void item_DoubleClick(object sender, EventArgs e)
         {
-            Datos datos = new Datos(sender as Item, this);
-            datos.ShowDialog();
+            AbrirFormEnPanel<Datos>(sender as Item);
         }
 
         #region cambio de plantilla
@@ -135,7 +134,59 @@ namespace prueba
             (sender as Item).BackColor = SystemColors.ActiveCaption;
         }
 
-       
+        public void AbrirFormEnPanel<Form>(Item item) where Form : Datos, new() 
+        {
+            
+            Datos formulario;
+            formulario = panelDatos.Controls.OfType<Datos>().FirstOrDefault();
+
+            if (formulario != null)
+            {
+                this.panelDatos.Controls.Remove(formulario);
+                formulario = null;
+            }
+
+            //si el formulario/instancia no existe, creamos nueva instancia y mostramos
+            if (formulario == null)
+            {
+                formulario = new Datos();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Left;
+                
+                panelDatos.Controls.Add(formulario);
+                panelDatos.Tag = formulario;
+                formulario.Show();
+                //formulario.FormClosed += closeForms;
+
+                formulario.darItem(item);
+                formulario.darPadre(this);
+                
+
+
+                formulario.BringToFront();
+            }
+            else
+            {
+                //si la Formulario/instancia existe, lo traemos a frente
+                formulario.BringToFront();
+
+                //Si la instancia esta minimizada mostramos
+                if (formulario.WindowState == FormWindowState.Minimized)
+                {
+                    formulario.WindowState = FormWindowState.Normal;
+                }
+
+            }
+
+            
+
+        }
+
+        private void plano1_Click(object sender, EventArgs e)
+        {
+            panelDatos.Controls.Clear();
+        }
     }
 }
 

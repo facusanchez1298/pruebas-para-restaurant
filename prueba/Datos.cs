@@ -18,15 +18,22 @@ namespace prueba
 
         DateTime llego;
 
-        public Datos(Item item, Ver ver)
+        public Datos( )
+        {            
+            conexion = new Conexion();            
+            InitializeComponent();
+        }
+
+        public void darPadre(Ver ver)
         {
             this.ver = ver;
-            conexion = new Conexion();
-            this.item = item;
-            InitializeComponent();
-            this.labelNumero.Text = item.index.ToString();
+        }
 
-            if (item.ocupado.Equals(true))
+        public void darItem(Item item)
+        {
+            this.item = item;
+
+            if (item.ocupado)
             {
                 buttonOcupar.Text = "Desocupar";
             }
@@ -38,6 +45,8 @@ namespace prueba
                 llego = item.Llegada;
             }
             else timer1.Stop();
+
+        
         }
         
         private void button1_Click(object sender, EventArgs e)
@@ -75,6 +84,11 @@ namespace prueba
         private void timer1_Tick(object sender, EventArgs e)
         {
             labelActual.Text = (DateTime.Now - llego).ToString(@"hh\:mm\:ss");
+        }
+
+        private void Datos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -256,9 +256,10 @@ namespace prueba
                         case "Mesa Grande":
                             item.Image = Resources.mesa_grande_negra_recorte;
                             item.SizeMode = PictureBoxSizeMode.StretchImage;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
+                            
                             break;
 
                         case "Mesita":
@@ -281,7 +282,7 @@ namespace prueba
                         case "Mesa Redonda":
                             item.Image = Resources.mesa_redonda_normal;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
@@ -289,7 +290,7 @@ namespace prueba
                         case "Mesa Redonda Negra":
                             item.Image = Resources.dining_table; ;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
@@ -297,7 +298,7 @@ namespace prueba
                         case "Mesa Redonda Madera":
                             item.Image = Resources.MesaRedondaMadera1;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
@@ -305,7 +306,7 @@ namespace prueba
                         case "Mesa Cuadrada":
                             item.Image = Resources.mesa_cuadrada;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
@@ -313,7 +314,7 @@ namespace prueba
                         case "Mesa cuadrada 4 sillas":
                             item.Image = Resources.mesa_cuadrada_4_sillas1;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
@@ -321,7 +322,7 @@ namespace prueba
                         case "Mesa Rectangular":
                             item.Image = Resources.MesaCuadrada_grande;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
@@ -329,7 +330,7 @@ namespace prueba
                         case "Mesa Redonda 8 sillas":
                             item.Image = Resources.mesa_redonda_8_sillas1;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
@@ -337,7 +338,7 @@ namespace prueba
                         case "Mesa Redonda 6 sillas":
                             item.Image = Resources.mesa_redonda_6_sillas;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
@@ -346,7 +347,7 @@ namespace prueba
                         case "Mesa Redonda 4 sillas":
                             item.Image = Resources.mesa_redonda_4_sillas;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
@@ -354,7 +355,7 @@ namespace prueba
                         case "Silla":
                             item.Image = Resources.Silla1;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
@@ -362,7 +363,7 @@ namespace prueba
                         case "Silla Roja":
                             item.Image = Resources.silla_Roja;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.DoubleClick += ver.item_DoubleClick;
+                            item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
@@ -403,6 +404,8 @@ namespace prueba
                 command.Connection.Close();
             }
         }
+
+            
 
         /// <summary>
         /// carga las mesas en un userControl.Editor
