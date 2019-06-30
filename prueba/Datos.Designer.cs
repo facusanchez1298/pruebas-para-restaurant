@@ -63,16 +63,16 @@
             // 
             // dataGridView1
             // 
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.BackgroundColor = System.Drawing.Color.MintCream;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.Name = "dataGridView1";
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Azure;
             resources.ApplyResources(this.button1, "button1");
+            this.button1.BackColor = System.Drawing.Color.Azure;
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = false;
@@ -80,8 +80,8 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Azure;
             resources.ApplyResources(this.button2, "button2");
+            this.button2.BackColor = System.Drawing.Color.Azure;
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.button2.Name = "button2";
             this.button2.UseVisualStyleBackColor = false;
@@ -100,8 +100,8 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.Azure;
             resources.ApplyResources(this.button4, "button4");
+            this.button4.BackColor = System.Drawing.Color.Azure;
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.button4.Name = "button4";
             this.button4.UseVisualStyleBackColor = false;
@@ -127,8 +127,8 @@
             // 
             // buttonOcupar
             // 
-            this.buttonOcupar.BackColor = System.Drawing.Color.Azure;
             resources.ApplyResources(this.buttonOcupar, "buttonOcupar");
+            this.buttonOcupar.BackColor = System.Drawing.Color.Azure;
             this.buttonOcupar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.buttonOcupar.Name = "buttonOcupar";
             this.buttonOcupar.UseVisualStyleBackColor = false;
@@ -186,7 +186,6 @@
             this.Name = "Datos";
             this.ShowIcon = false;
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.Datos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

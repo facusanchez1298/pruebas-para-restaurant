@@ -54,9 +54,7 @@ namespace prueba
             ver.recargar();
             this.Close();
         }
-
-       
-
+        
         private void button3_Click_1(object sender, EventArgs e)
         {
             if (buttonOcupar.Text.Equals("Ocupar"))
@@ -78,17 +76,12 @@ namespace prueba
                 timer1.Stop();
             }
         }
-
-       
-
+               
         private void timer1_Tick(object sender, EventArgs e)
         {
             labelActual.Text = (DateTime.Now - llego).ToString(@"hh\:mm\:ss");
         }
 
-        private void Datos_Load(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

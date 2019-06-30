@@ -220,6 +220,8 @@
             // 
             // panelDatos
             // 
+            this.panelDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDatos.AutoSize = true;
             this.panelDatos.Location = new System.Drawing.Point(785, 13);
             this.panelDatos.Name = "panelDatos";
@@ -228,8 +230,9 @@
             // 
             // plano1
             // 
-            this.plano1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.plano1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.plano1.AutoScroll = true;
             this.plano1.AutoSize = true;
             this.plano1.BackColor = System.Drawing.SystemColors.ActiveCaption;
