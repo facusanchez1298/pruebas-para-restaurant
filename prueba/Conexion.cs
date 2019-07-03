@@ -35,9 +35,13 @@ namespace prueba
                                      "mesa int," +
                                      "FOREIGN KEY(mesa) REFERENCES mesa(numero));";
 
+        
+
         string tablaComida =        "create table if not exists Comida(" +
                                     "id_comida int," +
                                     "nombre varchar," +
+                                    "vegetariano boolean," +
+                                    "sinTacc boolean," +
                                     "precio float);";
 
         
@@ -761,6 +765,39 @@ namespace prueba
                 desconectar();
             }
         }
+
+
+        internal DataTable CargarTablaComida()
+        {
+            try
+            {
+                conectar();
+                string sql = "select * from Comida ";
+                   
+                dataAdapter = new SQLiteDataAdapter(sql, connection);
+
+                dataSet = new DataSet();
+                dataSet.Reset();
+
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dataSet);
+
+                dt = dataSet.Tables[0];
+                
+
+                return dt;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
     }
 
 }

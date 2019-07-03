@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace prueba
 {
-    public partial class Datos : Form
+    public partial class Datos : Form, Dar
     {
         Item item;
         Ver ver;
@@ -50,12 +50,11 @@ namespace prueba
         }
         
         private void button1_Click(object sender, EventArgs e)
-        {
-            ver.recargar();
-            this.Close();
+        {        
+            salir();
         }
         
-        private void button3_Click_1(object sender, EventArgs e)
+        private void botonOcupar(object sender, EventArgs e)
         {
             if (buttonOcupar.Text.Equals("Ocupar"))
             {
@@ -82,6 +81,25 @@ namespace prueba
             labelActual.Text = (DateTime.Now - llego).ToString(@"hh\:mm\:ss");
         }
 
-      
+        public void salir()
+        {
+            ver.recargar();
+            this.Close();
+        }  
+
+        private void buttonAceptar_Click(object sender, EventArgs e)
+        {
+            salir();
+        }     
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ver.AbrirFormEnPanel<Pedido>(item);
+        }
+
+        public void darPadre(Form form)
+        {
+            this.darPadre(form as Ver);
+        }
     }
 }

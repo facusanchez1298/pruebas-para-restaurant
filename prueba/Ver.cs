@@ -81,6 +81,7 @@ namespace prueba
         /// <param name="e"></param>
         public void item_DoubleClick(object sender, EventArgs e)
         {
+            Datos datos = new Datos();
             AbrirFormEnPanel<Datos>(sender as Item);
         }
 
@@ -134,22 +135,21 @@ namespace prueba
             (sender as Item).BackColor = SystemColors.ActiveCaption;
         }
 
-        public void AbrirFormEnPanel<Form>(Item item) where Form : Datos, new() 
+        public void AbrirFormEnPanel<form>(Item item) where form : Form, Dar, new() 
         {
             
-            Datos formulario;
-            formulario = panelDatos.Controls.OfType<Datos>().FirstOrDefault();
+            form formulario;
+            formulario = panelDatos.Controls.OfType<form>().FirstOrDefault();
 
             if (formulario != null)
             {
-                this.panelDatos.Controls.Remove(formulario);
-                formulario = null;
+                cerrarPaneles();
             }
 
             //si el formulario/instancia no existe, creamos nueva instancia y mostramos
             if (formulario == null)
             {
-                formulario = new Datos();
+                formulario = new form();
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.None;
                 formulario.Dock = DockStyle.Left;
@@ -178,14 +178,71 @@ namespace prueba
                 }
 
             }
-
-            
-
         }
+
+        public void cerrarPaneles()
+        {
+            panelDatos.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Datos))).ToList().ForEach(q =>
+            {
+                (q as Datos).salir();
+            });
+        }
+
 
         private void plano1_Click(object sender, EventArgs e)
         {
-            panelDatos.Controls.Clear();
+            cerrarPaneles();
+            dataGridView1.BringToFront();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ponerColorDeFondo();
+
+
+            if (e.RowIndex >= 0)
+            {
+                int mesa = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["Mesa"].Value.ToString());
+
+
+                this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
+                {
+                    if ((q as Item).index == mesa)
+                    {
+                        q.BackColor = Color.Green;                       
+                    }
+                });
+            }
+        }
+
+        public void ponerColorDeFondo()
+        {
+            this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
+            {   
+                    q.BackColor = SystemColors.ActiveCaption;
+            });
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            ponerColorDeFondo();
+
+           
+            if(e.RowIndex >= 0)
+            {
+                int mesa = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["Mesa"].Value.ToString());
+
+
+                this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
+                {
+                    if((q as Item).index == mesa)
+                    {                        
+                        q.BackColor = Color.Green;
+                        AbrirFormEnPanel<Datos>(q as Item);
+                    }
+                });
+            }
         }
     }
 }
