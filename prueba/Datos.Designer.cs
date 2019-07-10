@@ -40,12 +40,12 @@
             this.labelLLego = new System.Windows.Forms.Label();
             this.labelActual = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonAgregar = new System.Windows.Forms.Button();
+            this.buttonBorrar = new System.Windows.Forms.Button();
             this.buttonOcupar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonAceptar = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,22 +113,23 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button4
+            // buttonAgregar
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.BackColor = System.Drawing.Color.Azure;
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            resources.ApplyResources(this.buttonAgregar, "buttonAgregar");
+            this.buttonAgregar.BackColor = System.Drawing.Color.Azure;
+            this.buttonAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonAgregar.Name = "buttonAgregar";
+            this.buttonAgregar.UseVisualStyleBackColor = false;
+            this.buttonAgregar.Click += new System.EventHandler(this.hacerPedido_Click);
             // 
-            // button2
+            // buttonBorrar
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.BackColor = System.Drawing.Color.Azure;
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = false;
+            resources.ApplyResources(this.buttonBorrar, "buttonBorrar");
+            this.buttonBorrar.BackColor = System.Drawing.Color.Azure;
+            this.buttonBorrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonBorrar.Name = "buttonBorrar";
+            this.buttonBorrar.UseVisualStyleBackColor = false;
+            this.buttonBorrar.Click += new System.EventHandler(this.Borrar_Click);
             // 
             // buttonOcupar
             // 
@@ -138,18 +139,6 @@
             this.buttonOcupar.Name = "buttonOcupar";
             this.buttonOcupar.UseVisualStyleBackColor = false;
             this.buttonOcupar.Click += new System.EventHandler(this.botonOcupar);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.MintCream;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.TabStop = false;
             // 
             // buttonAceptar
             // 
@@ -165,18 +154,33 @@
             resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.Name = "comboBox1";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.MintCream;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
+            // 
             // Datos
             // 
             this.AcceptButton = this.buttonAceptar;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonAceptar);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonAgregar);
+            this.Controls.Add(this.buttonBorrar);
             this.Controls.Add(this.buttonOcupar);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.labelActual);
             this.Controls.Add(this.labelLLego);
             this.Controls.Add(this.label2);
@@ -208,11 +212,11 @@
         private System.Windows.Forms.Label labelLLego;
         private System.Windows.Forms.Label labelActual;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonAgregar;
+        private System.Windows.Forms.Button buttonBorrar;
         private System.Windows.Forms.Button buttonOcupar;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonAceptar;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

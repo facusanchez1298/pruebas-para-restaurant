@@ -15,10 +15,11 @@ namespace prueba
         Item item;
         Ver ver;
         Conexion conexion;
-
+        public int numeroPedido;
         DateTime llego;
+        DataGridViewRow seleccionado;
 
-        public Datos( )
+        public Datos()
         {            
             conexion = new Conexion();            
             InitializeComponent();
@@ -29,38 +30,58 @@ namespace prueba
             this.ver = ver;
         }
 
-        public void darItem(Item item)
+        
+        
+
+        internal void refrescarTabla()
         {
-            this.item = item;
+            dataGridView1.DataSource = conexion.cargarTablaPedido(numeroPedido);
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
 
-            if (item.ocupado)
+
+            dataGridView1.Columns.Add("Total", "Total");
+
+            foreach (DataGridViewRow item in dataGridView1.Rows)
             {
-                buttonOcupar.Text = "Desocupar";
+                float precio = float.Parse(item.Cells["precio"].Value.ToString());
+                int cantidad = int.Parse(item.Cells["cantidad"].Value.ToString());
+                item.Cells["total"].Value = precio * cantidad;
             }
-            else buttonOcupar.Text = "Ocupar";
-
-
-            if (item.Llegada != null)
-            {
-                llego = item.Llegada;
-            }
-            else timer1.Stop();
-
-        
         }
-        
-        private void button1_Click(object sender, EventArgs e)
-        {        
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            labelActual.Text = (DateTime.Now - llego).ToString(@"hh\:mm\:ss");
+        }       
+
+       
+
+
+        #region botones
+
+        private void buttonAceptar_Click(object sender, EventArgs e)
+        {
             salir();
         }
-        
+
+        private void Borrar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void hacerPedido_Click(object sender, EventArgs e)
+        {
+            ver.AbrirFormEnPanel<Pedido>(item, this);
+        }
+
         private void botonOcupar(object sender, EventArgs e)
         {
             if (buttonOcupar.Text.Equals("Ocupar"))
             {
                 conexion.ocuparMesa(item, ver.plantilla, true);
                 buttonOcupar.Text = "Desocupar";
-
+                buttonAgregar.Enabled = true;
                 labelLLego.Text = DateTime.Now.ToLongTimeString();
                 llego = DateTime.Now;
                 labelActual.Text = (DateTime.Now - llego).ToString();
@@ -73,33 +94,71 @@ namespace prueba
                 buttonOcupar.Text = "Ocupar";
                 conexion.guardarSalida(item, ver.plantilla);
                 timer1.Stop();
+                buttonAgregar.Enabled = false;
             }
         }
-               
-        private void timer1_Tick(object sender, EventArgs e)
+        #endregion
+
+        #region heredados
+        public void darPadre(Form form)
         {
-            labelActual.Text = (DateTime.Now - llego).ToString(@"hh\:mm\:ss");
+            this.darPadre(form as Ver);
         }
 
         public void salir()
         {
             ver.recargar();
             this.Close();
-        }  
-
-        private void buttonAceptar_Click(object sender, EventArgs e)
+        }
+        public void darItem(Item item)
         {
-            salir();
-        }     
+            this.item = item;
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            ver.AbrirFormEnPanel<Pedido>(item);
+            if (item.ocupado)
+            {
+                buttonOcupar.Text = "Desocupar";
+                buttonAgregar.Enabled = true;
+            }
+            else
+            {
+                buttonOcupar.Text = "Ocupar";
+                buttonAgregar.Enabled = false;
+            }
+
+
+            if (item.Llegada != null)
+            {
+                llego = item.Llegada;
+                labelLLego.Text = llego.ToString("HH:mm:ss");
+
+            }
+            else timer1.Stop();
+
+            numeroPedido = item.index;
+
+            labelNumero.Text = numeroPedido.ToString();
+
+            refrescarTabla();
         }
 
-        public void darPadre(Form form)
+        #endregion
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            this.darPadre(form as Ver);
+            if (e.Button == MouseButtons.Left && e.RowIndex > -1)
+            {
+                //Para evitar multiselección
+
+                foreach (DataGridViewRow dr in dataGridView1.SelectedRows)
+                {
+                    dr.Selected = false;
+                }
+
+                //Para seleccionar
+                dataGridView1.Rows[e.RowIndex].Selected = true;
+                seleccionado = dataGridView1.Rows[e.RowIndex];
+
+            }
         }
     }
 }

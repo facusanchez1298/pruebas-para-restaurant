@@ -12,6 +12,6 @@ namespace prueba
         void darItem(Item item);
 
         void darPadre(Form form);
-
+        void salir();
     }
 }

@@ -69,9 +69,7 @@ namespace prueba
         /// <param name="e"></param>
         private void Editar_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1(this, plantilla);
-            form1.Show();
-            this.Hide();
+            AbrirFormEnPanel<Mozos>();
         }
 
         /// <summary>
@@ -91,6 +89,8 @@ namespace prueba
             plantilla = 1;
             recargar();
         }
+
+        
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -157,7 +157,7 @@ namespace prueba
                 panelDatos.Controls.Add(formulario);
                 panelDatos.Tag = formulario;
                 formulario.Show();
-                //formulario.FormClosed += closeForms;
+               
 
                 formulario.darItem(item);
                 formulario.darPadre(this);
@@ -180,11 +180,155 @@ namespace prueba
             }
         }
 
+
+        //public void AbrirFormEnPanelPedido<form>(Item item) where form : Form, Dar, new()
+        //{
+
+        //    form formulario;
+        //    formulario = panelDatos.Controls.OfType<form>().FirstOrDefault();
+
+        //    if (formulario != null)
+        //    {
+        //        cerrarPaneles();
+        //    }
+
+        //    //si el formulario/instancia no existe, creamos nueva instancia y mostramos
+        //    if (formulario == null)
+        //    {
+        //        formulario = new form();
+        //        formulario.TopLevel = false;
+        //        formulario.FormBorderStyle = FormBorderStyle.None;
+        //        formulario.Dock = DockStyle.Left;
+        //        panelPedido.Show();
+        //        panelPedido.Controls.Add(formulario);
+        //        panelPedido.Tag = formulario;
+        //        formulario.Show();
+        //        formulario.FormClosed += closeForms;
+
+        //        formulario.darItem(item);
+        //        formulario.darPadre(this);
+
+
+
+        //        formulario.BringToFront();
+        //    }
+        //    else
+        //    {
+        //        //si la Formulario/instancia existe, lo traemos a frente
+        //        formulario.BringToFront();
+
+        //        //Si la instancia esta minimizada mostramos
+        //        if (formulario.WindowState == FormWindowState.Minimized)
+        //        {
+        //            formulario.WindowState = FormWindowState.Normal;
+        //        }
+
+        //    }
+        //}
+
+        internal void AbrirFormEnPanel<form>(Item item, Datos datos) where form : Pedido, new()
+        {
+            form formulario;
+            formulario = panelDatos.Controls.OfType<form>().FirstOrDefault();
+
+            //if (formulario != null)
+            //{
+            //    cerrarPaneles();
+            //}
+
+            //si el formulario/instancia no existe, creamos nueva instancia y mostramos
+            if (formulario == null)
+            {
+                formulario = new form();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Left;
+                panelDatos.AutoSize = false;
+                panelDatos.Controls.Add(formulario);
+                panelDatos.Tag = formulario;
+                formulario.Show();
+                formulario.FormClosed += Formulario_FormClosed;
+                
+
+                formulario.darItem(item);
+                formulario.darPadre(datos);
+
+
+
+                formulario.BringToFront();
+            }
+            else
+            {
+                //si la Formulario/instancia existe, lo traemos a frente
+                formulario.BringToFront();
+
+                //Si la instancia esta minimizada mostramos
+                if (formulario.WindowState == FormWindowState.Minimized)
+                {
+                    formulario.WindowState = FormWindowState.Normal;
+                }
+
+            }
+        }
+
+        private void Formulario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            panelDatos.AutoSize = true;
+        }
+
+        internal void AbrirFormEnPanel<form>() where form : Form, new()
+        {
+            form formulario;
+            formulario = panelDatos.Controls.OfType<form>().FirstOrDefault();
+
+            Dar otro = panelDatos.Controls.OfType<Dar>().FirstOrDefault();
+
+            //si hay formularios del otro tipo los cerramos
+
+            if (otro != null)
+            {
+                cerrarPaneles();
+            }
+
+            //si el formulario/instancia no existe, creamos nueva instancia y mostramos
+            if (formulario == null)
+            {
+                formulario = new form();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Left;
+
+                panelDatos.Controls.Add(formulario);
+                panelDatos.Tag = formulario;
+                formulario.Show();
+                
+                formulario.BringToFront();
+            }
+            else
+            {
+                //si la Formulario/instancia existe, lo traemos a frente
+                formulario.BringToFront();
+
+                //Si la instancia esta minimizada mostramos
+                if (formulario.WindowState == FormWindowState.Minimized)
+                {
+                    formulario.WindowState = FormWindowState.Normal;
+                }
+
+            }
+        }
+
+
+        private void closeForms(object sender, FormClosedEventArgs e)
+        {
+            //panelPedido.Hide();
+        }
+
         public void cerrarPaneles()
         {
-            panelDatos.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Datos))).ToList().ForEach(q =>
+            panelDatos.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Datos)) || q.GetType().Equals(typeof(Pedido))).ToList().ForEach(q =>
             {
-                (q as Datos).salir();
+                (q as Dar).salir();
             });
         }
 
@@ -243,6 +387,12 @@ namespace prueba
                     }
                 });
             }
+        }
+
+        private void buttonMenu_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel<EditarMenu>();
+
         }
     }
 }

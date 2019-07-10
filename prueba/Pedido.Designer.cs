@@ -31,9 +31,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBoxFiltrar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.buttonOcupar = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxVegetariano = new System.Windows.Forms.CheckBox();
+            this.checkBoxSinTACC = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -46,15 +45,17 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.MintCream;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(10, 62);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(250, 198);
+            this.dataGridView1.Size = new System.Drawing.Size(250, 224);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // textBoxFiltrar
             // 
@@ -62,6 +63,7 @@
             this.textBoxFiltrar.Name = "textBoxFiltrar";
             this.textBoxFiltrar.Size = new System.Drawing.Size(197, 20);
             this.textBoxFiltrar.TabIndex = 2;
+            this.textBoxFiltrar.TextChanged += new System.EventHandler(this.textBoxFiltrar_TextChanged);
             // 
             // label1
             // 
@@ -73,48 +75,35 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Filtrar:";
             // 
-            // checkBox2
+            // checkBoxVegetariano
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.checkBox2.Location = new System.Drawing.Point(10, 37);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(109, 19);
-            this.checkBox2.TabIndex = 5;
-            this.checkBox2.Text = " Vegetariano";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxVegetariano.AutoSize = true;
+            this.checkBoxVegetariano.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.checkBoxVegetariano.Location = new System.Drawing.Point(10, 37);
+            this.checkBoxVegetariano.Name = "checkBoxVegetariano";
+            this.checkBoxVegetariano.Size = new System.Drawing.Size(109, 19);
+            this.checkBoxVegetariano.TabIndex = 5;
+            this.checkBoxVegetariano.Text = " Vegetariano";
+            this.checkBoxVegetariano.UseVisualStyleBackColor = true;
+            this.checkBoxVegetariano.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // buttonOcupar
+            // checkBoxSinTACC
             // 
-            this.buttonOcupar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOcupar.BackColor = System.Drawing.Color.Azure;
-            this.buttonOcupar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonOcupar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.buttonOcupar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.buttonOcupar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonOcupar.Location = new System.Drawing.Point(182, 266);
-            this.buttonOcupar.Name = "buttonOcupar";
-            this.buttonOcupar.Size = new System.Drawing.Size(78, 23);
-            this.buttonOcupar.TabIndex = 13;
-            this.buttonOcupar.Text = "Nuevo";
-            this.buttonOcupar.UseVisualStyleBackColor = false;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.checkBox1.Location = new System.Drawing.Point(163, 37);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(99, 19);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Sin T.A.C.C";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxSinTACC.AutoSize = true;
+            this.checkBoxSinTACC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.checkBoxSinTACC.Location = new System.Drawing.Point(163, 37);
+            this.checkBoxSinTACC.Name = "checkBoxSinTACC";
+            this.checkBoxSinTACC.Size = new System.Drawing.Size(99, 19);
+            this.checkBoxSinTACC.TabIndex = 5;
+            this.checkBoxSinTACC.Text = "Sin T.A.C.C";
+            this.checkBoxSinTACC.UseVisualStyleBackColor = true;
+            this.checkBoxSinTACC.CheckedChanged += new System.EventHandler(this.checkBoxSinTACC_CheckedChanged);
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.LightBlue;
+            this.button3.BackColor = System.Drawing.Color.Black;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F);
             this.button3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -137,9 +126,8 @@
             this.ClientSize = new System.Drawing.Size(274, 298);
             this.ControlBox = false;
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.buttonOcupar);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBoxSinTACC);
+            this.Controls.Add(this.checkBoxVegetariano);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxFiltrar);
             this.Controls.Add(this.dataGridView1);
@@ -158,9 +146,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBoxFiltrar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Button buttonOcupar;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxVegetariano;
+        private System.Windows.Forms.CheckBox checkBoxSinTACC;
         private System.Windows.Forms.Button button3;
     }
 }

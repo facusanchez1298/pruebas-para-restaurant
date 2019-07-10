@@ -35,16 +35,18 @@
             this.labelDia = new System.Windows.Forms.Label();
             this.labelFecha = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panelDatos = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.plano1 = new prueba.Plano();
             this.buttonEditar = new System.Windows.Forms.Button();
+            this.buttonMenu = new System.Windows.Forms.Button();
+            this.buttonMozo = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.panelDatos = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.plano1 = new prueba.Plano();
             this.panelReloj.SuspendLayout();
             this.panelDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -107,108 +109,6 @@
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // buttonEditar
-            // 
-            this.buttonEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonEditar.BackColor = System.Drawing.Color.Azure;
-            this.buttonEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonEditar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.buttonEditar.Location = new System.Drawing.Point(12, 428);
-            this.buttonEditar.Name = "buttonEditar";
-            this.buttonEditar.Size = new System.Drawing.Size(276, 73);
-            this.buttonEditar.TabIndex = 5;
-            this.buttonEditar.Text = "Editar";
-            this.buttonEditar.UseVisualStyleBackColor = false;
-            this.buttonEditar.Click += new System.EventHandler(this.Editar_Click);
-            // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button6.BackColor = System.Drawing.Color.Azure;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Image = global::prueba.Properties.Resources.number6;
-            this.button6.Location = new System.Drawing.Point(695, 428);
-            this.button6.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(81, 73);
-            this.button6.TabIndex = 8;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button5.BackColor = System.Drawing.Color.Azure;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Image = global::prueba.Properties.Resources._5;
-            this.button5.Location = new System.Drawing.Point(615, 428);
-            this.button5.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(81, 73);
-            this.button5.TabIndex = 8;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button4.BackColor = System.Drawing.Color.Azure;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Image = global::prueba.Properties.Resources._4;
-            this.button4.Location = new System.Drawing.Point(534, 428);
-            this.button4.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(81, 73);
-            this.button4.TabIndex = 8;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.BackColor = System.Drawing.Color.Azure;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Image = global::prueba.Properties.Resources._3;
-            this.button3.Location = new System.Drawing.Point(453, 428);
-            this.button3.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(81, 73);
-            this.button3.TabIndex = 8;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.BackColor = System.Drawing.Color.Azure;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Image = global::prueba.Properties.Resources._2;
-            this.button2.Location = new System.Drawing.Point(372, 428);
-            this.button2.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 73);
-            this.button2.TabIndex = 8;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.Azure;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Image = global::prueba.Properties.Resources._11;
-            this.button1.Location = new System.Drawing.Point(291, 428);
-            this.button1.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 73);
-            this.button1.TabIndex = 8;
-            this.button1.UseCompatibleTextRendering = true;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button3_Click);
-            // 
             // panelDatos
             // 
             this.panelDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -253,6 +153,145 @@
             this.plano1.TabIndex = 10;
             this.plano1.Click += new System.EventHandler(this.plano1_Click);
             // 
+            // buttonEditar
+            // 
+            this.buttonEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonEditar.BackColor = System.Drawing.Color.Azure;
+            this.buttonEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonEditar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonEditar.Location = new System.Drawing.Point(11, 430);
+            this.buttonEditar.Name = "buttonEditar";
+            this.buttonEditar.Size = new System.Drawing.Size(88, 27);
+            this.buttonEditar.TabIndex = 5;
+            this.buttonEditar.Text = "Editar";
+            this.buttonEditar.UseVisualStyleBackColor = false;
+            this.buttonEditar.Click += new System.EventHandler(this.Editar_Click);
+            // 
+            // buttonMenu
+            // 
+            this.buttonMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonMenu.BackColor = System.Drawing.Color.Azure;
+            this.buttonMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonMenu.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonMenu.Location = new System.Drawing.Point(105, 430);
+            this.buttonMenu.Name = "buttonMenu";
+            this.buttonMenu.Size = new System.Drawing.Size(88, 27);
+            this.buttonMenu.TabIndex = 5;
+            this.buttonMenu.Text = "Menu";
+            this.buttonMenu.UseVisualStyleBackColor = false;
+            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
+            // 
+            // buttonMozo
+            // 
+            this.buttonMozo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonMozo.BackColor = System.Drawing.Color.Azure;
+            this.buttonMozo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonMozo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonMozo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMozo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonMozo.Location = new System.Drawing.Point(199, 431);
+            this.buttonMozo.Name = "buttonMozo";
+            this.buttonMozo.Size = new System.Drawing.Size(88, 27);
+            this.buttonMozo.TabIndex = 5;
+            this.buttonMozo.Text = "Mozos";
+            this.buttonMozo.UseVisualStyleBackColor = false;
+            this.buttonMozo.Click += new System.EventHandler(this.Editar_Click);
+            // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button6.BackColor = System.Drawing.Color.Azure;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button6.Image = global::prueba.Properties.Resources.number6;
+            this.button6.Location = new System.Drawing.Point(728, 428);
+            this.button6.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(47, 47);
+            this.button6.TabIndex = 8;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button5.BackColor = System.Drawing.Color.Azure;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.Image = global::prueba.Properties.Resources._5;
+            this.button5.Location = new System.Drawing.Point(681, 428);
+            this.button5.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(47, 47);
+            this.button5.TabIndex = 8;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button4.BackColor = System.Drawing.Color.Azure;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Image = global::prueba.Properties.Resources._4;
+            this.button4.Location = new System.Drawing.Point(634, 428);
+            this.button4.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(47, 47);
+            this.button4.TabIndex = 8;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button3.BackColor = System.Drawing.Color.Azure;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Image = global::prueba.Properties.Resources._3;
+            this.button3.Location = new System.Drawing.Point(587, 428);
+            this.button3.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(47, 47);
+            this.button3.TabIndex = 8;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.Azure;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Image = global::prueba.Properties.Resources._2;
+            this.button2.Location = new System.Drawing.Point(540, 428);
+            this.button2.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(47, 47);
+            this.button2.TabIndex = 8;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.BackColor = System.Drawing.Color.Azure;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Image = global::prueba.Properties.Resources._11;
+            this.button1.Location = new System.Drawing.Point(493, 428);
+            this.button1.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(47, 47);
+            this.button1.TabIndex = 8;
+            this.button1.UseCompatibleTextRendering = true;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Ver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,6 +305,8 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonMozo);
+            this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.panelDatos);
             this.Controls.Add(this.panelReloj);
@@ -286,7 +327,6 @@
         private System.Windows.Forms.Label labelFecha;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label labelDia;
-        private System.Windows.Forms.Button buttonEditar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -297,5 +337,8 @@
         public Plano plano1;
         private System.Windows.Forms.Label labelHora;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button buttonEditar;
+        private System.Windows.Forms.Button buttonMenu;
+        private System.Windows.Forms.Button buttonMozo;
     }
 }

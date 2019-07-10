@@ -70,6 +70,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarComida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarComida.Designer.cs">
+      <DependentUpon>AgregarComida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="Dar.cs" />
     <Compile Include="Datos.cs">
@@ -77,6 +83,12 @@
     </Compile>
     <Compile Include="Datos.Designer.cs">
       <DependentUpon>Datos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditarMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarMenu.Designer.cs">
+      <DependentUpon>EditarMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -86,6 +98,18 @@
     </Compile>
     <Compile Include="Item.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Mensaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mensaje.Designer.cs">
+      <DependentUpon>Mensaje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mozos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mozos.Designer.cs">
+      <DependentUpon>Mozos.cs</DependentUpon>
     </Compile>
     <Compile Include="Pedido.cs">
       <SubType>Form</SubType>
@@ -113,11 +137,23 @@
     <Compile Include="Ver.Designer.cs">
       <DependentUpon>Ver.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AgregarComida.resx">
+      <DependentUpon>AgregarComida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Datos.resx">
       <DependentUpon>Datos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditarMenu.resx">
+      <DependentUpon>EditarMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mensaje.resx">
+      <DependentUpon>Mensaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mozos.resx">
+      <DependentUpon>Mozos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pedido.resx">
       <DependentUpon>Pedido.cs</DependentUpon>

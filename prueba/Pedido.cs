@@ -12,7 +12,7 @@ namespace prueba
 {
     public partial class Pedido : Form, Dar
     {
-        Ver padre;
+        Datos padre;
         Item item;
         Conexion conexion;
 
@@ -23,6 +23,11 @@ namespace prueba
             InitializeComponent();
             RecargarTabla();
             
+        }
+
+        public void salir()
+        {
+            this.Close();
         }
 
         public void RecargarTabla()
@@ -41,7 +46,7 @@ namespace prueba
 
         public void darPadre(Form form)
         {
-            padre = form as Ver;
+            padre = form as Datos;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,8 +64,30 @@ namespace prueba
             this.Close();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        
+
+        private void textBoxFiltrar_TextChanged(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = conexion.CargarTablaComida(textBoxFiltrar.Text, checkBoxVegetariano.Checked, checkBoxSinTACC.Checked);
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id_comida = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+            
+            conexion.agregarPedido(padre, id_comida, 1);
+
+            this.padre.refrescarTabla();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = conexion.CargarTablaComida(textBoxFiltrar.Text, checkBoxVegetariano.Checked, checkBoxSinTACC.Checked);
+        }
+
+        private void checkBoxSinTACC_CheckedChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = conexion.CargarTablaComida(textBoxFiltrar.Text, checkBoxVegetariano.Checked, checkBoxSinTACC.Checked);
         }
     }
 }

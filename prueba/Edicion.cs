@@ -1,24 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace prueba
 {
-    public partial class Editor : UserControl
+    public partial class Edicion : Form
     {
-
-        public Editor()
-        {
-            conexion = new Conexion();
-            InitializeComponent();
-            cantidad = 0;
-            recargar();
-            actualizarEventos();
-        }
-
-
         #region Propiedades
         Conexion conexion;
         int cantidad;
@@ -27,104 +20,38 @@ namespace prueba
         Point inicial;
         Point final;
         Item seleccionado;
-
-
+        Ver padre;
         public int plantilla { get; internal set; }
         #endregion
 
 
-        
-
-
-       
-        /// <summary>
-        /// recorre los controles y a todos los item le da sus eventos
-        /// </summary>
-        public void actualizarEventos()
+        public Edicion(Ver padre, int numero)
         {
-            this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
-            {
-                this.DarEventos(q as Item);
-            }
-            );
-        }
-
-        /// <summary>
-        /// muestra todos los controles cargados
-        /// </summary>
-        public void mostrar()
-        {
-            this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
-            {
-                q.Show();
-            });
-
-        }
-
-        /// <summary>
-        /// actualiza los elementos
-        /// </summary>
-        public void recargar()
-        {
-            conexion.cargarMesas(this, plantilla);
-            this.panel.SendToBack();            
+            InitializeComponent();
+            conexion = new Conexion();
+            this.padre = padre;            
+            this.plantilla = numero;
+            this.recargar();
+           
+            cantidad = 0;
+            
             actualizarEventos();
+            
         }
 
-        /// <summary>
-        /// verifica que tecla dejamos de tocar
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Editor_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.ControlKey) ctrPresionado = false;
-        }
 
-        /// <summary>
-        /// verifica que tecla tocamos
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tocarBoton(object sender, KeyEventArgs e)
-        {
-            Control control = (Control)sender;
-
-            if (e.KeyCode == Keys.ControlKey) ctrPresionado = true;   
-
-            if (precionado)
-            {
-                if (e.KeyCode == Keys.R)
-                {
-                    if (seleccionado.Image != null)
-                    {
-                        rotarSeleccionado();
-                    }
-                    else
-                    {
-                        borrarControl(seleccionado);
-                        conexion.borrarMesa(seleccionado, plantilla);
-                    }
-                }
-                else if (e.KeyCode == Keys.D)
-                {
-                    if (seleccionado != null)
-                    {
-                        borrarControl(seleccionado);
-                    }
-                }
-            }
-        }
-
+        #region movimiento
         public void itemPanel_MouseDown(object sender, MouseEventArgs e)
         {
             Control control = (Control)sender;
 
 
             if (!precionado) inicial = new Point(control.Location.X, control.Location.Y);
+            
             precionado = true;
             seleccionado = (Item)control;
             seleccionado.BringToFront();
+
         }
 
         private void item_MouseDown(object sender, MouseEventArgs e)
@@ -133,7 +60,8 @@ namespace prueba
             precionado = true;
             inicial = new Point(control.Location.X, control.Location.Y);
 
-            crearItem(control);            
+            crearItem(control);
+
         }
 
         public void item_MouseMove(object sender, MouseEventArgs e)
@@ -141,21 +69,20 @@ namespace prueba
             Control control = (Control)sender;
             if (precionado)
             {
-                label1.Text = inicial + "    " + control.Location.X + " " + control.Location.Y ;
-                label2.Text = inicial.Y - control.Location.Y + "";
-                
                 if (ctrPresionado)
                 {
                     seleccionado.Height = (inicial.Y - control.Location.Y) + e.Y;
-                    seleccionado.Width  = (inicial.X - control.Location.X) + e.X;                  
+                    seleccionado.Width = (inicial.X - control.Location.X) + e.X;
                 }
                 else
                 {
-                    seleccionado.Top =  e.Y + control.Top  - (seleccionado.Height / 2);
+                    seleccionado.Top = e.Y + control.Top - (seleccionado.Height / 2);
                     seleccionado.Left = e.X + control.Left - (seleccionado.Width / 2);
+
+                    label2.Text = seleccionado.Location + "  " + panel.Top;
                 }
-                                             
-               
+
+
 
                 if (!sePuedeColocar())
                 {
@@ -206,6 +133,94 @@ namespace prueba
                 }
             }
         }
+        #endregion
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+            padre.Show();
+            padre.recargar();
+        }
+
+
+        /// <summary>
+        /// recorre los controles y a todos los item le da sus eventos
+        /// </summary>
+        public void actualizarEventos()
+        {
+            this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
+            {
+                this.DarEventos(q as Item);
+            }
+            );
+        }
+
+        /// <summary>
+        /// muestra todos los controles cargados
+        /// </summary>
+        public void mostrar()
+        {
+            this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
+            {
+                q.Show();
+            });
+
+        }
+
+        /// <summary>
+        /// actualiza los elementos desde la base de datos
+        /// </summary>
+        public void recargar()
+        {
+            conexion.cargarMesas(this, plantilla);
+            this.panel.SendToBack();
+            actualizarEventos();
+        }
+
+        /// <summary>
+        /// verifica que tecla dejamos de tocar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Editor_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.ControlKey) ctrPresionado = false;
+        }
+
+        /// <summary>
+        /// verifica que tecla tocamos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tocarBoton(object sender, KeyEventArgs e)
+        {
+            Control control = (Control)sender;
+            label2.Text = "holi";
+            if (e.KeyCode == Keys.ControlKey) ctrPresionado = true;
+
+            if (precionado)
+            {
+                if (e.KeyCode == Keys.R)
+                {
+                    if (seleccionado.Image != null)
+                    {
+                        rotarSeleccionado();
+                    }
+                    else
+                    {
+                        borrarControl(seleccionado);
+                        conexion.borrarMesa(seleccionado, plantilla);
+                    }
+                }
+                else if (e.KeyCode == Keys.D)
+                {
+                    if (seleccionado != null)
+                    {
+                        borrarControl(seleccionado);
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// verifica si se puede colocar el control
@@ -230,14 +245,14 @@ namespace prueba
         /// entrega los eventos para mover un item
         /// </summary>
         /// <param name="pictureBox"></param>
-        public void DarEventos(PictureBox pictureBox)
+        public void DarEventos(Item pictureBox)
         {
             pictureBox.MouseDown += itemPanel_MouseDown;
             pictureBox.MouseUp += item_MouseUp;
             pictureBox.MouseMove += item_MouseMove;
 
         }
-        
+
         /// <summary>
         /// invierte las proporciones del elemento seleccionado
         /// </summary>
@@ -366,7 +381,7 @@ namespace prueba
             seleccionado.Image = image;
 
             if (seleccionado.Tag.Equals("Pared")) seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
-            
+
         }
 
         public void crearItem(Control control)
@@ -448,7 +463,7 @@ namespace prueba
                 case "Mesa Redonda 6 sillas":
                     seleccionado.Size = MesaGrande;
                     seleccionado.Tag = "Mesa Redonda 6 sillas";
-                    break;                
+                    break;
 
                 case "Mesa Redonda 4 sillas":
                     seleccionado.Size = mesaNormal;

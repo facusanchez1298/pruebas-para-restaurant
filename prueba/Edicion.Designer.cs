@@ -1,16 +1,16 @@
 ﻿namespace prueba
 {
-    partial class Editor
+    partial class Edicion
     {
-        /// <summary> 
-        /// Variable del diseñador necesaria.
+        /// <summary>
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Limpiar los recursos que se estén usando.
+        /// <summary>
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,15 +20,17 @@
             base.Dispose(disposing);
         }
 
-        #region Código generado por el Diseñador de componentes
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             this.selector = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -45,9 +47,8 @@
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel = new prueba.Plano();
+            this.button1 = new System.Windows.Forms.Button();
             this.selector.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -92,9 +93,28 @@
             this.selector.Controls.Add(this.pictureBox16);
             this.selector.Location = new System.Drawing.Point(12, 13);
             this.selector.Name = "selector";
-            this.selector.Size = new System.Drawing.Size(233, 412);
+            this.selector.Size = new System.Drawing.Size(232, 412);
             this.selector.TabIndex = 4;
-            this.selector.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 450);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 474);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "label1";
             // 
             // pictureBox4
             // 
@@ -353,56 +373,43 @@
             this.pictureBox16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
             this.pictureBox16.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 437);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
-            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 461);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "label1";
-            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            // 
             // panel
             // 
-            this.panel.AllowDrop = true;
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel.AutoSize = true;
+            this.panel.AutoScroll = true;
             this.panel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel.Location = new System.Drawing.Point(291, 12);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(484, 413);
-            this.panel.TabIndex = 1;
-            this.panel.TabStop = false;
+            this.panel.TabIndex = 11;
             // 
-            // Editor
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(686, 450);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Edicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Azure;
+            this.ClientSize = new System.Drawing.Size(784, 503);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.selector);
-            this.Controls.Add(this.panel);
-            this.Name = "Editor";
-            this.Size = new System.Drawing.Size(783, 489);
+            this.Name = "Edicion";
             this.Tag = "Mesa";
+            this.Text = "Edicion";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tocarBoton);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Editor_KeyUp);
             this.selector.ResumeLayout(false);
@@ -428,6 +435,8 @@
         }
 
         #endregion
+
+
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
@@ -436,7 +445,6 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        public Plano panel;
         private System.Windows.Forms.FlowLayoutPanel selector;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox11;
@@ -448,5 +456,7 @@
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        public Plano panel;
+        private System.Windows.Forms.Button button1;
     }
 }
