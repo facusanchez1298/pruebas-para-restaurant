@@ -243,7 +243,7 @@ namespace prueba
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.None;
                 formulario.Dock = DockStyle.Left;
-                panelDatos.AutoSize = false;
+                
                 panelDatos.Controls.Add(formulario);
                 panelDatos.Tag = formulario;
                 formulario.Show();
@@ -281,7 +281,7 @@ namespace prueba
             form formulario;
             formulario = panelDatos.Controls.OfType<form>().FirstOrDefault();
 
-            Dar otro = panelDatos.Controls.OfType<Dar>().FirstOrDefault();
+            Form otro = panelDatos.Controls.OfType<Form>().FirstOrDefault();
 
             //si hay formularios del otro tipo los cerramos
 
@@ -318,7 +318,6 @@ namespace prueba
             }
         }
 
-
         private void closeForms(object sender, FormClosedEventArgs e)
         {
             //panelPedido.Hide();
@@ -326,12 +325,11 @@ namespace prueba
 
         public void cerrarPaneles()
         {
-            panelDatos.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Datos)) || q.GetType().Equals(typeof(Pedido))).ToList().ForEach(q =>
+            panelDatos.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Datos)) || q.GetType().Equals(typeof(Pedido)) || q.GetType().Equals(typeof(Mozos)) || q.GetType().Equals(typeof(EditarMenu))).ToList().ForEach(q =>
             {
-                (q as Dar).salir();
+                (q as Form).Close();
             });
         }
-
 
         private void plano1_Click(object sender, EventArgs e)
         {
@@ -392,7 +390,6 @@ namespace prueba
         private void buttonMenu_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel<EditarMenu>();
-
         }
     }
 }

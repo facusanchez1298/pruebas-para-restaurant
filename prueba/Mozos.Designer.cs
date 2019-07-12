@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxFiltrar = new System.Windows.Forms.TextBox();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.buttonOcupar = new System.Windows.Forms.Button();
-            this.checkBoxVegetariano = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.buttonBorrar = new System.Windows.Forms.Button();
+            this.buttonAgregar = new System.Windows.Forms.Button();
+            this.buttonEditar = new System.Windows.Forms.Button();
+            this.buttonAceptar = new System.Windows.Forms.Button();
+            this.checkBoxMañana = new System.Windows.Forms.CheckBox();
+            this.checkBoxTarde = new System.Windows.Forms.CheckBox();
+            this.checkBoxNoche = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonFiltrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,12 +53,13 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Mozo:";
             // 
-            // textBoxFiltrar
+            // textBoxNombre
             // 
-            this.textBoxFiltrar.Location = new System.Drawing.Point(61, 7);
-            this.textBoxFiltrar.Name = "textBoxFiltrar";
-            this.textBoxFiltrar.Size = new System.Drawing.Size(203, 20);
-            this.textBoxFiltrar.TabIndex = 17;
+            this.textBoxNombre.Location = new System.Drawing.Point(61, 7);
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(203, 20);
+            this.textBoxNombre.TabIndex = 17;
+            this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
             // 
             // dataGridView1
             // 
@@ -77,110 +79,114 @@
             this.dataGridView1.Size = new System.Drawing.Size(252, 168);
             this.dataGridView1.TabIndex = 19;
             // 
-            // button2
+            // buttonBorrar
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.Azure;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button2.Location = new System.Drawing.Point(12, 259);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 30);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Borrar";
-            this.button2.UseCompatibleTextRendering = true;
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonBorrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonBorrar.BackColor = System.Drawing.Color.Azure;
+            this.buttonBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonBorrar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.buttonBorrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonBorrar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonBorrar.Location = new System.Drawing.Point(12, 259);
+            this.buttonBorrar.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonBorrar.Name = "buttonBorrar";
+            this.buttonBorrar.Size = new System.Drawing.Size(126, 30);
+            this.buttonBorrar.TabIndex = 20;
+            this.buttonBorrar.Text = "Borrar";
+            this.buttonBorrar.UseCompatibleTextRendering = true;
+            this.buttonBorrar.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // buttonAgregar
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.Azure;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(138, 259);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 30);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Agregar";
-            this.button1.UseCompatibleTextRendering = true;
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAgregar.BackColor = System.Drawing.Color.Azure;
+            this.buttonAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAgregar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.buttonAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonAgregar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonAgregar.Location = new System.Drawing.Point(138, 259);
+            this.buttonAgregar.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonAgregar.Name = "buttonAgregar";
+            this.buttonAgregar.Size = new System.Drawing.Size(126, 30);
+            this.buttonAgregar.TabIndex = 21;
+            this.buttonAgregar.Text = "Agregar";
+            this.buttonAgregar.UseCompatibleTextRendering = true;
+            this.buttonAgregar.UseVisualStyleBackColor = false;
+            this.buttonAgregar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button3
+            // buttonEditar
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.Azure;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.button3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button3.Location = new System.Drawing.Point(12, 229);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 30);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "Editar";
-            this.button3.UseCompatibleTextRendering = true;
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEditar.BackColor = System.Drawing.Color.Azure;
+            this.buttonEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonEditar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.buttonEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonEditar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonEditar.Location = new System.Drawing.Point(12, 229);
+            this.buttonEditar.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonEditar.Name = "buttonEditar";
+            this.buttonEditar.Size = new System.Drawing.Size(126, 30);
+            this.buttonEditar.TabIndex = 22;
+            this.buttonEditar.Text = "Editar";
+            this.buttonEditar.UseCompatibleTextRendering = true;
+            this.buttonEditar.UseVisualStyleBackColor = false;
             // 
-            // buttonOcupar
+            // buttonAceptar
             // 
-            this.buttonOcupar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOcupar.BackColor = System.Drawing.Color.Azure;
-            this.buttonOcupar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonOcupar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.buttonOcupar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.buttonOcupar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonOcupar.Location = new System.Drawing.Point(138, 229);
-            this.buttonOcupar.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonOcupar.Name = "buttonOcupar";
-            this.buttonOcupar.Size = new System.Drawing.Size(126, 30);
-            this.buttonOcupar.TabIndex = 23;
-            this.buttonOcupar.Text = "Aceptar";
-            this.buttonOcupar.UseCompatibleTextRendering = true;
-            this.buttonOcupar.UseVisualStyleBackColor = false;
-            this.buttonOcupar.Click += new System.EventHandler(this.buttonOcupar_Click);
+            this.buttonAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAceptar.BackColor = System.Drawing.Color.Azure;
+            this.buttonAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAceptar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.buttonAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonAceptar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonAceptar.Location = new System.Drawing.Point(0, 0);
+            this.buttonAceptar.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonAceptar.Name = "buttonAceptar";
+            this.buttonAceptar.Size = new System.Drawing.Size(1, 1);
+            this.buttonAceptar.TabIndex = 23;
+            this.buttonAceptar.Text = "Aceptar";
+            this.buttonAceptar.UseCompatibleTextRendering = true;
+            this.buttonAceptar.UseVisualStyleBackColor = false;
+            this.buttonAceptar.Click += new System.EventHandler(this.buttonAceptar_Click);
             // 
-            // checkBoxVegetariano
+            // checkBoxMañana
             // 
-            this.checkBoxVegetariano.AutoSize = true;
-            this.checkBoxVegetariano.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.checkBoxVegetariano.Location = new System.Drawing.Point(60, 33);
-            this.checkBoxVegetariano.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBoxVegetariano.Name = "checkBoxVegetariano";
-            this.checkBoxVegetariano.Size = new System.Drawing.Size(77, 19);
-            this.checkBoxVegetariano.TabIndex = 24;
-            this.checkBoxVegetariano.Text = "Mañana";
-            this.checkBoxVegetariano.UseVisualStyleBackColor = true;
+            this.checkBoxMañana.AutoSize = true;
+            this.checkBoxMañana.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.checkBoxMañana.Location = new System.Drawing.Point(60, 33);
+            this.checkBoxMañana.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxMañana.Name = "checkBoxMañana";
+            this.checkBoxMañana.Size = new System.Drawing.Size(77, 19);
+            this.checkBoxMañana.TabIndex = 24;
+            this.checkBoxMañana.Text = "Mañana";
+            this.checkBoxMañana.UseVisualStyleBackColor = true;
+            this.checkBoxMañana.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
-            // checkBox1
+            // checkBoxTarde
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.checkBox1.Location = new System.Drawing.Point(137, 33);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(64, 19);
-            this.checkBox1.TabIndex = 24;
-            this.checkBox1.Text = "Tarde";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxTarde.AutoSize = true;
+            this.checkBoxTarde.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.checkBoxTarde.Location = new System.Drawing.Point(137, 33);
+            this.checkBoxTarde.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxTarde.Name = "checkBoxTarde";
+            this.checkBoxTarde.Size = new System.Drawing.Size(64, 19);
+            this.checkBoxTarde.TabIndex = 24;
+            this.checkBoxTarde.Text = "Tarde";
+            this.checkBoxTarde.UseVisualStyleBackColor = true;
+            this.checkBoxTarde.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
-            // checkBox2
+            // checkBoxNoche
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.checkBox2.Location = new System.Drawing.Point(203, 33);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(68, 19);
-            this.checkBox2.TabIndex = 24;
-            this.checkBox2.Text = "Noche";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxNoche.AutoSize = true;
+            this.checkBoxNoche.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.checkBoxNoche.Location = new System.Drawing.Point(203, 33);
+            this.checkBoxNoche.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxNoche.Name = "checkBoxNoche";
+            this.checkBoxNoche.Size = new System.Drawing.Size(68, 19);
+            this.checkBoxNoche.TabIndex = 24;
+            this.checkBoxNoche.Text = "Noche";
+            this.checkBoxNoche.UseVisualStyleBackColor = true;
+            this.checkBoxNoche.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // label2
             // 
@@ -192,23 +198,43 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Turno:";
             // 
+            // buttonFiltrar
+            // 
+            this.buttonFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonFiltrar.BackColor = System.Drawing.Color.Azure;
+            this.buttonFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonFiltrar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.buttonFiltrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonFiltrar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonFiltrar.Location = new System.Drawing.Point(138, 229);
+            this.buttonFiltrar.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonFiltrar.Name = "buttonFiltrar";
+            this.buttonFiltrar.Size = new System.Drawing.Size(126, 30);
+            this.buttonFiltrar.TabIndex = 21;
+            this.buttonFiltrar.Text = "Filtrar";
+            this.buttonFiltrar.UseCompatibleTextRendering = true;
+            this.buttonFiltrar.UseVisualStyleBackColor = false;
+            this.buttonFiltrar.Click += new System.EventHandler(this.buttonFiltrar_Click);
+            // 
             // Mozos
             // 
+            this.AcceptButton = this.buttonAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(274, 298);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.checkBoxVegetariano);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.buttonOcupar);
+            this.Controls.Add(this.checkBoxNoche);
+            this.Controls.Add(this.checkBoxTarde);
+            this.Controls.Add(this.checkBoxMañana);
+            this.Controls.Add(this.buttonBorrar);
+            this.Controls.Add(this.buttonFiltrar);
+            this.Controls.Add(this.buttonAgregar);
+            this.Controls.Add(this.buttonEditar);
+            this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxFiltrar);
+            this.Controls.Add(this.textBoxNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Mozos";
             this.Text = "Mozos";
@@ -221,15 +247,16 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxFiltrar;
+        private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button buttonOcupar;
-        private System.Windows.Forms.CheckBox checkBoxVegetariano;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Button buttonBorrar;
+        private System.Windows.Forms.Button buttonAgregar;
+        private System.Windows.Forms.Button buttonEditar;
+        private System.Windows.Forms.Button buttonAceptar;
+        private System.Windows.Forms.CheckBox checkBoxMañana;
+        private System.Windows.Forms.CheckBox checkBoxTarde;
+        private System.Windows.Forms.CheckBox checkBoxNoche;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonFiltrar;
     }
 }
