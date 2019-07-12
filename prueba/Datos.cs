@@ -23,6 +23,9 @@ namespace prueba
         {            
             conexion = new Conexion();            
             InitializeComponent();
+            comboBox1.DataSource = conexion.CargarComboBoxMozos();
+            comboBox1.DisplayMember = "nombre";
+            comboBox1.ValueMember = "id";
         }
 
         public void darPadre(Ver ver)

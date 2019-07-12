@@ -13,6 +13,7 @@ namespace prueba
     public partial class Mozos : Form
     {
         Conexion Conexion;
+        DataGridViewRow seleccionado;
 
         public Mozos()
         {
@@ -91,6 +92,34 @@ namespace prueba
         private void CheckedChanged(object sender, EventArgs e)
         {
             recargarTabla();
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && e.RowIndex > -1)
+            {
+                //Para evitar multiselección
+                foreach (DataGridViewRow dr in dataGridView1.SelectedRows)
+                {
+                    dr.Selected = false;
+                }
+
+                //Para seleccionar
+                dataGridView1.Rows[e.RowIndex].Selected = true;
+                seleccionado = dataGridView1.Rows[e.RowIndex];
+
+            }
+        }
+
+        private void buttonBorrar_Click(object sender, EventArgs e)
+        {
+            if(seleccionado != null)
+            {
+                int index = int.Parse(seleccionado.Cells["id"].Value.ToString());
+                Conexion.BorrarMozo(index);
+                seleccionado = null;
+                recargarTabla();
+            }
         }
     }
 }

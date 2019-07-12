@@ -32,6 +32,7 @@ namespace prueba
             {
                 float id = float.Parse(seleccionado.Cells[0].Value.ToString());
                 conexion.borrarComida(id);
+                seleccionado = null;
                 RecargarTabla();
             }
         }
@@ -59,18 +60,30 @@ namespace prueba
 
         private void textBoxFiltrar_TextChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = conexion.CargarTablaComida(textBoxFiltrar.Text);
+            string filtro = textBoxFiltrar.Text;
+            bool esVegetariano = checkBoxVegetariano.Checked;
+            bool esSinTACC = checkBoxSinTACC.Checked;
+
+            dataGridView1.DataSource = conexion.CargarTablaComida(filtro, esVegetariano, esSinTACC);
         }
 
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
+            string filtro = textBoxFiltrar.Text;
+            bool esVegetariano = checkBoxVegetariano.Checked;
+            bool esSinTACC = checkBoxSinTACC.Checked;
 
+            dataGridView1.DataSource = conexion.CargarTablaComida(filtro, esVegetariano, esSinTACC);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            string filtro = textBoxFiltrar.Text;
+            bool esVegetariano = checkBoxVegetariano.Checked;
+            bool esSinTACC = checkBoxSinTACC.Checked;
 
+            dataGridView1.DataSource = conexion.CargarTablaComida(filtro, esVegetariano, esSinTACC);
         }
 
         #endregion

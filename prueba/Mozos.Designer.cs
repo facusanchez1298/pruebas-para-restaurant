@@ -39,7 +39,6 @@
             this.checkBoxTarde = new System.Windows.Forms.CheckBox();
             this.checkBoxNoche = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonFiltrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +57,7 @@
             this.textBoxNombre.Location = new System.Drawing.Point(61, 7);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(203, 20);
-            this.textBoxNombre.TabIndex = 17;
+            this.textBoxNombre.TabIndex = 1;
             this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
             // 
             // dataGridView1
@@ -78,6 +77,8 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(252, 168);
             this.dataGridView1.TabIndex = 19;
+            this.dataGridView1.TabStop = false;
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
             // buttonBorrar
             // 
@@ -91,10 +92,11 @@
             this.buttonBorrar.Margin = new System.Windows.Forms.Padding(0);
             this.buttonBorrar.Name = "buttonBorrar";
             this.buttonBorrar.Size = new System.Drawing.Size(126, 30);
-            this.buttonBorrar.TabIndex = 20;
+            this.buttonBorrar.TabIndex = 6;
             this.buttonBorrar.Text = "Borrar";
             this.buttonBorrar.UseCompatibleTextRendering = true;
             this.buttonBorrar.UseVisualStyleBackColor = false;
+            this.buttonBorrar.Click += new System.EventHandler(this.buttonBorrar_Click);
             // 
             // buttonAgregar
             // 
@@ -108,7 +110,7 @@
             this.buttonAgregar.Margin = new System.Windows.Forms.Padding(0);
             this.buttonAgregar.Name = "buttonAgregar";
             this.buttonAgregar.Size = new System.Drawing.Size(126, 30);
-            this.buttonAgregar.TabIndex = 21;
+            this.buttonAgregar.TabIndex = 7;
             this.buttonAgregar.Text = "Agregar";
             this.buttonAgregar.UseCompatibleTextRendering = true;
             this.buttonAgregar.UseVisualStyleBackColor = false;
@@ -126,7 +128,7 @@
             this.buttonEditar.Margin = new System.Windows.Forms.Padding(0);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(126, 30);
-            this.buttonEditar.TabIndex = 22;
+            this.buttonEditar.TabIndex = 5;
             this.buttonEditar.Text = "Editar";
             this.buttonEditar.UseCompatibleTextRendering = true;
             this.buttonEditar.UseVisualStyleBackColor = false;
@@ -139,11 +141,11 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.buttonAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.buttonAceptar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAceptar.Location = new System.Drawing.Point(0, 0);
+            this.buttonAceptar.Location = new System.Drawing.Point(137, 229);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(0);
             this.buttonAceptar.Name = "buttonAceptar";
-            this.buttonAceptar.Size = new System.Drawing.Size(1, 1);
-            this.buttonAceptar.TabIndex = 23;
+            this.buttonAceptar.Size = new System.Drawing.Size(127, 30);
+            this.buttonAceptar.TabIndex = 8;
             this.buttonAceptar.Text = "Aceptar";
             this.buttonAceptar.UseCompatibleTextRendering = true;
             this.buttonAceptar.UseVisualStyleBackColor = false;
@@ -157,7 +159,7 @@
             this.checkBoxMañana.Margin = new System.Windows.Forms.Padding(0);
             this.checkBoxMañana.Name = "checkBoxMañana";
             this.checkBoxMañana.Size = new System.Drawing.Size(77, 19);
-            this.checkBoxMañana.TabIndex = 24;
+            this.checkBoxMañana.TabIndex = 2;
             this.checkBoxMañana.Text = "Mañana";
             this.checkBoxMañana.UseVisualStyleBackColor = true;
             this.checkBoxMañana.CheckedChanged += new System.EventHandler(this.CheckedChanged);
@@ -170,7 +172,7 @@
             this.checkBoxTarde.Margin = new System.Windows.Forms.Padding(0);
             this.checkBoxTarde.Name = "checkBoxTarde";
             this.checkBoxTarde.Size = new System.Drawing.Size(64, 19);
-            this.checkBoxTarde.TabIndex = 24;
+            this.checkBoxTarde.TabIndex = 3;
             this.checkBoxTarde.Text = "Tarde";
             this.checkBoxTarde.UseVisualStyleBackColor = true;
             this.checkBoxTarde.CheckedChanged += new System.EventHandler(this.CheckedChanged);
@@ -183,7 +185,7 @@
             this.checkBoxNoche.Margin = new System.Windows.Forms.Padding(0);
             this.checkBoxNoche.Name = "checkBoxNoche";
             this.checkBoxNoche.Size = new System.Drawing.Size(68, 19);
-            this.checkBoxNoche.TabIndex = 24;
+            this.checkBoxNoche.TabIndex = 4;
             this.checkBoxNoche.Text = "Noche";
             this.checkBoxNoche.UseVisualStyleBackColor = true;
             this.checkBoxNoche.CheckedChanged += new System.EventHandler(this.CheckedChanged);
@@ -198,24 +200,6 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Turno:";
             // 
-            // buttonFiltrar
-            // 
-            this.buttonFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFiltrar.BackColor = System.Drawing.Color.Azure;
-            this.buttonFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonFiltrar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.buttonFiltrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.buttonFiltrar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonFiltrar.Location = new System.Drawing.Point(138, 229);
-            this.buttonFiltrar.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonFiltrar.Name = "buttonFiltrar";
-            this.buttonFiltrar.Size = new System.Drawing.Size(126, 30);
-            this.buttonFiltrar.TabIndex = 21;
-            this.buttonFiltrar.Text = "Filtrar";
-            this.buttonFiltrar.UseCompatibleTextRendering = true;
-            this.buttonFiltrar.UseVisualStyleBackColor = false;
-            this.buttonFiltrar.Click += new System.EventHandler(this.buttonFiltrar_Click);
-            // 
             // Mozos
             // 
             this.AcceptButton = this.buttonAceptar;
@@ -227,7 +211,6 @@
             this.Controls.Add(this.checkBoxTarde);
             this.Controls.Add(this.checkBoxMañana);
             this.Controls.Add(this.buttonBorrar);
-            this.Controls.Add(this.buttonFiltrar);
             this.Controls.Add(this.buttonAgregar);
             this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.buttonAceptar);
@@ -257,6 +240,5 @@
         private System.Windows.Forms.CheckBox checkBoxTarde;
         private System.Windows.Forms.CheckBox checkBoxNoche;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button buttonFiltrar;
     }
 }

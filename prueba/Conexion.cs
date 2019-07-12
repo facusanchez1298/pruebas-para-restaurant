@@ -28,7 +28,7 @@ namespace prueba
                                     "llegada varchar default ''," +
                                     "primary key(dia, numero) );";
 
-
+        
 
         string tablaPedido = "create table if not exists Pedido(" +
                                      "numeroPedido int," +
@@ -111,6 +111,8 @@ namespace prueba
                 throw new Exception("no pudo realizarse la conexion" + ex);
             }
         }
+
+        
 
         /// <summary>
         /// desconectamos al objeto connection, cerramos comunicacion con la base de datos
@@ -613,6 +615,31 @@ namespace prueba
 
         }
 
+        internal void BorrarMozo(int index)
+        {
+            try
+            {
+
+                conectar();
+
+                string sql = "delete from Mozo where id = " + index;
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
         internal void borrarComida(float id)
         {
             try
@@ -784,7 +811,7 @@ namespace prueba
 
                 conectar();
 
-                string sql = "update mesa set llegada = null" +
+                string sql = "update mesa set llegada = ''" +
                     "  where numero = " + item.index + " and dia = " + plantilla;
 
                 command = new SQLiteCommand(sql, connection);
@@ -1045,6 +1072,35 @@ namespace prueba
             }
             catch (Exception e)
             {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal object CargarComboBoxMozos()
+        {
+            try
+            {
+                conectar();
+                string sql = "select * from Mozo";
+
+                dataAdapter = new SQLiteDataAdapter(sql, connection);
+
+                dataSet = new DataSet();
+                dataSet.Reset();
+
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dataSet);
+
+                dt = dataSet.Tables[0];
+                return dt;
+            }
+            catch (Exception e)
+            {
+
                 throw new Exception("Error: " + e);
             }
             finally

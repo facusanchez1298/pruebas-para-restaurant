@@ -47,9 +47,13 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelReloj.SuspendLayout();
             this.panelDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelReloj
@@ -60,7 +64,7 @@
             this.panelReloj.Controls.Add(this.labelDia);
             this.panelReloj.Controls.Add(this.labelFecha);
             this.panelReloj.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelReloj.Location = new System.Drawing.Point(12, 12);
+            this.panelReloj.Location = new System.Drawing.Point(7, 12);
             this.panelReloj.Name = "panelReloj";
             this.panelReloj.Size = new System.Drawing.Size(276, 107);
             this.panelReloj.TabIndex = 2;
@@ -116,7 +120,7 @@
             this.panelDatos.AutoSize = true;
             this.panelDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelDatos.Controls.Add(this.dataGridView1);
-            this.panelDatos.Location = new System.Drawing.Point(12, 125);
+            this.panelDatos.Location = new System.Drawing.Point(7, 125);
             this.panelDatos.Name = "panelDatos";
             this.panelDatos.Size = new System.Drawing.Size(276, 300);
             this.panelDatos.TabIndex = 9;
@@ -161,7 +165,7 @@
             this.buttonEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonEditar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.buttonEditar.Location = new System.Drawing.Point(11, 430);
+            this.buttonEditar.Location = new System.Drawing.Point(8, 431);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(88, 27);
             this.buttonEditar.TabIndex = 5;
@@ -177,7 +181,7 @@
             this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonMenu.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.buttonMenu.Location = new System.Drawing.Point(105, 430);
+            this.buttonMenu.Location = new System.Drawing.Point(101, 431);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(88, 27);
             this.buttonMenu.TabIndex = 5;
@@ -193,7 +197,7 @@
             this.buttonMozo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonMozo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMozo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.buttonMozo.Location = new System.Drawing.Point(199, 431);
+            this.buttonMozo.Location = new System.Drawing.Point(194, 431);
             this.buttonMozo.Name = "buttonMozo";
             this.buttonMozo.Size = new System.Drawing.Size(88, 27);
             this.buttonMozo.TabIndex = 5;
@@ -292,12 +296,49 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button3_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Mañana",
+            "Tarde",
+            "Noche"});
+            this.comboBox1.Location = new System.Drawing.Point(0, 0);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(122, 21);
+            this.comboBox1.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label7.Location = new System.Drawing.Point(287, 433);
+            this.label7.Margin = new System.Windows.Forms.Padding(0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 27);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Turno:";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Location = new System.Drawing.Point(359, 434);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(124, 24);
+            this.panel1.TabIndex = 13;
+            // 
             // Ver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(784, 503);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.plano1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -310,6 +351,7 @@
             this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.panelDatos);
             this.Controls.Add(this.panelReloj);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Ver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -317,6 +359,7 @@
             this.panelReloj.ResumeLayout(false);
             this.panelDatos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +383,8 @@
         private System.Windows.Forms.Button buttonEditar;
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Button buttonMozo;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel1;
     }
 }

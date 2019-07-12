@@ -19,8 +19,10 @@ namespace prueba
             Conexion = new Conexion();
             InitializeComponent();
             Conexion.crearBaseDeDatos();
-
+            comboBox1.SelectedIndex = 0;
             recargar();
+
+           
             
 
         }
@@ -69,7 +71,9 @@ namespace prueba
         /// <param name="e"></param>
         private void Editar_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel<Mozos>();
+            Form1 form1 = new Form1(this, plantilla);
+            form1.Show();
+            this.Hide();
         }
 
         /// <summary>
@@ -78,8 +82,7 @@ namespace prueba
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void item_DoubleClick(object sender, EventArgs e)
-        {
-            Datos datos = new Datos();
+        {            
             AbrirFormEnPanel<Datos>(sender as Item);
         }
 
@@ -391,6 +394,8 @@ namespace prueba
         {
             AbrirFormEnPanel<EditarMenu>();
         }
+
+       
     }
 }
 

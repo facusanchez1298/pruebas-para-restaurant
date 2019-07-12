@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.buttonOcupar = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBoxSinTACC = new System.Windows.Forms.CheckBox();
+            this.checkBoxVegetariano = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxFiltrar = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -58,29 +58,29 @@
             this.buttonOcupar.UseVisualStyleBackColor = false;
             this.buttonOcupar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // checkBox1
+            // checkBoxSinTACC
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.checkBox1.Location = new System.Drawing.Point(166, 36);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(99, 19);
-            this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Sin T.A.C.C";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBoxSinTACC.AutoSize = true;
+            this.checkBoxSinTACC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.checkBoxSinTACC.Location = new System.Drawing.Point(166, 36);
+            this.checkBoxSinTACC.Name = "checkBoxSinTACC";
+            this.checkBoxSinTACC.Size = new System.Drawing.Size(99, 19);
+            this.checkBoxSinTACC.TabIndex = 17;
+            this.checkBoxSinTACC.Text = "Sin T.A.C.C";
+            this.checkBoxSinTACC.UseVisualStyleBackColor = true;
+            this.checkBoxSinTACC.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // checkBox2
+            // checkBoxVegetariano
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.checkBox2.Location = new System.Drawing.Point(13, 36);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(109, 19);
-            this.checkBox2.TabIndex = 18;
-            this.checkBox2.Text = " Vegetariano";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.checkBoxVegetariano.AutoSize = true;
+            this.checkBoxVegetariano.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.checkBoxVegetariano.Location = new System.Drawing.Point(13, 36);
+            this.checkBoxVegetariano.Name = "checkBoxVegetariano";
+            this.checkBoxVegetariano.Size = new System.Drawing.Size(109, 19);
+            this.checkBoxVegetariano.TabIndex = 18;
+            this.checkBoxVegetariano.Text = " Vegetariano";
+            this.checkBoxVegetariano.UseVisualStyleBackColor = true;
+            this.checkBoxVegetariano.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // label1
             // 
@@ -183,8 +183,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.buttonOcupar);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBoxSinTACC);
+            this.Controls.Add(this.checkBoxVegetariano);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxFiltrar);
             this.Controls.Add(this.dataGridView1);
@@ -200,8 +200,8 @@
         #endregion
 
         private System.Windows.Forms.Button buttonOcupar;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBoxSinTACC;
+        private System.Windows.Forms.CheckBox checkBoxVegetariano;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxFiltrar;
         private System.Windows.Forms.DataGridView dataGridView1;

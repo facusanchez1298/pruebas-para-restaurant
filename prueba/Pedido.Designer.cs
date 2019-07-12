@@ -61,8 +61,8 @@
             // 
             this.textBoxFiltrar.Location = new System.Drawing.Point(65, 11);
             this.textBoxFiltrar.Name = "textBoxFiltrar";
-            this.textBoxFiltrar.Size = new System.Drawing.Size(197, 20);
-            this.textBoxFiltrar.TabIndex = 2;
+            this.textBoxFiltrar.Size = new System.Drawing.Size(195, 20);
+            this.textBoxFiltrar.TabIndex = 1;
             this.textBoxFiltrar.TextChanged += new System.EventHandler(this.textBoxFiltrar_TextChanged);
             // 
             // label1
@@ -82,7 +82,7 @@
             this.checkBoxVegetariano.Location = new System.Drawing.Point(10, 37);
             this.checkBoxVegetariano.Name = "checkBoxVegetariano";
             this.checkBoxVegetariano.Size = new System.Drawing.Size(109, 19);
-            this.checkBoxVegetariano.TabIndex = 5;
+            this.checkBoxVegetariano.TabIndex = 2;
             this.checkBoxVegetariano.Text = " Vegetariano";
             this.checkBoxVegetariano.UseVisualStyleBackColor = true;
             this.checkBoxVegetariano.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
@@ -94,7 +94,7 @@
             this.checkBoxSinTACC.Location = new System.Drawing.Point(163, 37);
             this.checkBoxSinTACC.Name = "checkBoxSinTACC";
             this.checkBoxSinTACC.Size = new System.Drawing.Size(99, 19);
-            this.checkBoxSinTACC.TabIndex = 5;
+            this.checkBoxSinTACC.TabIndex = 3;
             this.checkBoxSinTACC.Text = "Sin T.A.C.C";
             this.checkBoxSinTACC.UseVisualStyleBackColor = true;
             this.checkBoxSinTACC.CheckedChanged += new System.EventHandler(this.checkBoxSinTACC_CheckedChanged);
@@ -103,22 +103,26 @@
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.Black;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F);
+            this.button3.BackColor = System.Drawing.Color.LightCyan;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
             this.button3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button3.Location = new System.Drawing.Point(265, 0);
+            this.button3.Location = new System.Drawing.Point(262, 0);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(10, 298);
+            this.button3.Size = new System.Drawing.Size(13, 298);
             this.button3.TabIndex = 16;
             this.button3.Text = "<";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.UseCompatibleTextRendering = true;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Pedido
             // 
+            this.AcceptButton = this.button3;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
