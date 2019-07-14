@@ -73,7 +73,10 @@ namespace prueba
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id_comida = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            DataGridViewRow fila = dataGridView1.Rows[e.RowIndex];
+
+            int id_comida = int.Parse(fila.Cells[0].Value.ToString());
             
             conexion.agregarPedido(padre, id_comida, 1);
 

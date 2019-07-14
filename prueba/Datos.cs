@@ -13,7 +13,7 @@ namespace prueba
     public partial class Datos : Form, Dar
     {
         Item item;
-        public Ver ver;
+        public Ver padre;
         Conexion conexion;
         public int numeroPedido;
         DateTime llego;
@@ -23,19 +23,21 @@ namespace prueba
         {            
             conexion = new Conexion();            
             InitializeComponent();
-            comboBox1.DataSource = conexion.CargarComboBoxMozos();
+            
             comboBox1.DisplayMember = "nombre";
             comboBox1.ValueMember = "id";
         }
 
         public void darPadre(Ver ver)
         {
-            this.ver = ver;
+            this.padre = ver;
         }
 
         internal void refrescarTabla()
         {
-            dataGridView1.DataSource = conexion.cargarTablaPedido(numeroPedido, ver.turno);
+            float total = 0;
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = conexion.cargarTablaPedido(numeroPedido, padre.turno);
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].Visible = false;
 
@@ -47,17 +49,22 @@ namespace prueba
                 float precio = float.Parse(item.Cells["precio"].Value.ToString());
                 int cantidad = int.Parse(item.Cells["cantidad"].Value.ToString());
                 item.Cells["total"].Value = precio * cantidad;
+                total += precio * cantidad; 
             }
+
+            labelPrecio.Text = "$" + total.ToString();
+        }
+
+        public void cargarCBMozos()
+        {
+            comboBox1.DataSource = conexion.CargarComboBoxMozos(padre.turno);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             labelActual.Text = (DateTime.Now - llego).ToString(@"hh\:mm\:ss");
         }       
-
-       
-
-
+        
         #region botones
 
         private void buttonAceptar_Click(object sender, EventArgs e)
@@ -72,27 +79,27 @@ namespace prueba
 
         private void hacerPedido_Click(object sender, EventArgs e)
         {
-            ver.AbrirFormEnPanel<Pedido>(item, this);
+            padre.AbrirFormEnPanel<Pedido>(item, this);
         }
 
         private void botonOcupar(object sender, EventArgs e)
         {
             if (buttonOcupar.Text.Equals("Ocupar"))
             {
-                conexion.ocuparMesa(item, ver.plantilla, true);
+                conexion.ocuparMesa(item, padre.plantilla, true);
                 buttonOcupar.Text = "Desocupar";
                 buttonAgregar.Enabled = true;
                 labelLLego.Text = DateTime.Now.ToLongTimeString();
                 llego = DateTime.Now;
                 labelActual.Text = (DateTime.Now - llego).ToString();
                 timer1.Start();
-                conexion.EditarIngreso(DateTime.Now, item, ver.plantilla);
+                conexion.EditarIngreso(DateTime.Now, item, padre.plantilla);
             }
             else
             {
-                conexion.ocuparMesa(item, ver.plantilla, false);
+                conexion.ocuparMesa(item, padre.plantilla, false);
                 buttonOcupar.Text = "Ocupar";
-                conexion.agregarSalida(item, ver.plantilla);
+                conexion.agregarSalida(item, padre.plantilla);
                 timer1.Stop();
                 buttonAgregar.Enabled = false;
             }
@@ -104,13 +111,15 @@ namespace prueba
         {
             this.darPadre(form as Ver);
             refrescarTabla();
+            cargarCBMozos();
         }
 
         public void salir()
         {
-            ver.recargar();
+            padre.recargar();
             this.Close();
         }
+
         public void darItem(Item item)
         {
             this.item = item;
@@ -160,6 +169,18 @@ namespace prueba
                 seleccionado = dataGridView1.Rows[e.RowIndex];
 
             }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {   
+            DataGridViewRow fila = dataGridView1.Rows[e.RowIndex];
+            
+            int id_comida = int.Parse(fila.Cells["id_comida"].Value.ToString());
+
+            conexion.quitarUnPedido(this, id_comida);
+
+            this.refrescarTabla();
+
         }
     }
 }

@@ -171,11 +171,13 @@ namespace prueba
 
         }
 
+        
+
 
 
         #endregion
 
-       
+
 
         /// <summary>
         /// carga las mesas en un form
@@ -614,6 +616,41 @@ namespace prueba
             }
         }
 
+        internal void quitarUnPedido(Datos datos, int id_comida)
+        {
+            try
+            {
+
+                int Pedido = datos.numeroPedido;
+                string turno = datos.padre.turno;
+                conectar();
+
+                string sql = "update pedido_Comida set cantidad = cantidad - 1" +
+                             " where numeroPedido =" + Pedido + "" +
+                             " and turnoPedido = '" + turno + "'" +
+                             " and id_comida = " + id_comida + ";";
+
+                command = new SQLiteCommand(sql, connection);                
+                command.ExecuteNonQuery();
+
+                sql = "delete from pedido_comida where cantidad = 0";
+
+                command = new SQLiteCommand(sql, connection);                
+                command.ExecuteNonQuery();
+
+
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
         #endregion
 
         #region guardarCosas
@@ -847,7 +884,7 @@ namespace prueba
             try
             {
                 int Pedido = padre.numeroPedido;
-                string turno = padre.ver.turno;
+                string turno = padre.padre.turno;
                 conectar();
 
                 string sql = "insert into Pedido_Comida values(" + Pedido + ",'" + turno + "', " + id_comida + ", " + cantidad + ")";
@@ -860,7 +897,19 @@ namespace prueba
             }
             catch (Exception e)
             {
-                throw new Exception("Error: " + e);
+                int Pedido = padre.numeroPedido;
+                string turno = padre.padre.turno;
+                conectar();
+
+                string sql = "update pedido_Comida set cantidad = cantidad +1" +
+                             " where numeroPedido =" + Pedido + "" +
+                             " and turnoPedido = '" + turno + "'" +
+                             " and id_comida = " + id_comida + ";";
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+                command.Connection.Close();
             }
             finally
             {
@@ -916,12 +965,13 @@ namespace prueba
             }
         }
 
-        internal DataTable CargarComboBoxMozos()
+        internal DataTable CargarComboBoxMozos(string turno)
         {
             try
             {
+                
                 conectar();
-                string sql = "select * from Mozo";
+                string sql = "select * from Mozo where " + turno.ToLower() + " = 'True'";
 
                 dataAdapter = new SQLiteDataAdapter(sql, connection);
 
