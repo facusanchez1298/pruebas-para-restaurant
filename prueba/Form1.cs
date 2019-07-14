@@ -17,6 +17,7 @@ namespace prueba
             InitializeComponent();
             editor.plantilla = numero;
             editor.recargar();
+            editor.AutoSize = false;
         }
 
         private void button1_Click(object sender, System.EventArgs e)

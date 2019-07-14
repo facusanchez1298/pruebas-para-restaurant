@@ -13,7 +13,7 @@ namespace prueba
     public partial class Datos : Form, Dar
     {
         Item item;
-        Ver ver;
+        public Ver ver;
         Conexion conexion;
         public int numeroPedido;
         DateTime llego;
@@ -33,12 +33,9 @@ namespace prueba
             this.ver = ver;
         }
 
-        
-        
-
         internal void refrescarTabla()
         {
-            dataGridView1.DataSource = conexion.cargarTablaPedido(numeroPedido);
+            dataGridView1.DataSource = conexion.cargarTablaPedido(numeroPedido, ver.turno);
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].Visible = false;
 
@@ -95,7 +92,7 @@ namespace prueba
             {
                 conexion.ocuparMesa(item, ver.plantilla, false);
                 buttonOcupar.Text = "Ocupar";
-                conexion.guardarSalida(item, ver.plantilla);
+                conexion.agregarSalida(item, ver.plantilla);
                 timer1.Stop();
                 buttonAgregar.Enabled = false;
             }
@@ -106,6 +103,7 @@ namespace prueba
         public void darPadre(Form form)
         {
             this.darPadre(form as Ver);
+            refrescarTabla();
         }
 
         public void salir()
@@ -141,7 +139,7 @@ namespace prueba
 
             labelNumero.Text = numeroPedido.ToString();
 
-            refrescarTabla();
+            
         }
 
         #endregion

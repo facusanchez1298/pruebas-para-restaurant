@@ -195,7 +195,7 @@ namespace prueba
                         //si no tiene index le colocamos uno y lo guardamos
                         seleccionado.darIndex(cantidad);
                         cantidad += 1;
-                        conexion.guardarMesa(seleccionado, plantilla);
+                        conexion.agregarMesa(seleccionado, plantilla);
                     }
                     else
                     {

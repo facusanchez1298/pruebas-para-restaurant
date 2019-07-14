@@ -14,6 +14,8 @@ namespace prueba
     {
         public int plantilla = 1;
         Conexion Conexion;
+        public string turno;
+
         public Ver()
         {
             Conexion = new Conexion();
@@ -22,10 +24,11 @@ namespace prueba
             comboBox1.SelectedIndex = 0;
             recargar();
 
-           
+            turno = comboBox1.Text;
             
 
         }
+        
 
         /// <summary>
         /// actualiza todos los datos de la ventana
@@ -86,7 +89,7 @@ namespace prueba
             AbrirFormEnPanel<Datos>(sender as Item);
         }
 
-        #region cambio de plantilla
+        #region botones de cambio de plantilla
         private void button3_Click(object sender, EventArgs e)
         {
             plantilla = 1;
@@ -395,7 +398,17 @@ namespace prueba
             AbrirFormEnPanel<EditarMenu>();
         }
 
-       
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            turno = comboBox1.Text;
+            recargar();
+            cerrarPaneles();
+        }
+
+        private void buttonMozo_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel<Mozos>();
+        }
     }
 }
 

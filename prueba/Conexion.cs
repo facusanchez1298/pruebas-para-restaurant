@@ -48,9 +48,10 @@ namespace prueba
 
         string tablaPedidoComida = "create table if not exists Pedido_Comida(" +
                                     "numeroPedido int," +
+                                    "turnoPedido Varchar," +
                                     "id_comida int," +
                                     "cantidad int," +
-                                    "primary key(numeroPedido, id_comida)," +
+                                    "primary key(numeroPedido, id_comida, turnoPedido)," +
                                     "foreign key(numeroPedido) references pedido(numeroPedido)," +
                                     "foreign key(id_comida) references comida(id_comida));";
 
@@ -174,45 +175,7 @@ namespace prueba
 
         #endregion
 
-        /// <summary>
-        /// guarda una mesa
-        /// </summary>
-        /// <param name="control"> mesa </param>
-        /// <param name="pestaña"> pestaña del modo edicion </param>
-        public void guardarMesa(Item control, int pestaña)
-        {
-            try
-            {
-                //buscamos las cosas que nos importan
-                int dia = pestaña;
-                int numero = nroMesa(dia);
-                int y = control.Location.Y;
-                int x = control.Location.X;
-                int alto = control.Height;
-                int ancho = control.Width;
-                string tag = control.Tag.ToString();
-                bool ocupada = false;
-
-                conectar();
-
-                string sql = "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada) values" +
-                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "')";
-
-                command = new SQLiteCommand(sql, connection);
-                command.ExecuteNonQuery();
-
-                command.Connection.Close();
-
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Error: " + e);
-            }
-            finally
-            {
-                desconectar();
-            }
-        }
+       
 
         /// <summary>
         /// carga las mesas en un form
@@ -420,9 +383,7 @@ namespace prueba
                 command.Connection.Close();
             }
         }
-
-
-
+               
         /// <summary>
         /// carga las mesas en un userControl.Editor
         /// </summary>
@@ -577,44 +538,7 @@ namespace prueba
             }
         }
 
-
-
-        /// <summary>
-        /// devuelve el numero de mesas dentro de una plantilla de edicion
-        /// </summary>
-        /// <param name="plantilla"></param>
-        /// <returns></returns>
-        private int nroMesa(int plantilla)
-        {
-            conectar();
-            string sql = "SELECT max(numero) FROM Mesa where dia = " + plantilla + " ORDER BY numero DESC";
-            command = new SQLiteCommand(sql, connection);
-
-            SQLiteDataReader lector = command.ExecuteReader();
-            try
-            {
-                if (lector.Read())
-                {
-                    int numero = lector.GetInt32(0) + 1;
-                    lector.Close();
-                    command.Connection.Close();
-                    desconectar();
-                    return numero;
-                }
-                else return 1;
-
-            }
-            catch (Exception)
-            {
-                lector.Close();
-                command.Connection.Close();
-                desconectar();
-                return 1;
-
-            }
-
-        }
-
+        #region borrar cosas
         internal void BorrarMozo(int index)
         {
             try
@@ -690,6 +614,120 @@ namespace prueba
             }
         }
 
+        #endregion
+
+        #region guardarCosas
+        /// <summary>
+        /// guarda una mesa
+        /// </summary>
+        /// <param name="control"> mesa </param>
+        /// <param name="pestaña"> pestaña del modo edicion </param>
+        public void agregarMesa(Item control, int pestaña)
+        {
+            try
+            {
+                //buscamos las cosas que nos importan
+                int dia = pestaña;
+                int numero = nroMesa(dia);
+                int y = control.Location.Y;
+                int x = control.Location.X;
+                int alto = control.Height;
+                int ancho = control.Width;
+                string tag = control.Tag.ToString();
+                bool ocupada = false;
+
+                conectar();
+
+                string sql = "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada) values" +
+                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "')";
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal void agregarSalida(Item item, int plantilla)
+        {
+            try
+            {
+
+                conectar();
+
+                string sql = "update mesa set llegada = ''" +
+                    "  where numero = " + item.index + " and dia = " + plantilla;
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+
+        #endregion
+
+
+
+
+        /// <summary>
+        /// devuelve el numero de mesas dentro de una plantilla de edicion
+        /// </summary>
+        /// <param name="plantilla"></param>
+        /// <returns></returns>
+        private int nroMesa(int plantilla)
+        {
+            conectar();
+            string sql = "SELECT max(numero) FROM Mesa where dia = " + plantilla + " ORDER BY numero DESC";
+            command = new SQLiteCommand(sql, connection);
+
+            SQLiteDataReader lector = command.ExecuteReader();
+            try
+            {
+                if (lector.Read())
+                {
+                    int numero = lector.GetInt32(0) + 1;
+                    lector.Close();
+                    command.Connection.Close();
+                    desconectar();
+                    return numero;
+                }
+                else return 1;
+
+            }
+            catch (Exception)
+            {
+                lector.Close();
+                command.Connection.Close();
+                desconectar();
+                return 1;
+
+            }
+
+        }
+
+       
+
+       
         public void cargarTablaMesas(DataGridView dataGridView, int dia)
         {
             try
@@ -803,41 +841,40 @@ namespace prueba
                 desconectar();
             }
         }
-
-        internal void guardarSalida(Item item, int plantilla)
-        {
-            try
-            {
-
-                conectar();
-
-                string sql = "update mesa set llegada = ''" +
-                    "  where numero = " + item.index + " and dia = " + plantilla;
-
-                command = new SQLiteCommand(sql, connection);
-                command.ExecuteNonQuery();
-
-                command.Connection.Close();
-
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Error: " + e);
-            }
-            finally
-            {
-                desconectar();
-            }
-        }
-
+               
         internal void agregarPedido(Datos padre, int id_comida, int cantidad)
         {
             try
             {
                 int Pedido = padre.numeroPedido;
+                string turno = padre.ver.turno;
                 conectar();
 
-                string sql = "insert into Pedido_Comida values(" + Pedido + ", " + id_comida + ", " + cantidad + ")";
+                string sql = "insert into Pedido_Comida values(" + Pedido + ",'" + turno + "', " + id_comida + ", " + cantidad + ")";
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+        
+        internal void AgregarComida(string nombre, bool vegetariano, bool sinTACC, float precio)
+        {
+            try
+            {
+                conectar();
+
+                string sql = "insert into Comida values(null ,'" + nombre + "','" + vegetariano + "', '" + sinTACC + "', " + precio + ")";
 
                 command = new SQLiteCommand(sql, connection);
                 command.ExecuteNonQuery();
@@ -855,6 +892,60 @@ namespace prueba
             }
         }
 
+        internal void agregarMozo(string filtro, bool estaALaMañana, bool estaALaTarde, bool estaALaNoche)
+        {
+            try
+            {
+                conectar();
+
+                string sql = "insert into Mozo values ('" + filtro + "', null, '" + estaALaMañana + "','" + estaALaTarde + "','" + estaALaNoche + "')";
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal DataTable CargarComboBoxMozos()
+        {
+            try
+            {
+                conectar();
+                string sql = "select * from Mozo";
+
+                dataAdapter = new SQLiteDataAdapter(sql, connection);
+
+                dataSet = new DataSet();
+                dataSet.Reset();
+
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dataSet);
+
+                dt = dataSet.Tables[0];
+                return dt;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        #region cargarTablas
         internal DataTable CargarTablaComida()
         {
             try
@@ -886,7 +977,7 @@ namespace prueba
             }
         }
 
-        internal object CargarTablaComida(string filtro, bool vegetariano, bool sinTACC)
+        internal DataTable CargarTablaComida(string filtro, bool vegetariano, bool sinTACC)
         {
             try
             {
@@ -955,14 +1046,15 @@ namespace prueba
             }
         }
 
-        internal DataTable cargarTablaPedido(int numeroPedido)
+        internal DataTable cargarTablaPedido(int numeroPedido, string turno)
         {
             try
             {
                 conectar();
                 string sql = "select pedido_comida.numeroPedido, pedido_comida.id_comida, comida.nombre, comida.precio, pedido_comida.cantidad from  pedido_comida, comida  " +
                              "where pedido_comida.numeroPedido = " + numeroPedido +
-                             " and comida.id_comida = pedido_comida.id_comida";
+                             " and comida.id_comida = pedido_comida.id_comida" +
+                             " and pedido_comida.turnoPedido = '" + turno + "'";
 
                 dataAdapter = new SQLiteDataAdapter(sql, connection);
 
@@ -1031,85 +1123,7 @@ namespace prueba
                 desconectar();
             }
         }
-
-        internal void AgregarComida(string nombre, bool vegetariano, bool sinTACC, float precio)
-        {
-            try
-            {
-                conectar();
-
-                string sql = "insert into Comida values(null ,'" + nombre + "','" + vegetariano + "', '" + sinTACC + "', " + precio + ")";
-
-                command = new SQLiteCommand(sql, connection);
-                command.ExecuteNonQuery();
-
-                command.Connection.Close();
-
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Error: " + e);
-            }
-            finally
-            {
-                desconectar();
-            }
-        }
-
-        internal void agregarMozo(string filtro, bool estaALaMañana, bool estaALaTarde, bool estaALaNoche)
-        {
-            try
-            {
-                conectar();
-
-                string sql = "insert into Mozo values ('" + filtro + "', null, '" + estaALaMañana + "','" + estaALaTarde + "','" + estaALaNoche + "')";
-
-                command = new SQLiteCommand(sql, connection);
-                command.ExecuteNonQuery();
-
-                command.Connection.Close();
-
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Error: " + e);
-            }
-            finally
-            {
-                desconectar();
-            }
-        }
-
-        internal object CargarComboBoxMozos()
-        {
-            try
-            {
-                conectar();
-                string sql = "select * from Mozo";
-
-                dataAdapter = new SQLiteDataAdapter(sql, connection);
-
-                dataSet = new DataSet();
-                dataSet.Reset();
-
-                DataTable dt = new DataTable();
-                dataAdapter.Fill(dataSet);
-
-                dt = dataSet.Tables[0];
-                return dt;
-            }
-            catch (Exception e)
-            {
-
-                throw new Exception("Error: " + e);
-            }
-            finally
-            {
-                desconectar();
-            }
-        }
-
-
+        #endregion
     }
 }
 
