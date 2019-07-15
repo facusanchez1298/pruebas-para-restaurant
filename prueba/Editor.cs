@@ -42,7 +42,7 @@ namespace prueba
         /// </summary>
         public void actualizarEventos()
         {
-            this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
+            this.panel.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
             {
                 this.DarEventos(q as Item);
             }
@@ -110,7 +110,7 @@ namespace prueba
                 {
                     if (seleccionado != null)
                     {
-                        borrarControl(seleccionado);
+                        borrarControl(seleccionado);                       
                     }
                 }
             }
@@ -144,24 +144,32 @@ namespace prueba
                 label1.Text = inicial + "    " + control.Location.X + " " + control.Location.Y ;
                 label2.Text = inicial.Y - control.Location.Y + "";
                 
-                if (ctrPresionado)
+                //if (ctrPresionado)
+                //{
+                //    seleccionado.Height = (inicial.Y - control.Location.Y) + e.Y;
+                //    seleccionado.Width  = (inicial.X - control.Location.X) + e.X;                  
+                //}
+              
+                seleccionado.Top =  e.Y + control.Top - (seleccionado.Height / 2);
+                seleccionado.Left = e.X + control.Left - (seleccionado.Width / 2);
+
+
+                if (seleccionado.index == 0)
                 {
-                    seleccionado.Height = (inicial.Y - control.Location.Y) + e.Y;
-                    seleccionado.Width  = (inicial.X - control.Location.X) + e.X;                  
+                    if (!sePuedeColocar())
+                    {
+                        seleccionado.BackColor = Color.Red;
+                    }
+                    else seleccionado.BackColor = Color.Green;
                 }
                 else
                 {
-                    seleccionado.Top =  e.Y + control.Top  - (seleccionado.Height / 2);
-                    seleccionado.Left = e.X + control.Left - (seleccionado.Width / 2);
+                    if (!sePuedeMover())
+                    {
+                        seleccionado.BackColor = Color.Red;
+                    }
+                    else seleccionado.BackColor = Color.Green;
                 }
-                                             
-               
-
-                if (!sePuedeColocar())
-                {
-                    seleccionado.BackColor = Color.Red;
-                }
-                else seleccionado.BackColor = Color.Green;
             }
         }
 
@@ -174,47 +182,41 @@ namespace prueba
             if (seleccionado != null)
             {
                 seleccionado.BackColor = SystemColors.ActiveCaption;
-                if (!sePuedeColocar())
+                //elemento recien creado
+                if (seleccionado.index == 0)
                 {
-                    seleccionado.Location = inicial;
+                    if (!sePuedeColocar()) borrarControl(seleccionado);
 
-                    if (!estaEnArea(panel, seleccionado))
-                    {
-                        borrarControl(seleccionado);
-                    }
+
+                    //si no tiene index le colocamos uno y lo guardamos
+                    seleccionado.darIndex(cantidad);
+                    cantidad += 1;
+
+                    //arreglamos posicion
+                    int x = seleccionado.Location.X - panel.Location.X;
+                    int y = seleccionado.Location.Y - panel.Location.Y;
+                    seleccionado.Location = new Point(x, y);
+
+                    this.panel.Controls.Add(seleccionado);
+                    conexion.agregarMesa(seleccionado, plantilla);
                 }
-
+                
+                            
+                            
+                //moviendo elemento nuevo
                 else
                 {
-
-                    //guardamos en base de datos
-
-
-                    if (seleccionado.index == 0)
+                    if (!sePuedeMover())
                     {
-                        //si no tiene index le colocamos uno y lo guardamos
-                        seleccionado.darIndex(cantidad);
-                        cantidad += 1;
-                        conexion.agregarMesa(seleccionado, plantilla);
+                        seleccionado.Location = inicial;                        
                     }
-                    else
-                    {
-                        //en caso que si tenga lo modificamos nomas
-                        conexion.editarMesa(seleccionado, plantilla);
-                    }
-
+                    else conexion.editarMesa(seleccionado, plantilla);
                 }
             }
+
+
         }
 
-        /// <summary>
-        /// verifica si se puede colocar el control
-        /// </summary>
-        /// <returns></returns>
-        public bool sePuedeColocar()
-        {
-            return ((estaEnArea(panel, seleccionado)) && !existeElemento());
-        }
 
         /// <summary>
         /// elimina un elemento de la lista de controles
@@ -223,6 +225,7 @@ namespace prueba
         public void borrarControl(Control control)
         {
             this.Controls.Remove(control);
+            this.panel.Controls.Remove(control);
             conexion.borrarMesa(seleccionado, plantilla);
         }
 
@@ -257,98 +260,7 @@ namespace prueba
             }
         }
 
-        /// <summary>
-        /// verifica si un control esta sobre otro o no
-        /// </summary>
-        /// <param name="control"></param>
-        /// <param name="imagen"></param>
-        /// <returns>retorna true si estan superpuestas y false en caso contrario</returns>
-        public bool estaEnArea(Control control, Control imagen)
-        {
-            if ((control == null) || (imagen == null)) return false;
-            //marco
-            int CampoYMinima = control.Location.Y;
-            int CampoXMinima = control.Location.X;
-            int CampoYMaxima = control.Location.Y + control.Height;
-            int CampoXMaxima = control.Location.X + control.Width;
-
-            int imagenXMinima = imagen.Location.X;
-            int imagenYMinima = imagen.Location.Y;
-            int imagenXMaxima = imagen.Location.X + imagen.Width;
-            int imagenYMaxima = imagen.Location.Y + imagen.Height;
-
-            //esta adentro si el minimo es mayor o igual y si el maximo es menor o igual
-            if ((CampoXMinima <= imagenXMinima) && (CampoYMinima <= imagenYMinima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMaxima >= imagenYMaxima)) return true;
-            else return false;
-        }
-
-        /// <summary>
-        /// verifica que no se pisen entre elementos
-        /// </summary>
-        /// <returns></returns>
-        public bool existeElemento()
-        {
-            List<Control> controles =
-                this.Controls.OfType<Control>().ToList<Control>().FindAll(q => q.GetType().Equals(typeof(Item)));
-            controles.Remove(seleccionado);
-
-            foreach (Control control in controles)
-            {
-
-                if (estaEnRango(control))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// verifica que no vayas a colocar una pieza sobre otra
-        /// </summary>
-        /// <param name="control"></param>
-        /// <returns></returns>
-        private bool estaEnRango(Control control)
-        {
-            if (seleccionado == null) return false;
-
-
-            int CampoYMinima = control.Location.Y;
-            int CampoXMinima = control.Location.X;
-            int CampoYMaxima = control.Location.Y + control.Height;
-            int CampoXMaxima = control.Location.X + control.Width;
-            int CampoXMedia = CampoXMaxima - control.Location.X / 2;
-            int CampoYMedia = CampoYMaxima - control.Location.Y / 2;
-
-            int imagenXMinima = seleccionado.Location.X;
-            int imagenYMinima = seleccionado.Location.Y;
-            int imagenXMaxima = seleccionado.Location.X + seleccionado.Width;
-            int imagenYMaxima = seleccionado.Location.Y + seleccionado.Height;
-            int imagenXMedia = imagenXMaxima - seleccionado.Width / 2;
-            int imagenYMedia = imagenYMaxima - seleccionado.Height / 2;
-
-            if ((CampoXMinima <= imagenXMinima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima <= imagenYMinima) && (CampoYMaxima >= imagenYMaxima)) return true;
-
-            else if ((CampoYMinima <= imagenYMinima) && (CampoYMaxima >= imagenYMinima) && (CampoXMinima <= imagenXMinima) && (CampoXMaxima >= imagenXMinima)) return true;
-            else if ((CampoXMinima <= imagenXMaxima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima <= imagenYMaxima) && (CampoYMaxima >= imagenYMaxima)) return true;
-            else if ((CampoXMinima <= imagenXMinima) && (CampoXMaxima >= imagenXMinima) && (CampoYMinima <= imagenYMaxima) && (CampoYMaxima >= imagenYMaxima)) return true;
-            else if ((CampoXMinima <= imagenXMaxima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima <= imagenYMinima) && (CampoYMaxima >= imagenYMinima)) return true;
-
-            else if ((CampoXMinima <= imagenXMinima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima >= imagenYMinima) && (CampoYMaxima <= imagenYMaxima)) return true;
-            else if ((imagenXMinima <= CampoXMinima) && (imagenXMaxima >= CampoXMaxima) && (imagenYMinima >= CampoYMinima) && (imagenYMaxima <= CampoYMaxima)) return true;
-
-
-            else if ((CampoXMinima >= imagenXMinima) && (CampoXMinima <= imagenXMaxima) && (CampoYMinima >= imagenYMinima) && (CampoYMaxima <= imagenYMaxima)) return true;
-            else if ((CampoXMaxima >= imagenXMinima) && (CampoXMaxima <= imagenXMaxima) && (CampoYMinima >= imagenYMinima) && (CampoYMaxima <= imagenYMaxima)) return true;
-
-            else if ((imagenXMinima >= CampoXMinima) && (imagenXMinima <= CampoXMaxima) && (imagenYMinima >= CampoYMinima) && (imagenYMaxima <= CampoYMaxima)) return true;
-            else if ((imagenXMaxima >= CampoXMinima) && (imagenXMaxima <= CampoXMaxima) && (imagenYMinima >= CampoYMinima) && (imagenYMaxima <= CampoYMaxima)) return true;
-
-            else if ((CampoXMinima >= imagenXMinima) && (CampoXMaxima <= imagenXMaxima) && (CampoYMinima >= imagenYMinima) && (CampoYMinima <= imagenYMaxima)) return true;
-            else if ((CampoXMinima >= imagenXMinima) && (CampoXMaxima <= imagenXMaxima) && (CampoYMaxima >= imagenYMinima) && (CampoYMaxima <= imagenYMaxima)) return true;
-
-            else return false;
-        }
+             
 
         /// <summary>
         ///rota el item seleccionado del obj seleccionado 
@@ -369,6 +281,10 @@ namespace prueba
             
         }
 
+        /// <summary>
+        /// crea un item para ser arrastrado
+        /// </summary>
+        /// <param name="control"></param>
         public void crearItem(Control control)
         {
             seleccionado = new Item();
@@ -481,5 +397,147 @@ namespace prueba
             this.Controls.Add(seleccionado);
             seleccionado.BringToFront();
         }
+
+
+        #region controles
+        /// <summary>
+        /// verifica si se puede colocar el control
+        /// </summary>
+        /// <returns></returns>
+        public bool sePuedeColocar()
+        {
+            return ((estaEnArea(panel, seleccionado)) && !existeElemento());
+        }
+
+
+
+
+        /// <summary>
+        /// verifica que movamos dentro del plano sin superponer Items
+        /// </summary>
+        /// <returns></returns>
+        public bool sePuedeMover()
+        {
+            return estaEnPlano(seleccionado) && !existeElemento();
+        }
+
+
+        /// <summary>
+        /// verifica si un control esta sobre otro o no
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="imagen"></param>
+        /// <returns>retorna true si estan superpuestas y false en caso contrario</returns>
+        public bool estaEnArea(Control control, Control imagen)
+        {
+            if ((control == null) || (imagen == null)) return false;
+            //marco
+            int CampoYMinima = control.Location.Y;
+            int CampoXMinima = control.Location.X;
+            int CampoYMaxima = control.Location.Y + control.Height;
+            int CampoXMaxima = control.Location.X + control.Width;
+
+            int imagenXMinima = imagen.Location.X;
+            int imagenYMinima = imagen.Location.Y;
+            int imagenXMaxima = imagen.Location.X + imagen.Width;
+            int imagenYMaxima = imagen.Location.Y + imagen.Height;
+
+            //esta adentro si el minimo es mayor o igual y si el maximo es menor o igual
+            if ((CampoXMinima <= imagenXMinima) && (CampoYMinima <= imagenYMinima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMaxima >= imagenYMaxima)) return true;
+            else return false;
+        }
+
+        /// <summary>
+        /// verifica si estamos moviendo bien el item. lo vamos a usar con los items que ya existen
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
+        public bool estaEnPlano(Control control)
+        {
+            if (control == null) return false;
+
+            int CampoYMinima = panel.Location.Y - panel.Top;
+            int CampoXMinima = panel.Location.X - panel.Left;
+            int CampoYMaxima = panel.Location.Y + panel.Height + panel.Bottom;
+            int CampoXMaxima = panel.Location.X + panel.Width + panel.Right;
+
+            int imagenXMinima = control.Location.X;
+            int imagenYMinima = control.Location.Y;
+            int imagenXMaxima = control.Location.X + control.Width;
+            int imagenYMaxima = control.Location.Y + control.Height;
+
+            //esta adentro si el minimo es mayor o igual y si el maximo es menor o igual
+            if ((CampoXMinima <= imagenXMinima) && (CampoYMinima <= imagenYMinima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMaxima >= imagenYMaxima)) return true;
+            else return false;
+        }
+
+        /// <summary>
+        /// verifica que no se pisen entre elementos
+        /// </summary>
+        /// <returns></returns>
+        public bool existeElemento()
+        {
+            List<Control> controles =
+                this.panel.Controls.OfType<Control>().ToList<Control>().FindAll(q => q.GetType().Equals(typeof(Item)));
+            controles.Remove(seleccionado);
+
+            foreach (Control control in controles)
+            {
+
+                if (estaEnRango(control))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// verifica que cuando movamos no vayamoss a colocar una pieza sobre otra
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
+        private bool estaEnRango(Control control)
+        {
+            if (seleccionado == null) return false;
+
+
+            int CampoYMinima = control.Location.Y;
+            int CampoXMinima = control.Location.X;
+            int CampoYMaxima = control.Location.Y + control.Height;
+            int CampoXMaxima = control.Location.X + control.Width;
+            int CampoXMedia = CampoXMaxima - control.Location.X / 2;
+            int CampoYMedia = CampoYMaxima - control.Location.Y / 2;
+
+            int imagenXMinima = seleccionado.Location.X;
+            int imagenYMinima = seleccionado.Location.Y;
+            int imagenXMaxima = seleccionado.Location.X + seleccionado.Width;
+            int imagenYMaxima = seleccionado.Location.Y + seleccionado.Height;
+            int imagenXMedia = imagenXMaxima - seleccionado.Width / 2;
+            int imagenYMedia = imagenYMaxima - seleccionado.Height / 2;
+
+            if ((CampoXMinima <= imagenXMinima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima <= imagenYMinima) && (CampoYMaxima >= imagenYMaxima)) return true;
+
+            else if ((CampoYMinima <= imagenYMinima) && (CampoYMaxima >= imagenYMinima) && (CampoXMinima <= imagenXMinima) && (CampoXMaxima >= imagenXMinima)) return true;
+            else if ((CampoXMinima <= imagenXMaxima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima <= imagenYMaxima) && (CampoYMaxima >= imagenYMaxima)) return true;
+            else if ((CampoXMinima <= imagenXMinima) && (CampoXMaxima >= imagenXMinima) && (CampoYMinima <= imagenYMaxima) && (CampoYMaxima >= imagenYMaxima)) return true;
+            else if ((CampoXMinima <= imagenXMaxima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima <= imagenYMinima) && (CampoYMaxima >= imagenYMinima)) return true;
+
+            else if ((CampoXMinima <= imagenXMinima) && (CampoXMaxima >= imagenXMaxima) && (CampoYMinima >= imagenYMinima) && (CampoYMaxima <= imagenYMaxima)) return true;
+            else if ((imagenXMinima <= CampoXMinima) && (imagenXMaxima >= CampoXMaxima) && (imagenYMinima >= CampoYMinima) && (imagenYMaxima <= CampoYMaxima)) return true;
+
+
+            else if ((CampoXMinima >= imagenXMinima) && (CampoXMinima <= imagenXMaxima) && (CampoYMinima >= imagenYMinima) && (CampoYMaxima <= imagenYMaxima)) return true;
+            else if ((CampoXMaxima >= imagenXMinima) && (CampoXMaxima <= imagenXMaxima) && (CampoYMinima >= imagenYMinima) && (CampoYMaxima <= imagenYMaxima)) return true;
+
+            else if ((imagenXMinima >= CampoXMinima) && (imagenXMinima <= CampoXMaxima) && (imagenYMinima >= CampoYMinima) && (imagenYMaxima <= CampoYMaxima)) return true;
+            else if ((imagenXMaxima >= CampoXMinima) && (imagenXMaxima <= CampoXMaxima) && (imagenYMinima >= CampoYMinima) && (imagenYMaxima <= CampoYMaxima)) return true;
+
+            else if ((CampoXMinima >= imagenXMinima) && (CampoXMaxima <= imagenXMaxima) && (CampoYMinima >= imagenYMinima) && (CampoYMinima <= imagenYMaxima)) return true;
+            else if ((CampoXMinima >= imagenXMinima) && (CampoXMaxima <= imagenXMaxima) && (CampoYMaxima >= imagenYMinima) && (CampoYMaxima <= imagenYMaxima)) return true;
+
+            else return false;
+        }
+        #endregion
     }
 }

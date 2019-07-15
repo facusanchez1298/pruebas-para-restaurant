@@ -381,6 +381,7 @@
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel.AutoScroll = true;
             this.panel.AutoSize = true;
             this.panel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;

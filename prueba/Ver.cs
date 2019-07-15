@@ -36,15 +36,13 @@ namespace prueba
         public void recargar()
         {
 
-            Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
+            this.planoVer.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
             {
-                this.Controls.Remove(q);
+                this.planoVer.Controls.Remove(q);
             });
             Conexion.cargarMesas(this, plantilla);
-            plano1.SendToBack();
+            planoVer.SendToBack();
             actualizarTabla();
-
-
         }
 
         /// <summary>
@@ -341,6 +339,7 @@ namespace prueba
         {
             cerrarPaneles();
             dataGridView1.BringToFront();
+            recargar();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -382,7 +381,7 @@ namespace prueba
                 int mesa = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["Mesa"].Value.ToString());
 
 
-                this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
+                this.planoVer.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
                 {
                     if((q as Item).index == mesa)
                     {                        

@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // UserControl2
+            // Plano
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Name = "UserControl2";
+            this.Name = "Plano";
             this.Size = new System.Drawing.Size(146, 146);
             this.ResumeLayout(false);
 

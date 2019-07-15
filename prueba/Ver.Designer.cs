@@ -49,7 +49,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.plano1 = new prueba.Plano();
+            this.planoVer = new prueba.Plano();
             this.panelReloj.SuspendLayout();
             this.panelDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -322,19 +322,19 @@
             this.panel1.Size = new System.Drawing.Size(124, 24);
             this.panel1.TabIndex = 13;
             // 
-            // plano1
+            // planoVer
             // 
-            this.plano1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.planoVer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.plano1.AutoScroll = true;
-            this.plano1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.plano1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.plano1.Location = new System.Drawing.Point(291, 12);
-            this.plano1.Name = "plano1";
-            this.plano1.Size = new System.Drawing.Size(484, 413);
-            this.plano1.TabIndex = 10;
-            this.plano1.Click += new System.EventHandler(this.plano1_Click);
+            this.planoVer.AutoScroll = true;
+            this.planoVer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.planoVer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.planoVer.Location = new System.Drawing.Point(291, 12);
+            this.planoVer.Name = "planoVer";
+            this.planoVer.Size = new System.Drawing.Size(484, 413);
+            this.planoVer.TabIndex = 10;
+            this.planoVer.Click += new System.EventHandler(this.plano1_Click);
             // 
             // Ver
             // 
@@ -343,7 +343,7 @@
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(784, 503);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.plano1);
+            this.Controls.Add(this.planoVer);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -381,7 +381,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panelDatos;
-        public Plano plano1;
+        public Plano planoVer;
         private System.Windows.Forms.Label labelHora;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonEditar;

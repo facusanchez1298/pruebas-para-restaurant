@@ -12,12 +12,14 @@ namespace prueba
 {
     public partial class Datos : Form, Dar
     {
+        #region propiedades
         Item item;
         public Ver padre;
         Conexion conexion;
         public int numeroPedido;
         DateTime llego;
         DataGridViewRow seleccionado;
+        #endregion
 
         public Datos()
         {            
