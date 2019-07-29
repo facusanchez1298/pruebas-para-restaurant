@@ -408,6 +408,11 @@ namespace prueba
         {
             AbrirFormEnPanel<Mozos>();
         }
+
+        private void Ver_Resize(object sender, EventArgs e)
+        {
+            planoVer.Width = planoVer.Height;
+        }
     }
 }
 

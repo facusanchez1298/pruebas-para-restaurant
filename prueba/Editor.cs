@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -16,14 +17,19 @@ namespace prueba
             cantidad = 0;
             recargar();
             actualizarEventos();
-        }
 
+            this.Controls.Cast<Control>()
+                .Where(q => q.GetType() == typeof(TrackBar))
+                .ToList()
+                .ForEach(q => (q as TrackBar).Value = 100);
+            mostrarValoresTrackBar();
+        }
 
         #region Propiedades
         Conexion conexion;
         int cantidad;
         bool precionado = false;
-        bool ctrPresionado = false;
+        bool dejarMover = true;
         Point inicial;
         Point final;
         Item seleccionado;
@@ -31,12 +37,7 @@ namespace prueba
 
         public int plantilla { get; internal set; }
         #endregion
-
-
-        
-
-
-       
+                     
         /// <summary>
         /// recorre los controles y a todos los item le da sus eventos
         /// </summary>
@@ -70,17 +71,7 @@ namespace prueba
             this.panel.SendToBack();            
             actualizarEventos();
         }
-
-        /// <summary>
-        /// verifica que tecla dejamos de tocar
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Editor_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.ControlKey) ctrPresionado = false;
-        }
-
+                
         /// <summary>
         /// verifica que tecla tocamos
         /// </summary>
@@ -88,9 +79,7 @@ namespace prueba
         /// <param name="e"></param>
         private void tocarBoton(object sender, KeyEventArgs e)
         {
-            Control control = (Control)sender;
-
-            if (e.KeyCode == Keys.ControlKey) ctrPresionado = true;   
+            Control control = (Control)sender;           
 
             if (precionado)
             {
@@ -132,45 +121,54 @@ namespace prueba
             Control control = (Control)sender;
             precionado = true;
             inicial = new Point(control.Location.X, control.Location.Y);
-
+            
             crearItem(control);            
         }
 
         public void item_MouseMove(object sender, MouseEventArgs e)
         {
             Control control = (Control)sender;
+            Control mouse = new Control();
+            mouse.Location = e.Location;
             if (precionado)
             {
-                label1.Text = inicial + "    " + control.Location.X + " " + control.Location.Y ;
-                label2.Text = inicial.Y - control.Location.Y + "";
-                
-                //if (ctrPresionado)
-                //{
-                //    seleccionado.Height = (inicial.Y - control.Location.Y) + e.Y;
-                //    seleccionado.Width  = (inicial.X - control.Location.X) + e.X;                  
-                //}
-              
-                seleccionado.Top =  e.Y + control.Top - (seleccionado.Height / 2);
-                seleccionado.Left = e.X + control.Left - (seleccionado.Width / 2);
+                if (dejarMover)
+                {
+                    seleccionado.Top = e.Y + control.Top - (seleccionado.Height / 2);
+                    seleccionado.Left = e.X + control.Left - (seleccionado.Width / 2);
+                }
+            }
 
-
+            if (seleccionado != null)
+            {
                 if (seleccionado.index == 0)
                 {
                     if (!sePuedeColocar())
                     {
-                        seleccionado.BackColor = Color.Red;
+                        seleccionado.BackColor = Color.Red;                        
                     }
-                    else seleccionado.BackColor = Color.Green;
+                    else
+                    {
+                        dejarMover = true;
+                        seleccionado.BackColor = Color.Green;
+                    }
                 }
                 else
                 {
                     if (!sePuedeMover())
                     {
                         seleccionado.BackColor = Color.Red;
+                        mouse.Location = new Point(e.X, e.Y);
+                        if(!estaEnPlano(mouse))dejarMover = false;
                     }
-                    else seleccionado.BackColor = Color.Green;
+                    else
+                    {
+                        dejarMover = true;
+                        seleccionado.BackColor = Color.Green;
+                    }
                 }
             }
+
         }
 
         public void item_MouseUp(object sender, MouseEventArgs e)
@@ -187,7 +185,6 @@ namespace prueba
                 {
                     if (!sePuedeColocar()) borrarControl(seleccionado);
 
-
                     //si no tiene index le colocamos uno y lo guardamos
                     seleccionado.darIndex(cantidad);
                     cantidad += 1;
@@ -199,10 +196,7 @@ namespace prueba
 
                     this.panel.Controls.Add(seleccionado);
                     conexion.agregarMesa(seleccionado, plantilla);
-                }
-                
-                            
-                            
+                }           
                 //moviendo elemento nuevo
                 else
                 {
@@ -212,12 +206,12 @@ namespace prueba
                     }
                     else conexion.editarMesa(seleccionado, plantilla);
                 }
+                
             }
 
 
         }
-
-
+        
         /// <summary>
         /// elimina un elemento de la lista de controles
         /// </summary>
@@ -259,9 +253,7 @@ namespace prueba
                 seleccionado.Width = ancho;
             }
         }
-
-             
-
+        
         /// <summary>
         ///rota el item seleccionado del obj seleccionado 
         /// </summary>
@@ -397,8 +389,7 @@ namespace prueba
             this.Controls.Add(seleccionado);
             seleccionado.BringToFront();
         }
-
-
+        
         #region controles
         /// <summary>
         /// verifica si se puede colocar el control
@@ -408,10 +399,7 @@ namespace prueba
         {
             return ((estaEnArea(panel, seleccionado)) && !existeElemento());
         }
-
-
-
-
+                     
         /// <summary>
         /// verifica que movamos dentro del plano sin superponer Items
         /// </summary>
@@ -456,10 +444,11 @@ namespace prueba
         {
             if (control == null) return false;
 
-            int CampoYMinima = panel.Location.Y - panel.Top;
-            int CampoXMinima = panel.Location.X - panel.Left;
-            int CampoYMaxima = panel.Location.Y + panel.Height + panel.Bottom;
-            int CampoXMaxima = panel.Location.X + panel.Width + panel.Right;
+            int CampoYMinima = 0;
+            int CampoXMinima = 0;
+            int CampoYMaxima = panel.Height;
+            int CampoXMaxima = panel.Width;
+            
 
             int imagenXMinima = control.Location.X;
             int imagenYMinima = control.Location.Y;
@@ -539,5 +528,21 @@ namespace prueba
             else return false;
         }
         #endregion
+
+        private void trackBar3_Scroll(object sender, EventArgs e)
+        {
+            mostrarValoresTrackBar();
+        }
+
+        public void mostrarValoresTrackBar()
+        {
+            textBoxAlto.Text = trackBar3.Value.ToString();
+            textBoxAncho.Text = trackBar4.Value.ToString();
+        }
+
+        private void Editor_Resize(object sender, EventArgs e)
+        {
+            panel.Width = panel.Height;
+        }
     }
 }

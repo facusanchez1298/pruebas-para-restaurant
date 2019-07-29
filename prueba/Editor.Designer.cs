@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.selector = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -45,8 +47,10 @@
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.trackBar3 = new System.Windows.Forms.TrackBar();
+            this.trackBar4 = new System.Windows.Forms.TrackBar();
+            this.textBoxAlto = new System.Windows.Forms.TextBox();
+            this.textBoxAncho = new System.Windows.Forms.TextBox();
             this.panel = new prueba.Plano();
             this.selector.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -65,7 +69,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 432);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 456);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "label1";
+            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
             // 
             // selector
             // 
@@ -90,11 +118,10 @@
             this.selector.Controls.Add(this.pictureBox14);
             this.selector.Controls.Add(this.pictureBox15);
             this.selector.Controls.Add(this.pictureBox16);
-            this.selector.Location = new System.Drawing.Point(12, 13);
+            this.selector.Location = new System.Drawing.Point(18, 12);
             this.selector.Name = "selector";
-            this.selector.Size = new System.Drawing.Size(233, 412);
-            this.selector.TabIndex = 4;
-            this.selector.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.selector.Size = new System.Drawing.Size(233, 410);
+            this.selector.TabIndex = 14;
             // 
             // pictureBox4
             // 
@@ -108,9 +135,6 @@
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Tag = "Mesa Redonda";
-            this.pictureBox4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox5
             // 
@@ -124,9 +148,6 @@
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Tag = "Mesa Cuadrada";
-            this.pictureBox5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox2
             // 
@@ -140,9 +161,6 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Tag = "Mesa Grande";
-            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox8
             // 
@@ -156,9 +174,6 @@
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             this.pictureBox8.Tag = "Mesa Redonda Negra";
-            this.pictureBox8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox6
             // 
@@ -172,9 +187,6 @@
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Tag = "Mesa Rectangular";
-            this.pictureBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox3
             // 
@@ -188,9 +200,6 @@
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Tag = "Mesa Redonda Madera";
-            this.pictureBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox9
             // 
@@ -204,9 +213,6 @@
             this.pictureBox9.TabIndex = 0;
             this.pictureBox9.TabStop = false;
             this.pictureBox9.Tag = "Silla";
-            this.pictureBox9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox9.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox7
             // 
@@ -221,9 +227,6 @@
             this.pictureBox7.TabIndex = 0;
             this.pictureBox7.TabStop = false;
             this.pictureBox7.Tag = "Pared";
-            this.pictureBox7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox10
             // 
@@ -237,9 +240,6 @@
             this.pictureBox10.TabIndex = 1;
             this.pictureBox10.TabStop = false;
             this.pictureBox10.Tag = "Silla Roja";
-            this.pictureBox10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox10.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox10.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox11
             // 
@@ -253,9 +253,6 @@
             this.pictureBox11.TabIndex = 2;
             this.pictureBox11.TabStop = false;
             this.pictureBox11.Tag = "Mesa Redonda 8 sillas";
-            this.pictureBox11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox11.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox11.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox12
             // 
@@ -269,9 +266,6 @@
             this.pictureBox12.TabIndex = 3;
             this.pictureBox12.TabStop = false;
             this.pictureBox12.Tag = "Mesa Redonda 6 sillas";
-            this.pictureBox12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox12.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox12.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox13
             // 
@@ -285,9 +279,6 @@
             this.pictureBox13.TabIndex = 4;
             this.pictureBox13.TabStop = false;
             this.pictureBox13.Tag = "Mesa cuadrada 4 sillas";
-            this.pictureBox13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox13.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox13.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox1
             // 
@@ -301,9 +292,6 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "Mesa Redonda 4 sillas";
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox14
             // 
@@ -317,9 +305,6 @@
             this.pictureBox14.TabIndex = 6;
             this.pictureBox14.TabStop = false;
             this.pictureBox14.Tag = "Tabla Bar";
-            this.pictureBox14.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox14.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox14.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox15
             // 
@@ -333,9 +318,6 @@
             this.pictureBox15.TabIndex = 7;
             this.pictureBox15.TabStop = false;
             this.pictureBox15.Tag = "Mesita";
-            this.pictureBox15.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox15.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox15.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox16
             // 
@@ -349,31 +331,46 @@
             this.pictureBox16.TabIndex = 8;
             this.pictureBox16.TabStop = false;
             this.pictureBox16.Tag = "Tabla Cocina";
-            this.pictureBox16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
-            this.pictureBox16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
-            this.pictureBox16.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
-            // label1
+            // trackBar3
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 437);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
-            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.trackBar3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trackBar3.Location = new System.Drawing.Point(291, 428);
+            this.trackBar3.Maximum = 100;
+            this.trackBar3.Minimum = 10;
+            this.trackBar3.Name = "trackBar3";
+            this.trackBar3.Size = new System.Drawing.Size(116, 45);
+            this.trackBar3.TabIndex = 15;
+            this.trackBar3.Value = 10;
+            this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_Scroll);
             // 
-            // label2
+            // trackBar4
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 461);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "label1";
-            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.trackBar4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trackBar4.Location = new System.Drawing.Point(456, 428);
+            this.trackBar4.Maximum = 100;
+            this.trackBar4.Minimum = 10;
+            this.trackBar4.Name = "trackBar4";
+            this.trackBar4.Size = new System.Drawing.Size(104, 45);
+            this.trackBar4.TabIndex = 15;
+            this.trackBar4.Value = 10;
+            this.trackBar4.Scroll += new System.EventHandler(this.trackBar3_Scroll);
+            // 
+            // textBoxAlto
+            // 
+            this.textBoxAlto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxAlto.Location = new System.Drawing.Point(413, 432);
+            this.textBoxAlto.Name = "textBoxAlto";
+            this.textBoxAlto.Size = new System.Drawing.Size(37, 20);
+            this.textBoxAlto.TabIndex = 16;
+            // 
+            // textBoxAncho
+            // 
+            this.textBoxAncho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxAncho.Location = new System.Drawing.Point(566, 429);
+            this.textBoxAncho.Name = "textBoxAncho";
+            this.textBoxAncho.Size = new System.Drawing.Size(37, 20);
+            this.textBoxAncho.TabIndex = 16;
             // 
             // panel
             // 
@@ -381,14 +378,12 @@
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel.AutoScroll = true;
-            this.panel.AutoSize = true;
             this.panel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel.Location = new System.Drawing.Point(291, 12);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(484, 413);
-            this.panel.TabIndex = 1;
+            this.panel.Size = new System.Drawing.Size(410, 410);
+            this.panel.TabIndex = 13;
             this.panel.TabStop = false;
             // 
             // Editor
@@ -397,15 +392,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Azure;
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxAncho);
+            this.Controls.Add(this.textBoxAlto);
+            this.Controls.Add(this.trackBar4);
+            this.Controls.Add(this.trackBar3);
             this.Controls.Add(this.selector);
             this.Controls.Add(this.panel);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Name = "Editor";
-            this.Size = new System.Drawing.Size(783, 489);
+            this.Size = new System.Drawing.Size(800, 500);
             this.Tag = "Mesa";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tocarBoton);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Editor_KeyUp);
+            this.Resize += new System.EventHandler(this.Editor_Resize);
             this.selector.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -423,22 +422,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.FlowLayoutPanel selector;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox3;
-        public Plano panel;
-        private System.Windows.Forms.FlowLayoutPanel selector;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.PictureBox pictureBox12;
@@ -447,7 +449,10 @@
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.PictureBox pictureBox16;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        public Plano panel;
+        private System.Windows.Forms.TrackBar trackBar3;
+        private System.Windows.Forms.TrackBar trackBar4;
+        private System.Windows.Forms.TextBox textBoxAlto;
+        private System.Windows.Forms.TextBox textBoxAncho;
     }
 }
