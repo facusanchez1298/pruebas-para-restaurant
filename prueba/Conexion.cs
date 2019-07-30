@@ -15,6 +15,10 @@ namespace prueba
     {
 
         #region tablas
+        string tablaPanel = "create table if not exists panel(" +
+                            "alto int," +
+                            "ancho int," +
+                            "plantilla int);";
 
         string tablaMesa = "create table if not exists Mesa(" +
                                     "numero integer," +
@@ -26,19 +30,21 @@ namespace prueba
                                     "tag varchar," +
                                     "ocupada boolean," +
                                     "llegada varchar default ''," +
-                                    "primary key(dia, numero) );";
+                                    "turno varchar," +
+                                    "primary key(dia, numero, turno) );";
 
-        
+       
 
         string tablaPedido = "create table if not exists Pedido(" +
                                      "numeroPedido int," +
                                      "mesa int," +
+                                     "turnoPedido varchar," +
                                      "FOREIGN KEY(mesa) REFERENCES mesa(numero));";
 
 
 
         string tablaComida = "create table if not exists Comida(" +
-                                    "id_comida int," +
+                                    "id_comida integer primary key autoincrement ," +
                                     "nombre varchar," +
                                     "vegetariano boolean," +
                                     "sinTacc boolean," +
@@ -143,21 +149,17 @@ namespace prueba
 
             try
             {
-
                 //abrimos coneccion
                 conectar();
 
                 //preparamos un objeto que va a ejecutar todo el comando
-                command = new SQLiteCommand(tablaMesa + tablaPedido + tablaComida + tablaPedidoComida + tablaMozo, this.connection);
-
-
-                //  
+                command = new SQLiteCommand(tablaPanel + tablaMesa + tablaPedido + tablaComida + tablaPedidoComida + tablaMozo, this.connection);
+                                         
                 //ejecutamos el comando
                 command.ExecuteNonQuery();
 
                 //desconectamos el objeto
                 command.Connection.Close();
-
             }
             catch (Exception e)
             {
@@ -170,11 +172,6 @@ namespace prueba
             }
 
         }
-
-
-
-
-
         #endregion
 
         #region borrar cosas
@@ -202,21 +199,19 @@ namespace prueba
                 desconectar();
             }
         }
-
+        /// <summary>
+        /// borra una comida del menu
+        /// </summary>
+        /// <param name="id">id de la comida a eliminar</param>
         internal void borrarComida(float id)
         {
             try
             {
-
                 conectar();
-
                 string sql = "delete from comida where id_comida = " + id;
-
                 command = new SQLiteCommand(sql, connection);
                 command.ExecuteNonQuery();
-
                 command.Connection.Close();
-
             }
             catch (Exception e)
             {
@@ -288,9 +283,70 @@ namespace prueba
                 desconectar();
             }
         }
+        /// <summary>
+        /// borra todos los pedidos de una mesa
+        /// </summary>
+        /// <param name="datos"></param>
+        internal void quitarPedidos(Datos datos)
+        {
+            try
+            {
+
+                int Pedido = datos.numeroPedido;
+                string turno = datos.padre.turno;
+                conectar();
+
+                string sql = "update pedido_Comida set cantidad = 0" +
+                             " where numeroPedido =" + Pedido + "" +
+                             " and turnoPedido = '" + turno + "'";
+                             
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+                sql = "delete from pedido_comida where cantidad = 0";
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
         #endregion
 
         #region guardarCosas
+
+        internal void guardarMedidas(string ancho, string alto, int plantilla)
+        {
+            try
+            {
+                conectar();
+                string sql = "insert into panel values (" + alto +", " + ancho + ", " + plantilla + ")";
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
         /// <summary>
         /// guarda una mesa
         /// </summary>
@@ -312,8 +368,12 @@ namespace prueba
 
                 conectar();
 
-                string sql = "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada) values" +
-                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "')";
+                string sql = "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada, turno) values" +
+                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "', 'Mañana');";
+                sql += "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada, turno) values" +
+                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "', 'Tarde');";
+                sql += "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada, turno) values" +
+                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "', 'Noche');";
 
                 command = new SQLiteCommand(sql, connection);
                 command.ExecuteNonQuery();
@@ -445,7 +505,7 @@ namespace prueba
         #endregion
 
         #region cargarTablas
-        public void cargarTablaMesas(DataGridView dataGridView, int dia)
+        public void cargarTablaMesas(DataGridView dataGridView, int dia, string turno)
         {
             try
             {
@@ -456,7 +516,8 @@ namespace prueba
                     " and tag != 'Pared' and " +
                     "tag != 'Tabla Bar' and " +
                     "tag != 'Tabla Cocina' and " +
-                    "tag != 'Mesita';";
+                    "tag != 'Mesita' and " +
+                    "turno = '" + turno + "'";
                 dataAdapter = new SQLiteDataAdapter(sql, connection);
 
                 dataSet = new DataSet();
@@ -629,10 +690,14 @@ namespace prueba
             try
             {
                 conectar();
-                string sql;
+                string sql, tMañana, tTarde, tNoche;
+
+                tMañana = (mañana)? mañana.ToString(): "";
+                tTarde = (tarde)? tarde.ToString(): "";
+                tNoche = (noche)? noche.ToString(): "";
 
                 if (!mañana && !tarde && !noche) sql = "select * from Mozo where nombre like '%" + filtro + "%'";
-                else sql = "select * from Mozo where nombre like '%" + filtro + "%' and mañana = '" + mañana + "' and tarde = '" + tarde + "' and noche = '" + noche + "'";
+                else sql = "select * from Mozo where nombre like '%" + filtro + "%' and mañana like '%" + tMañana + "' and tarde like '%" + tTarde + "' and noche like '%" + tNoche + "'";
 
                 dataAdapter = new SQLiteDataAdapter(sql, connection);
 
@@ -1086,16 +1151,18 @@ namespace prueba
 
         }
 
-        internal void ocuparMesa(Item item, int plantilla, bool estado)
+        internal void ocuparMesa(Item item, int plantilla, bool estado, String turno)
         {
             try
             {
-
                 conectar();
-
                 string sql = "update mesa set ocupada = '" + estado + "'" +
                     "  where numero = " + item.index + " and dia = " + plantilla;
 
+                if (!estado) sql += " ; delete from pedido where " +
+                        "numeroPedido = " + item.index + " and " +
+                        "mesa = " + item.index + " and " +
+                        "turnoPedido = '" + turno + "'";
                 command = new SQLiteCommand(sql, connection);
                 command.ExecuteNonQuery();
 
@@ -1154,6 +1221,68 @@ namespace prueba
 
                 command.Connection.Close();
 
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal bool hayMedidas(int plantilla)
+        {
+            try
+            {
+
+                conectar();
+
+                string sql = "select * from panel where plantilla = " + plantilla;
+
+                command = new SQLiteCommand(sql, connection);
+                SQLiteDataReader sQLiteDataReader = command.ExecuteReader();
+
+                if (sQLiteDataReader.Read())
+                {
+                    command.Connection.Close();
+                    return true;
+                }
+                else return false;
+
+                
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal Plano cargarPlano(int plantilla, Plano planoVer)
+        {
+            try
+            {
+
+                conectar();
+
+                string sql = "select * from panel where plantilla = " + plantilla;
+
+                command = new SQLiteCommand(sql, connection);
+                SQLiteDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    planoVer.Height = lector.GetInt32(0);                    
+                    planoVer.Width = lector.GetInt32(1);
+                }
+
+                return planoVer;
             }
             catch (Exception e)
             {

@@ -88,23 +88,32 @@ namespace prueba
         {
             if (buttonOcupar.Text.Equals("Ocupar"))
             {
-                conexion.ocuparMesa(item, padre.plantilla, true);
-                buttonOcupar.Text = "Desocupar";
-                buttonAgregar.Enabled = true;
-                labelLLego.Text = DateTime.Now.ToLongTimeString();
-                llego = DateTime.Now;
-                labelActual.Text = (DateTime.Now - llego).ToString();
-                timer1.Start();
-                conexion.EditarIngreso(DateTime.Now, item, padre.plantilla);
+                if (comboBox1.Text == "")
+                {
+                    Mensaje.mensajeError("no se puede ocupar una mesa si no se define un mozo");
+                }
+                else
+                {
+                    conexion.ocuparMesa(item, padre.plantilla, true, padre.turno);
+                    buttonOcupar.Text = "Desocupar";
+                    buttonAgregar.Enabled = true;
+                    labelLLego.Text = DateTime.Now.ToLongTimeString();
+                    llego = DateTime.Now;
+                    labelActual.Text = (DateTime.Now - llego).ToString();
+                    timer1.Start();
+                    conexion.EditarIngreso(DateTime.Now, item, padre.plantilla);
+                }
             }
             else
             {
-                conexion.ocuparMesa(item, padre.plantilla, false);
+                conexion.ocuparMesa(item, padre.plantilla, false, padre.turno);
                 buttonOcupar.Text = "Ocupar";
                 conexion.agregarSalida(item, padre.plantilla);
+                conexion.quitarPedidos(this);
                 timer1.Stop();
                 buttonAgregar.Enabled = false;
             }
+            refrescarTabla();
         }
         #endregion
 
@@ -182,6 +191,11 @@ namespace prueba
             conexion.quitarUnPedido(this, id_comida);
 
             this.refrescarTabla();
+
+        }
+
+        private void Datos_Load(object sender, EventArgs e)
+        {
 
         }
     }

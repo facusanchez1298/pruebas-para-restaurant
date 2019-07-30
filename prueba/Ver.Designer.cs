@@ -50,6 +50,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.planoVer = new prueba.Plano();
+            this.labelAlto = new System.Windows.Forms.Label();
+            this.labelAncho = new System.Windows.Forms.Label();
             this.panelReloj.SuspendLayout();
             this.panelDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -336,12 +338,32 @@
             this.planoVer.TabIndex = 10;
             this.planoVer.Click += new System.EventHandler(this.plano1_Click);
             // 
+            // labelAlto
+            // 
+            this.labelAlto.AutoSize = true;
+            this.labelAlto.Location = new System.Drawing.Point(12, 461);
+            this.labelAlto.Name = "labelAlto";
+            this.labelAlto.Size = new System.Drawing.Size(35, 13);
+            this.labelAlto.TabIndex = 14;
+            this.labelAlto.Text = "label1";
+            // 
+            // labelAncho
+            // 
+            this.labelAncho.AutoSize = true;
+            this.labelAncho.Location = new System.Drawing.Point(12, 481);
+            this.labelAncho.Name = "labelAncho";
+            this.labelAncho.Size = new System.Drawing.Size(35, 13);
+            this.labelAncho.TabIndex = 14;
+            this.labelAncho.Text = "label1";
+            // 
             // Ver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(784, 503);
+            this.Controls.Add(this.labelAncho);
+            this.Controls.Add(this.labelAlto);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.planoVer);
             this.Controls.Add(this.button6);
@@ -357,6 +379,7 @@
             this.Controls.Add(this.panelReloj);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Ver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ver";
@@ -392,5 +415,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelAlto;
+        private System.Windows.Forms.Label labelAncho;
     }
 }

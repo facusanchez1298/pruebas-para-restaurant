@@ -543,6 +543,8 @@ namespace prueba
         private void Editor_Resize(object sender, EventArgs e)
         {
             panel.Width = panel.Height;
+            label1.Text = this.Height.ToString();
+            label2.Text = this.Width.ToString();
         }
     }
 }

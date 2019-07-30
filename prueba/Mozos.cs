@@ -42,15 +42,7 @@ namespace prueba
 
             if (!estaALaMañana && !estaALaTarde && !estaALaNoche) return false;
             else return true;
-        }
-
-        public void vaciarCampos()
-        {
-            textBoxNombre.Text = "";
-            checkBoxMañana.Checked = false;
-            checkBoxTarde.Checked = false;
-            checkBoxNoche.Checked = false;
-        }
+        }      
 
         #region botones
         private void buttonAceptar_Click(object sender, EventArgs e)
@@ -60,22 +52,19 @@ namespace prueba
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nombre = textBoxNombre.Text;
-            bool estaALaMañana = checkBoxMañana.Checked;
-            bool estaALaTarde = checkBoxTarde.Checked;
-            bool estaALaNoche = checkBoxNoche.Checked;
+            AgregarMozo agregarMozo = new AgregarMozo(this);
+            agregarMozo.ShowDialog();
+        }
 
-            if (nombre.Any())
+        private void buttonBorrar_Click(object sender, EventArgs e)
+        {
+            if (seleccionado != null)
             {
-                if (TieneTurno())
-                {
-                    Conexion.agregarMozo(nombre, estaALaMañana, estaALaTarde, estaALaNoche);
-                    vaciarCampos(); 
-                    recargarTabla();
-                }
-                else Mensaje.mensajeError("El mozo no tiene un turno asignado");
+                int index = int.Parse(seleccionado.Cells["id"].Value.ToString());
+                Conexion.BorrarMozo(index);
+                seleccionado = null;
+                recargarTabla();
             }
-            else Mensaje.mensajeError("El mozo no tiene nombre");
         }
         #endregion
 
@@ -109,17 +98,6 @@ namespace prueba
                 seleccionado = dataGridView1.Rows[e.RowIndex];
 
             }
-        }
-
-        private void buttonBorrar_Click(object sender, EventArgs e)
-        {
-            if(seleccionado != null)
-            {
-                int index = int.Parse(seleccionado.Cells["id"].Value.ToString());
-                Conexion.BorrarMozo(index);
-                seleccionado = null;
-                recargarTabla();
-            }
-        }
+        }       
     }
 }

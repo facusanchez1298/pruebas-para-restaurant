@@ -22,11 +22,23 @@ namespace prueba
             InitializeComponent();
             Conexion.crearBaseDeDatos();
             comboBox1.SelectedIndex = 0;
-            recargar();
-
             turno = comboBox1.Text;
-            
 
+            recargarPlano();
+        }
+
+        public void recargarPlano()
+        {
+            if (!Conexion.hayMedidas(plantilla))
+            {
+                AgregarMedidas agregarMedidas = new AgregarMedidas(plantilla);
+                agregarMedidas.ShowDialog();
+            }
+
+            this.planoVer = Conexion.cargarPlano(plantilla, planoVer);
+            this.labelAlto.Text = this.planoVer.Height.ToString();
+            this.labelAncho.Text = this.planoVer.Width.ToString();
+            recargar();
         }
         
 
@@ -50,7 +62,7 @@ namespace prueba
         /// </summary>
         public void actualizarTabla()
         {
-            Conexion.cargarTablaMesas(dataGridView1, plantilla);
+            Conexion.cargarTablaMesas(dataGridView1, plantilla, turno);
         }
 
         /// <summary>
@@ -91,7 +103,7 @@ namespace prueba
         private void button3_Click(object sender, EventArgs e)
         {
             plantilla = 1;
-            recargar();
+            recargarPlano();
         }
 
         
@@ -99,31 +111,31 @@ namespace prueba
         private void button4_Click(object sender, EventArgs e)
         {
             plantilla = 2;
-            recargar();
+            recargarPlano();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             plantilla = 3;
-            recargar();
+            recargarPlano();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             plantilla = 4;
-            recargar();
+            recargarPlano();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             plantilla = 5;
-            recargar();
+            recargarPlano();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             plantilla = 6;
-            recargar();
+            recargarPlano();
         }
 
 
@@ -183,53 +195,7 @@ namespace prueba
 
             }
         }
-
-
-        //public void AbrirFormEnPanelPedido<form>(Item item) where form : Form, Dar, new()
-        //{
-
-        //    form formulario;
-        //    formulario = panelDatos.Controls.OfType<form>().FirstOrDefault();
-
-        //    if (formulario != null)
-        //    {
-        //        cerrarPaneles();
-        //    }
-
-        //    //si el formulario/instancia no existe, creamos nueva instancia y mostramos
-        //    if (formulario == null)
-        //    {
-        //        formulario = new form();
-        //        formulario.TopLevel = false;
-        //        formulario.FormBorderStyle = FormBorderStyle.None;
-        //        formulario.Dock = DockStyle.Left;
-        //        panelPedido.Show();
-        //        panelPedido.Controls.Add(formulario);
-        //        panelPedido.Tag = formulario;
-        //        formulario.Show();
-        //        formulario.FormClosed += closeForms;
-
-        //        formulario.darItem(item);
-        //        formulario.darPadre(this);
-
-
-
-        //        formulario.BringToFront();
-        //    }
-        //    else
-        //    {
-        //        //si la Formulario/instancia existe, lo traemos a frente
-        //        formulario.BringToFront();
-
-        //        //Si la instancia esta minimizada mostramos
-        //        if (formulario.WindowState == FormWindowState.Minimized)
-        //        {
-        //            formulario.WindowState = FormWindowState.Normal;
-        //        }
-
-        //    }
-        //}
-
+        
         internal void AbrirFormEnPanel<form>(Item item, Datos datos) where form : Pedido, new()
         {
             form formulario;
@@ -346,16 +312,15 @@ namespace prueba
         {
             ponerColorDeFondo();
 
-
             if (e.RowIndex >= 0)
             {
                 int mesa = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["Mesa"].Value.ToString());
-
-
-                this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
+                
+                this.planoVer.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
                 {
                     if ((q as Item).index == mesa)
                     {
+                       
                         q.BackColor = Color.Green;                       
                     }
                 });
@@ -364,7 +329,7 @@ namespace prueba
 
         public void ponerColorDeFondo()
         {
-            this.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
+            this.planoVer.Controls.Cast<Control>().Where(q => q.GetType().Equals(typeof(Item))).ToList().ForEach(q =>
             {   
                     q.BackColor = SystemColors.ActiveCaption;
             });
@@ -411,7 +376,10 @@ namespace prueba
 
         private void Ver_Resize(object sender, EventArgs e)
         {
-            planoVer.Width = planoVer.Height;
+
+            //planoVer.Width = planoVer.Height;
+            this.labelAlto.Text = this.planoVer.Height.ToString();
+            this.labelAncho.Text = this.planoVer.Width.ToString();            
         }
     }
 }

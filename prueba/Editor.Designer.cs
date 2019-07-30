@@ -135,6 +135,9 @@
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Tag = "Mesa Redonda";
+            this.pictureBox4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox5
             // 
@@ -148,6 +151,9 @@
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Tag = "Mesa Cuadrada";
+            this.pictureBox5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox2
             // 
@@ -161,6 +167,9 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Tag = "Mesa Grande";
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox8
             // 
@@ -174,6 +183,9 @@
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             this.pictureBox8.Tag = "Mesa Redonda Negra";
+            this.pictureBox8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox6
             // 
@@ -187,6 +199,9 @@
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Tag = "Mesa Rectangular";
+            this.pictureBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox3
             // 
@@ -200,6 +215,9 @@
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Tag = "Mesa Redonda Madera";
+            this.pictureBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox9
             // 
@@ -213,6 +231,9 @@
             this.pictureBox9.TabIndex = 0;
             this.pictureBox9.TabStop = false;
             this.pictureBox9.Tag = "Silla";
+            this.pictureBox9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox9.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox7
             // 
@@ -227,6 +248,9 @@
             this.pictureBox7.TabIndex = 0;
             this.pictureBox7.TabStop = false;
             this.pictureBox7.Tag = "Pared";
+            this.pictureBox7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox10
             // 
@@ -240,6 +264,9 @@
             this.pictureBox10.TabIndex = 1;
             this.pictureBox10.TabStop = false;
             this.pictureBox10.Tag = "Silla Roja";
+            this.pictureBox10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox10.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox10.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox11
             // 
@@ -253,6 +280,9 @@
             this.pictureBox11.TabIndex = 2;
             this.pictureBox11.TabStop = false;
             this.pictureBox11.Tag = "Mesa Redonda 8 sillas";
+            this.pictureBox11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox11.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox11.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox12
             // 
@@ -266,6 +296,9 @@
             this.pictureBox12.TabIndex = 3;
             this.pictureBox12.TabStop = false;
             this.pictureBox12.Tag = "Mesa Redonda 6 sillas";
+            this.pictureBox12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox12.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox12.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox13
             // 
@@ -279,6 +312,9 @@
             this.pictureBox13.TabIndex = 4;
             this.pictureBox13.TabStop = false;
             this.pictureBox13.Tag = "Mesa cuadrada 4 sillas";
+            this.pictureBox13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox13.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox13.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox1
             // 
@@ -292,6 +328,9 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "Mesa Redonda 4 sillas";
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox14
             // 
@@ -305,6 +344,9 @@
             this.pictureBox14.TabIndex = 6;
             this.pictureBox14.TabStop = false;
             this.pictureBox14.Tag = "Tabla Bar";
+            this.pictureBox14.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox14.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox14.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox15
             // 
@@ -318,6 +360,9 @@
             this.pictureBox15.TabIndex = 7;
             this.pictureBox15.TabStop = false;
             this.pictureBox15.Tag = "Mesita";
+            this.pictureBox15.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox15.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox15.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // pictureBox16
             // 
@@ -331,6 +376,9 @@
             this.pictureBox16.TabIndex = 8;
             this.pictureBox16.TabStop = false;
             this.pictureBox16.Tag = "Tabla Cocina";
+            this.pictureBox16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.item_MouseDown);
+            this.pictureBox16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
+            this.pictureBox16.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
             // trackBar3
             // 

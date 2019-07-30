@@ -34,7 +34,6 @@ namespace prueba
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = conexion.CargarTablaComida();
-
             dataGridView1.Columns[0].Visible = false;
         }
 
@@ -73,14 +72,13 @@ namespace prueba
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            DataGridViewRow fila = dataGridView1.Rows[e.RowIndex];
-
-            int id_comida = int.Parse(fila.Cells[0].Value.ToString());
-            
-            conexion.agregarPedido(padre, id_comida, 1);
-
-            this.padre.refrescarTabla();
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dataGridView1.Rows[e.RowIndex];
+                int id_comida = int.Parse(fila.Cells[0].Value.ToString());
+                conexion.agregarPedido(padre, id_comida, 1);
+                this.padre.refrescarTabla();
+            }
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)

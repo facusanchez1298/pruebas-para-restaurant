@@ -27,8 +27,16 @@ namespace prueba
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Pedido.RecargarTabla();
+            if (textBoxNombre.Text.Any() || textBoxPrecio.Text.Any())
+            {
+
+                if (Mensaje.mensajePregunta("seguro quieres salir sin guardar?", "seguro desea salir?"))
+                {
+                    this.Close();
+                    Pedido.RecargarTabla();
+                }
+            }
+            else this.Close();
         }
 
         private void buttonOcupar_Click(object sender, EventArgs e)

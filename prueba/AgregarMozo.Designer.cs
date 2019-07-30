@@ -1,6 +1,6 @@
 ﻿namespace prueba
 {
-    partial class AgregarComida
+    partial class AgregarMozo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarComida));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarMozo));
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonOcupar = new System.Windows.Forms.Button();
-            this.textBoxPrecio = new System.Windows.Forms.TextBox();
+            this.checkBoxNoche = new System.Windows.Forms.CheckBox();
+            this.checkBoxTarde = new System.Windows.Forms.CheckBox();
+            this.checkBoxMañana = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBoxVegetariano = new System.Windows.Forms.CheckBox();
-            this.checkBoxSinTACC = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label1.Location = new System.Drawing.Point(15, 23);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 15);
             this.label1.TabIndex = 16;
@@ -51,9 +51,9 @@
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(84, 21);
+            this.textBoxNombre.Location = new System.Drawing.Point(15, 27);
             this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(168, 20);
+            this.textBoxNombre.Size = new System.Drawing.Size(237, 20);
             this.textBoxNombre.TabIndex = 15;
             // 
             // button1
@@ -88,64 +88,71 @@
             this.buttonOcupar.TabIndex = 20;
             this.buttonOcupar.Text = "Agregar";
             this.buttonOcupar.UseVisualStyleBackColor = false;
-            this.buttonOcupar.Click += new System.EventHandler(this.buttonOcupar_Click);
+            this.buttonOcupar.Click += new System.EventHandler(this.buttonAgregar_Click);
             // 
-            // textBoxPrecio
+            // checkBoxNoche
             // 
-            this.textBoxPrecio.Location = new System.Drawing.Point(84, 47);
-            this.textBoxPrecio.Name = "textBoxPrecio";
-            this.textBoxPrecio.Size = new System.Drawing.Size(168, 20);
-            this.textBoxPrecio.TabIndex = 15;
+            this.checkBoxNoche.AutoSize = true;
+            this.checkBoxNoche.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.checkBoxNoche.Location = new System.Drawing.Point(193, 72);
+            this.checkBoxNoche.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxNoche.Name = "checkBoxNoche";
+            this.checkBoxNoche.Size = new System.Drawing.Size(68, 19);
+            this.checkBoxNoche.TabIndex = 23;
+            this.checkBoxNoche.Text = "Noche";
+            this.checkBoxNoche.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxTarde
+            // 
+            this.checkBoxTarde.AutoSize = true;
+            this.checkBoxTarde.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.checkBoxTarde.Location = new System.Drawing.Point(111, 72);
+            this.checkBoxTarde.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxTarde.Name = "checkBoxTarde";
+            this.checkBoxTarde.Size = new System.Drawing.Size(64, 19);
+            this.checkBoxTarde.TabIndex = 22;
+            this.checkBoxTarde.Text = "Tarde";
+            this.checkBoxTarde.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMañana
+            // 
+            this.checkBoxMañana.AutoSize = true;
+            this.checkBoxMañana.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.checkBoxMañana.Location = new System.Drawing.Point(16, 72);
+            this.checkBoxMañana.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxMañana.Name = "checkBoxMañana";
+            this.checkBoxMañana.Size = new System.Drawing.Size(77, 19);
+            this.checkBoxMañana.TabIndex = 21;
+            this.checkBoxMañana.Text = "Mañana";
+            this.checkBoxMañana.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label2.Location = new System.Drawing.Point(15, 49);
+            this.label2.Location = new System.Drawing.Point(12, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 15);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Precio:";
+            this.label2.Size = new System.Drawing.Size(49, 15);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Turno:";
             // 
-            // checkBoxVegetariano
-            // 
-            this.checkBoxVegetariano.AutoSize = true;
-            this.checkBoxVegetariano.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.checkBoxVegetariano.Location = new System.Drawing.Point(18, 73);
-            this.checkBoxVegetariano.Name = "checkBoxVegetariano";
-            this.checkBoxVegetariano.Size = new System.Drawing.Size(109, 19);
-            this.checkBoxVegetariano.TabIndex = 18;
-            this.checkBoxVegetariano.Text = " Vegetariano";
-            this.checkBoxVegetariano.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxSinTACC
-            // 
-            this.checkBoxSinTACC.AutoSize = true;
-            this.checkBoxSinTACC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.checkBoxSinTACC.Location = new System.Drawing.Point(153, 73);
-            this.checkBoxSinTACC.Name = "checkBoxSinTACC";
-            this.checkBoxSinTACC.Size = new System.Drawing.Size(99, 19);
-            this.checkBoxSinTACC.TabIndex = 17;
-            this.checkBoxSinTACC.Text = "Sin T.A.C.C";
-            this.checkBoxSinTACC.UseVisualStyleBackColor = true;
-            // 
-            // AgregarComida
+            // AgregarMozo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(270, 133);
+            this.Controls.Add(this.checkBoxNoche);
+            this.Controls.Add(this.checkBoxTarde);
+            this.Controls.Add(this.checkBoxMañana);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonOcupar);
-            this.Controls.Add(this.checkBoxSinTACC);
-            this.Controls.Add(this.checkBoxVegetariano);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxPrecio);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "AgregarComida";
+            this.Name = "AgregarMozo";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Agregar Mozo";
@@ -159,9 +166,9 @@
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonOcupar;
-        private System.Windows.Forms.TextBox textBoxPrecio;
+        private System.Windows.Forms.CheckBox checkBoxNoche;
+        private System.Windows.Forms.CheckBox checkBoxTarde;
+        private System.Windows.Forms.CheckBox checkBoxMañana;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBoxVegetariano;
-        private System.Windows.Forms.CheckBox checkBoxSinTACC;
     }
 }
