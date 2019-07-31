@@ -972,7 +972,7 @@ namespace prueba
         internal void cargarMesas(Editor editor, int plantilla)
         {
             conectar();
-            String consulta = "select * from mesa where dia = " + plantilla;
+            String consulta = "select * from mesa where dia = " + plantilla + " and turno = 'Mañana'";
 
 
             SQLiteCommand command = new SQLiteCommand(consulta, connection);

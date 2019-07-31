@@ -80,18 +80,17 @@ namespace prueba
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tocarBoton(object sender, KeyEventArgs e)
+        public void tocarBoton(object sender, KeyEventArgs e)
         {
             Control control = (Control)sender;
-
-            Mensaje.mensajeError("entra aca");
+            
             if (precionado)
             {
                 if (e.KeyCode == Keys.R)
                 {
                     if (seleccionado.Image != null)
                     {
-                        rotarSeleccionado();
+                        rotarSeleccionado();                       
                     }
                     else
                     {
@@ -103,9 +102,12 @@ namespace prueba
                 {
                     if (seleccionado != null)
                     {
-                        borrarControl(seleccionado);                       
+                        borrarControl(seleccionado);
+                        recargarPlano();
                     }
                 }
+
+                
             }
         }
 

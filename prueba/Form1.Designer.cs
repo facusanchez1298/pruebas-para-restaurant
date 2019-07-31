@@ -1,4 +1,7 @@
-﻿namespace prueba
+﻿using System;
+using System.Windows.Forms;
+
+namespace prueba
 {
     partial class Form1
     {
@@ -76,8 +79,11 @@
 
         }
 
-        #endregion
        
+
+
+        #endregion
+
         private System.Windows.Forms.Button button1;
         private Editor editor;
     }

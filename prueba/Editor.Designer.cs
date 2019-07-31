@@ -380,45 +380,53 @@
             this.pictureBox16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.item_MouseMove);
             this.pictureBox16.MouseUp += new System.Windows.Forms.MouseEventHandler(this.item_MouseUp);
             // 
-            // trackBar3
+            // trackBarAltura
             // 
             this.trackBarAltura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.trackBarAltura.Location = new System.Drawing.Point(291, 437);
             this.trackBarAltura.Maximum = 100;
             this.trackBarAltura.Minimum = 10;
-            this.trackBarAltura.Name = "trackBar3";
+            this.trackBarAltura.Name = "trackBarAltura";
             this.trackBarAltura.Size = new System.Drawing.Size(116, 45);
             this.trackBarAltura.TabIndex = 15;
             this.trackBarAltura.Value = 10;
             this.trackBarAltura.Scroll += new System.EventHandler(this.trackBar_Scroll);
+            this.trackBarAltura.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tocarBoton);
             // 
-            // trackBar4
+            // trackBarAncho
             // 
             this.trackBarAncho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.trackBarAncho.Location = new System.Drawing.Point(456, 437);
             this.trackBarAncho.Maximum = 100;
             this.trackBarAncho.Minimum = 10;
-            this.trackBarAncho.Name = "trackBar4";
+            this.trackBarAncho.Name = "trackBarAncho";
             this.trackBarAncho.Size = new System.Drawing.Size(104, 45);
             this.trackBarAncho.TabIndex = 15;
             this.trackBarAncho.Value = 10;
             this.trackBarAncho.Scroll += new System.EventHandler(this.trackBar_Scroll);
+            this.trackBarAncho.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tocarBoton);
             // 
             // textBoxAlto
             // 
             this.textBoxAlto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxAlto.Location = new System.Drawing.Point(413, 441);
             this.textBoxAlto.Name = "textBoxAlto";
+            this.textBoxAlto.ReadOnly = true;
             this.textBoxAlto.Size = new System.Drawing.Size(37, 20);
             this.textBoxAlto.TabIndex = 16;
+            this.textBoxAlto.TabStop = false;
+            this.textBoxAlto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tocarBoton);
             // 
             // textBoxAncho
             // 
             this.textBoxAncho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxAncho.Location = new System.Drawing.Point(566, 438);
             this.textBoxAncho.Name = "textBoxAncho";
+            this.textBoxAncho.ReadOnly = true;
             this.textBoxAncho.Size = new System.Drawing.Size(37, 20);
             this.textBoxAncho.TabIndex = 16;
+            this.textBoxAncho.TabStop = false;
+            this.textBoxAncho.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tocarBoton);
             // 
             // panel
             // 
@@ -433,6 +441,7 @@
             this.panel.Size = new System.Drawing.Size(420, 420);
             this.panel.TabIndex = 13;
             this.panel.TabStop = false;
+            this.panel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tocarBoton);
             // 
             // Editor
             // 

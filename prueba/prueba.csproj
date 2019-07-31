@@ -145,6 +145,12 @@
     <Compile Include="Plano.Designer.cs">
       <DependentUpon>Plano.cs</DependentUpon>
     </Compile>
+    <Compile Include="prubaKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prubaKey.Designer.cs">
+      <DependentUpon>prubaKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Plano.resx">
       <DependentUpon>Plano.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prubaKey.resx">
+      <DependentUpon>prubaKey.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ver.resx">
       <DependentUpon>Ver.cs</DependentUpon>

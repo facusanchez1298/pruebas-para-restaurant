@@ -25,6 +25,14 @@ namespace prueba
             turno = comboBox1.Text;
 
             recargarPlano();
+
+            
+        }
+
+        private void Ver_KeyDown(object sender, KeyEventArgs e)
+        {
+            Mensaje.mensajeError("tocaste: " + e.KeyCode);
+            
         }
 
         public void recargarPlano()
@@ -376,6 +384,8 @@ namespace prueba
         {
             AbrirFormEnPanel<Datos>(sender as Item);
         }
+
+        
     }
 }
 
