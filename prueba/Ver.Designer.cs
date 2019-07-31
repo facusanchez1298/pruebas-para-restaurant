@@ -49,9 +49,9 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.planoVer = new prueba.Plano();
             this.labelAlto = new System.Windows.Forms.Label();
             this.labelAncho = new System.Windows.Forms.Label();
+            this.planoVer = new prueba.Plano();
             this.panelReloj.SuspendLayout();
             this.panelDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -124,7 +124,7 @@
             this.panelDatos.Controls.Add(this.dataGridView1);
             this.panelDatos.Location = new System.Drawing.Point(7, 125);
             this.panelDatos.Name = "panelDatos";
-            this.panelDatos.Size = new System.Drawing.Size(276, 300);
+            this.panelDatos.Size = new System.Drawing.Size(276, 307);
             this.panelDatos.TabIndex = 9;
             // 
             // dataGridView1
@@ -140,7 +140,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(274, 298);
+            this.dataGridView1.Size = new System.Drawing.Size(274, 305);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -153,7 +153,7 @@
             this.buttonEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonEditar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.buttonEditar.Location = new System.Drawing.Point(8, 431);
+            this.buttonEditar.Location = new System.Drawing.Point(8, 437);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(88, 27);
             this.buttonEditar.TabIndex = 5;
@@ -169,7 +169,7 @@
             this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonMenu.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.buttonMenu.Location = new System.Drawing.Point(101, 431);
+            this.buttonMenu.Location = new System.Drawing.Point(101, 437);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(88, 27);
             this.buttonMenu.TabIndex = 5;
@@ -185,7 +185,7 @@
             this.buttonMozo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonMozo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMozo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.buttonMozo.Location = new System.Drawing.Point(194, 431);
+            this.buttonMozo.Location = new System.Drawing.Point(194, 437);
             this.buttonMozo.Name = "buttonMozo";
             this.buttonMozo.Size = new System.Drawing.Size(88, 27);
             this.buttonMozo.TabIndex = 5;
@@ -200,7 +200,7 @@
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button6.Image = global::prueba.Properties.Resources.number6;
-            this.button6.Location = new System.Drawing.Point(667, 428);
+            this.button6.Location = new System.Drawing.Point(677, 435);
             this.button6.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(34, 34);
@@ -215,7 +215,7 @@
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button5.Image = global::prueba.Properties.Resources._5;
-            this.button5.Location = new System.Drawing.Point(633, 428);
+            this.button5.Location = new System.Drawing.Point(643, 435);
             this.button5.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(34, 34);
@@ -230,7 +230,7 @@
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Image = global::prueba.Properties.Resources._4;
-            this.button4.Location = new System.Drawing.Point(599, 428);
+            this.button4.Location = new System.Drawing.Point(609, 435);
             this.button4.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(34, 34);
@@ -245,7 +245,7 @@
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Image = global::prueba.Properties.Resources._3;
-            this.button3.Location = new System.Drawing.Point(565, 428);
+            this.button3.Location = new System.Drawing.Point(575, 435);
             this.button3.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(34, 34);
@@ -260,7 +260,7 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Image = global::prueba.Properties.Resources._2;
-            this.button2.Location = new System.Drawing.Point(531, 428);
+            this.button2.Location = new System.Drawing.Point(541, 435);
             this.button2.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(34, 34);
@@ -275,7 +275,7 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Image = global::prueba.Properties.Resources._11;
-            this.button1.Location = new System.Drawing.Point(497, 428);
+            this.button1.Location = new System.Drawing.Point(507, 435);
             this.button1.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(34, 34);
@@ -307,7 +307,7 @@
             this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(287, 433);
+            this.label7.Location = new System.Drawing.Point(287, 439);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 27);
@@ -319,29 +319,16 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Location = new System.Drawing.Point(359, 434);
+            this.panel1.Location = new System.Drawing.Point(359, 440);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(124, 24);
             this.panel1.TabIndex = 13;
             // 
-            // planoVer
-            // 
-            this.planoVer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.planoVer.AutoScroll = true;
-            this.planoVer.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.planoVer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.planoVer.Location = new System.Drawing.Point(291, 12);
-            this.planoVer.Name = "planoVer";
-            this.planoVer.Size = new System.Drawing.Size(410, 410);
-            this.planoVer.TabIndex = 10;
-            this.planoVer.Click += new System.EventHandler(this.plano1_Click);
-            // 
             // labelAlto
             // 
+            this.labelAlto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelAlto.AutoSize = true;
-            this.labelAlto.Location = new System.Drawing.Point(12, 461);
+            this.labelAlto.Location = new System.Drawing.Point(12, 468);
             this.labelAlto.Name = "labelAlto";
             this.labelAlto.Size = new System.Drawing.Size(35, 13);
             this.labelAlto.TabIndex = 14;
@@ -349,19 +336,33 @@
             // 
             // labelAncho
             // 
+            this.labelAncho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelAncho.AutoSize = true;
-            this.labelAncho.Location = new System.Drawing.Point(12, 481);
+            this.labelAncho.Location = new System.Drawing.Point(12, 488);
             this.labelAncho.Name = "labelAncho";
             this.labelAncho.Size = new System.Drawing.Size(35, 13);
             this.labelAncho.TabIndex = 14;
             this.labelAncho.Text = "label1";
+            // 
+            // planoVer
+            // 
+            this.planoVer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.planoVer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.planoVer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.planoVer.Location = new System.Drawing.Point(291, 12);
+            this.planoVer.Name = "planoVer";
+            this.planoVer.Size = new System.Drawing.Size(420, 420);
+            this.planoVer.TabIndex = 10;
+            this.planoVer.Click += new System.EventHandler(this.plano1_Click);
             // 
             // Ver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(784, 503);
+            this.ClientSize = new System.Drawing.Size(764, 505);
             this.Controls.Add(this.labelAncho);
             this.Controls.Add(this.labelAlto);
             this.Controls.Add(this.label7);

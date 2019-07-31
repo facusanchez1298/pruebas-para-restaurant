@@ -47,8 +47,8 @@
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.trackBar3 = new System.Windows.Forms.TrackBar();
-            this.trackBar4 = new System.Windows.Forms.TrackBar();
+            this.trackBarAltura = new System.Windows.Forms.TrackBar();
+            this.trackBarAncho = new System.Windows.Forms.TrackBar();
             this.textBoxAlto = new System.Windows.Forms.TextBox();
             this.textBoxAncho = new System.Windows.Forms.TextBox();
             this.panel = new prueba.Plano();
@@ -69,15 +69,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAltura)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAncho)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 432);
+            this.label1.Location = new System.Drawing.Point(15, 441);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 5;
@@ -88,7 +88,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 456);
+            this.label2.Location = new System.Drawing.Point(15, 465);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
@@ -120,7 +120,7 @@
             this.selector.Controls.Add(this.pictureBox16);
             this.selector.Location = new System.Drawing.Point(18, 12);
             this.selector.Name = "selector";
-            this.selector.Size = new System.Drawing.Size(233, 410);
+            this.selector.Size = new System.Drawing.Size(233, 419);
             this.selector.TabIndex = 14;
             // 
             // pictureBox4
@@ -382,32 +382,32 @@
             // 
             // trackBar3
             // 
-            this.trackBar3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.trackBar3.Location = new System.Drawing.Point(291, 428);
-            this.trackBar3.Maximum = 100;
-            this.trackBar3.Minimum = 10;
-            this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Size = new System.Drawing.Size(116, 45);
-            this.trackBar3.TabIndex = 15;
-            this.trackBar3.Value = 10;
-            this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_Scroll);
+            this.trackBarAltura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trackBarAltura.Location = new System.Drawing.Point(291, 437);
+            this.trackBarAltura.Maximum = 100;
+            this.trackBarAltura.Minimum = 10;
+            this.trackBarAltura.Name = "trackBar3";
+            this.trackBarAltura.Size = new System.Drawing.Size(116, 45);
+            this.trackBarAltura.TabIndex = 15;
+            this.trackBarAltura.Value = 10;
+            this.trackBarAltura.Scroll += new System.EventHandler(this.trackBar_Scroll);
             // 
             // trackBar4
             // 
-            this.trackBar4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.trackBar4.Location = new System.Drawing.Point(456, 428);
-            this.trackBar4.Maximum = 100;
-            this.trackBar4.Minimum = 10;
-            this.trackBar4.Name = "trackBar4";
-            this.trackBar4.Size = new System.Drawing.Size(104, 45);
-            this.trackBar4.TabIndex = 15;
-            this.trackBar4.Value = 10;
-            this.trackBar4.Scroll += new System.EventHandler(this.trackBar3_Scroll);
+            this.trackBarAncho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trackBarAncho.Location = new System.Drawing.Point(456, 437);
+            this.trackBarAncho.Maximum = 100;
+            this.trackBarAncho.Minimum = 10;
+            this.trackBarAncho.Name = "trackBar4";
+            this.trackBarAncho.Size = new System.Drawing.Size(104, 45);
+            this.trackBarAncho.TabIndex = 15;
+            this.trackBarAncho.Value = 10;
+            this.trackBarAncho.Scroll += new System.EventHandler(this.trackBar_Scroll);
             // 
             // textBoxAlto
             // 
             this.textBoxAlto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxAlto.Location = new System.Drawing.Point(413, 432);
+            this.textBoxAlto.Location = new System.Drawing.Point(413, 441);
             this.textBoxAlto.Name = "textBoxAlto";
             this.textBoxAlto.Size = new System.Drawing.Size(37, 20);
             this.textBoxAlto.TabIndex = 16;
@@ -415,7 +415,7 @@
             // textBoxAncho
             // 
             this.textBoxAncho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxAncho.Location = new System.Drawing.Point(566, 429);
+            this.textBoxAncho.Location = new System.Drawing.Point(566, 438);
             this.textBoxAncho.Name = "textBoxAncho";
             this.textBoxAncho.Size = new System.Drawing.Size(37, 20);
             this.textBoxAncho.TabIndex = 16;
@@ -430,7 +430,7 @@
             this.panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel.Location = new System.Drawing.Point(291, 12);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(410, 410);
+            this.panel.Size = new System.Drawing.Size(420, 420);
             this.panel.TabIndex = 13;
             this.panel.TabStop = false;
             // 
@@ -442,14 +442,14 @@
             this.BackColor = System.Drawing.Color.Azure;
             this.Controls.Add(this.textBoxAncho);
             this.Controls.Add(this.textBoxAlto);
-            this.Controls.Add(this.trackBar4);
-            this.Controls.Add(this.trackBar3);
+            this.Controls.Add(this.trackBarAncho);
+            this.Controls.Add(this.trackBarAltura);
             this.Controls.Add(this.selector);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Editor";
-            this.Size = new System.Drawing.Size(800, 500);
+            this.Size = new System.Drawing.Size(809, 509);
             this.Tag = "Mesa";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tocarBoton);
             this.Resize += new System.EventHandler(this.Editor_Resize);
@@ -470,8 +470,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAltura)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAncho)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -498,8 +498,8 @@
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.PictureBox pictureBox16;
         public Plano panel;
-        private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.TrackBar trackBar4;
+        private System.Windows.Forms.TrackBar trackBarAltura;
+        private System.Windows.Forms.TrackBar trackBarAncho;
         private System.Windows.Forms.TextBox textBoxAlto;
         private System.Windows.Forms.TextBox textBoxAncho;
     }

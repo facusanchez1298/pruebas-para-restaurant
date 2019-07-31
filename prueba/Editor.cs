@@ -17,12 +17,6 @@ namespace prueba
             cantidad = 0;
             recargar();
             actualizarEventos();
-
-            this.Controls.Cast<Control>()
-                .Where(q => q.GetType() == typeof(TrackBar))
-                .ToList()
-                .ForEach(q => (q as TrackBar).Value = 100);
-            mostrarValoresTrackBar();
         }
 
         #region Propiedades
@@ -50,6 +44,14 @@ namespace prueba
             );
         }
 
+        public void recargarPlano()
+        {
+            cargarTrackBar();
+            this.panel = conexion.cargarPlano(plantilla, panel);
+            recargar();
+
+        }
+
         /// <summary>
         /// muestra todos los controles cargados
         /// </summary>
@@ -67,6 +69,7 @@ namespace prueba
         /// </summary>
         public void recargar()
         {
+            this.panel.Controls.Clear();
             conexion.cargarMesas(this, plantilla);
             this.panel.SendToBack();            
             actualizarEventos();
@@ -79,8 +82,9 @@ namespace prueba
         /// <param name="e"></param>
         private void tocarBoton(object sender, KeyEventArgs e)
         {
-            Control control = (Control)sender;           
+            Control control = (Control)sender;
 
+            Mensaje.mensajeError("entra aca");
             if (precionado)
             {
                 if (e.KeyCode == Keys.R)
@@ -197,14 +201,18 @@ namespace prueba
                     this.panel.Controls.Add(seleccionado);
                     conexion.agregarMesa(seleccionado, plantilla);
                 }           
-                //moviendo elemento nuevo
+                //moviendo elemento existente
                 else
                 {
                     if (!sePuedeMover())
                     {
-                        seleccionado.Location = inicial;                        
+                        seleccionado.Location = inicial;
                     }
-                    else conexion.editarMesa(seleccionado, plantilla);
+                    else
+                    {
+                        conexion.editarMesa(seleccionado, plantilla);
+                        recargarPlano();
+                    }
                 }
                 
             }
@@ -529,22 +537,46 @@ namespace prueba
         }
         #endregion
 
-        private void trackBar3_Scroll(object sender, EventArgs e)
+        private void trackBar_Scroll(object sender, EventArgs e)
         {
-            mostrarValoresTrackBar();
+            int alto = trackBarAltura.Value * 6 + (trackBarAltura.Value / 10) * 6;
+            int ancho = trackBarAncho.Value * 6 + (trackBarAncho.Value / 10) * 6;
+
+            if (alto > conexion.mayorY(plantilla))
+            {
+                if (ancho > conexion.mayorX(plantilla))
+                {
+                    mostrarValoresTrackBar();
+                    conexion.editarValores(plantilla, trackBarAltura, trackBarAncho);
+                    recargarPlano();
+                }
+                else trackBarAncho.Value = int.Parse(textBoxAncho.Text);
+
+            }
+             else trackBarAltura.Value = int.Parse(textBoxAlto.Text); 
+            
         }
 
         public void mostrarValoresTrackBar()
         {
-            textBoxAlto.Text = trackBar3.Value.ToString();
-            textBoxAncho.Text = trackBar4.Value.ToString();
+            textBoxAlto.Text = trackBarAltura.Value.ToString();
+            textBoxAncho.Text = trackBarAncho.Value.ToString();
         }
 
         private void Editor_Resize(object sender, EventArgs e)
         {
-            panel.Width = panel.Height;
-            label1.Text = this.Height.ToString();
-            label2.Text = this.Width.ToString();
+            label1.Text = this.panel.Height.ToString();
+            label2.Text = this.panel.Width.ToString();
+
+            recargarPlano();           
+        }
+        /// <summary>
+        /// busca en la base de datos el valor de los track bar
+        /// </summary>
+        public void cargarTrackBar()
+        {
+            conexion.cargarTrackBar(plantilla, trackBarAltura, trackBarAncho);
+            mostrarValoresTrackBar();
         }
     }
 }

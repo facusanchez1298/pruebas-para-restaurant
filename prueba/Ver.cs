@@ -89,16 +89,6 @@ namespace prueba
             this.Hide();
         }
 
-        /// <summary>
-        /// abre la ventana para cargar las ordenes
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void item_DoubleClick(object sender, EventArgs e)
-        {            
-            AbrirFormEnPanel<Datos>(sender as Item);
-        }
-
         #region botones de cambio de plantilla
         private void button3_Click(object sender, EventArgs e)
         {
@@ -377,9 +367,14 @@ namespace prueba
         private void Ver_Resize(object sender, EventArgs e)
         {
 
-            //planoVer.Width = planoVer.Height;
+            recargarPlano();
             this.labelAlto.Text = this.planoVer.Height.ToString();
             this.labelAncho.Text = this.planoVer.Width.ToString();            
+        }
+
+        internal void item_DoubleClick(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel<Datos>(sender as Item);
         }
     }
 }

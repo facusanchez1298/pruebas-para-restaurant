@@ -20,6 +20,8 @@ namespace prueba
                             "ancho int," +
                             "plantilla int);";
 
+      
+
         string tablaMesa = "create table if not exists Mesa(" +
                                     "numero integer," +
                                     "dia int," +
@@ -685,6 +687,7 @@ namespace prueba
             }
         }
 
+        
         internal DataTable cargarTablaMozos(string filtro, bool mañana, bool tarde, bool noche)
         {
             try
@@ -1278,11 +1281,129 @@ namespace prueba
 
                 while (lector.Read())
                 {
-                    planoVer.Height = lector.GetInt32(0);                    
-                    planoVer.Width = lector.GetInt32(1);
+                    planoVer.Height = lector.GetInt32(0) * 6 + (lector.GetInt32(0)/10) * 6;                    
+                    planoVer.Width = lector.GetInt32(1) * 6 + (lector.GetInt32(1)/10) * 6;
                 }
 
                 return planoVer;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal void editarValores(int plantilla, TrackBar trackBarAltura, TrackBar trackBarAncho)
+        {
+            try
+            {
+
+                conectar();
+
+                string sql = "update panel " +
+                    "set alto = " + trackBarAltura.Value +
+                    ", ancho = " + trackBarAncho.Value +
+                    " where plantilla = " + plantilla;                    
+                    
+
+                command = new SQLiteCommand(sql, connection);
+                SQLiteDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    trackBarAltura.Value = lector.GetInt32(0);
+                    trackBarAncho.Value = lector.GetInt32(1);
+                }
+
+                command.Connection.Close(); ;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        public int mayorY(int plantilla)
+        {
+            try
+            {
+                int numero = 0;
+                conectar();
+                string sql = "select max(y + alto) from mesa where dia = " + plantilla;
+                command = new SQLiteCommand(sql, connection);
+                SQLiteDataReader lector = command.ExecuteReader();
+                while (lector.Read())
+                {
+                    numero = lector.GetInt32(0);                    
+                }
+                command.Connection.Close();
+                return numero;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        public int mayorX(int plantilla)
+        {
+            try
+            {
+                int numero = 0;
+                conectar();
+                string sql = "select max(x + ancho) from mesa where dia = " + plantilla;
+                command = new SQLiteCommand(sql, connection);
+                SQLiteDataReader lector = command.ExecuteReader();
+                while (lector.Read())
+                {
+                    numero = lector.GetInt32(0);
+                }
+                command.Connection.Close();
+                return numero;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal void cargarTrackBar(int plantilla, TrackBar trackBarAltura, TrackBar trackBarAncho)
+        {
+            try
+            {
+
+                conectar();
+
+                string sql = "select * from panel where plantilla = " + plantilla;
+
+                command = new SQLiteCommand(sql, connection);
+                SQLiteDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    trackBarAltura.Value = lector.GetInt32(0);
+                    trackBarAncho.Value = lector.GetInt32(1);
+                }
+
+                command.Connection.Close(); ;
             }
             catch (Exception e)
             {
