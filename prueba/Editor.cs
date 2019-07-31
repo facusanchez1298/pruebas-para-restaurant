@@ -185,23 +185,29 @@ namespace prueba
             final = control.Location;
             if (seleccionado != null)
             {
-                seleccionado.BackColor = SystemColors.ActiveCaption;
+                
                 //elemento recien creado
                 if (seleccionado.index == 0)
                 {
                     if (!sePuedeColocar()) borrarControl(seleccionado);
+                    else
+                    {
+                        //si no tiene index le colocamos uno y lo guardamos
+                        seleccionado.darIndex(cantidad);
 
-                    //si no tiene index le colocamos uno y lo guardamos
-                    seleccionado.darIndex(cantidad);
-                    cantidad += 1;
+                        //arreglamos posicion
+                        int x = seleccionado.Location.X - panel.Location.X;
+                        int y = seleccionado.Location.Y - panel.Location.Y;
+                        seleccionado.Location = new Point(x, y);
 
-                    //arreglamos posicion
-                    int x = seleccionado.Location.X - panel.Location.X;
-                    int y = seleccionado.Location.Y - panel.Location.Y;
-                    seleccionado.Location = new Point(x, y);
+                        //agregamos al panel
+                        this.panel.Controls.Add(seleccionado);
+                        cantidad += 1;
 
-                    this.panel.Controls.Add(seleccionado);
-                    conexion.agregarMesa(seleccionado, plantilla);
+                        //guardamos en base de datos
+                        conexion.agregarMesa(seleccionado, plantilla);
+                        recargarPlano();
+                    }
                 }           
                 //moviendo elemento existente
                 else
@@ -216,7 +222,7 @@ namespace prueba
                         recargarPlano();
                     }
                 }
-                
+                seleccionado.BackColor = SystemColors.ActiveCaption;
             }
 
 

@@ -435,7 +435,7 @@ namespace prueba
                 command.Connection.Close();
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 int Pedido = padre.numeroPedido;
                 string turno = padre.padre.turno;
@@ -1340,9 +1340,13 @@ namespace prueba
                 string sql = "select max(y + alto) from mesa where dia = " + plantilla;
                 command = new SQLiteCommand(sql, connection);
                 SQLiteDataReader lector = command.ExecuteReader();
+                
                 while (lector.Read())
                 {
-                    numero = lector.GetInt32(0);                    
+                    if (!lector.IsDBNull(0))
+                    {                       
+                        numero = lector.GetInt32(0);
+                    }
                 }
                 command.Connection.Close();
                 return numero;
@@ -1369,7 +1373,10 @@ namespace prueba
                 SQLiteDataReader lector = command.ExecuteReader();
                 while (lector.Read())
                 {
-                    numero = lector.GetInt32(0);
+                    if (!lector.IsDBNull(0))
+                    {
+                        numero = lector.GetInt32(0);
+                    }
                 }
                 command.Connection.Close();
                 return numero;

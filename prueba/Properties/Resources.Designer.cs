@@ -123,16 +123,6 @@ namespace prueba.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _5f6acd2ede815a125e954977821f8ed3 {
-            get {
-                object obj = ResourceManager.GetObject("5f6acd2ede815a125e954977821f8ed3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap dining_table {
             get {
                 object obj = ResourceManager.GetObject("dining-table", resourceCulture);

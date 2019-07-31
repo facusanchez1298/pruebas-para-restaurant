@@ -193,9 +193,6 @@
   <data name="mesa redonda 6 sillas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mesa redonda 6 sillas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="5f6acd2ede815a125e954977821f8ed3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\5f6acd2ede815a125e954977821f8ed3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="MesaP8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MesaP8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

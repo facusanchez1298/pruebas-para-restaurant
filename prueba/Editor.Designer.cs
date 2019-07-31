@@ -239,7 +239,6 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox7.Image = global::prueba.Properties.Resources.pared_roja;
-            this.pictureBox7.InitialImage = global::prueba.Properties.Resources._5f6acd2ede815a125e954977821f8ed3;
             this.pictureBox7.Location = new System.Drawing.Point(105, 315);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox7.Name = "pictureBox7";
