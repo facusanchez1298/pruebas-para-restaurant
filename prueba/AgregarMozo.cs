@@ -54,6 +54,7 @@ namespace prueba
                         Conexion.agregarMozo(nombre, estaALaMañana, estaALaTarde, estaALaNoche);
                         vaciarCampos();
                         padre.recargarTabla();
+                        Mensaje.mensajeError("se agrego con exito");
                     }
                     else Mensaje.mensajeError("El mozo no tiene un turno asignado");
                 }

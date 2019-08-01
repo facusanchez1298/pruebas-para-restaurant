@@ -26,7 +26,7 @@ namespace prueba
 
         #region botones
 
-        private void button2_Click(object sender, EventArgs e)
+        private void borrar_Click(object sender, EventArgs e)
         {
             if(seleccionado != null)
             {
@@ -35,14 +35,9 @@ namespace prueba
                 seleccionado = null;
                 RecargarTabla();
             }
-        }
+        }       
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void salir_click(object sender, EventArgs e)
         {
             salir();
         }

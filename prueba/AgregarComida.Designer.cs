@@ -69,7 +69,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 23);
             this.button1.TabIndex = 19;
-            this.button1.Text = "Aceptar";
+            this.button1.Text = "Salir";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -148,7 +148,7 @@
             this.Name = "AgregarComida";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Agregar Mozo";
+            this.Text = "Agregar Comida";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -147,7 +147,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="labelNumero.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -177,7 +177,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelNumero.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -207,7 +207,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -237,7 +237,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="labelPrecio.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Rounded MT Bold, 9.75pt</value>
@@ -264,7 +264,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelPrecio.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -294,7 +294,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -324,7 +324,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="labelLLego.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Rounded MT Bold, 9.75pt</value>
@@ -351,7 +351,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelLLego.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="labelActual.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Rounded MT Bold, 9.75pt</value>
@@ -378,7 +378,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelActual.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -397,13 +397,13 @@
     <value>NoControl</value>
   </data>
   <data name="buttonAgregar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 266</value>
+    <value>12, 240</value>
   </data>
   <data name="buttonAgregar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
   <data name="buttonAgregar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 23</value>
+    <value>126, 26</value>
   </data>
   <data name="buttonAgregar.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -423,44 +423,44 @@
   <data name="&gt;&gt;buttonAgregar.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="buttonBorrar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="buttonSalir.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="buttonBorrar.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="buttonSalir.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
   </data>
-  <data name="buttonBorrar.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonSalir.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Rounded MT Bold, 9.75pt</value>
   </data>
-  <data name="buttonBorrar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonSalir.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="buttonBorrar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 266</value>
+  <data name="buttonSalir.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 266</value>
   </data>
-  <data name="buttonBorrar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonSalir.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
-  <data name="buttonBorrar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 23</value>
+  <data name="buttonSalir.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 26</value>
   </data>
-  <data name="buttonBorrar.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonSalir.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="buttonBorrar.Text" xml:space="preserve">
-    <value>Borrar</value>
+  <data name="buttonSalir.Text" xml:space="preserve">
+    <value>Salir</value>
   </data>
-  <data name="&gt;&gt;buttonBorrar.Name" xml:space="preserve">
-    <value>buttonBorrar</value>
+  <data name="&gt;&gt;buttonSalir.Name" xml:space="preserve">
+    <value>buttonSalir</value>
   </data>
-  <data name="&gt;&gt;buttonBorrar.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonSalir.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonBorrar.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonSalir.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;buttonBorrar.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;buttonSalir.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="buttonOcupar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -475,13 +475,13 @@
     <value>NoControl</value>
   </data>
   <data name="buttonOcupar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 266</value>
+    <value>138, 240</value>
   </data>
   <data name="buttonOcupar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
   <data name="buttonOcupar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 23</value>
+    <value>126, 26</value>
   </data>
   <data name="buttonOcupar.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -499,7 +499,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonOcupar.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="buttonAceptar.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -559,7 +559,7 @@
     <value>12, 127</value>
   </data>
   <data name="dataGridView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 133</value>
+    <value>252, 112</value>
   </data>
   <data name="dataGridView1.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -595,7 +595,37 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
+  </data>
+  <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Rounded MT Bold, 9.75pt</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 266</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 26</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

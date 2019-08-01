@@ -93,10 +93,9 @@
             this.buttonBorrar.Name = "buttonBorrar";
             this.buttonBorrar.Size = new System.Drawing.Size(126, 30);
             this.buttonBorrar.TabIndex = 6;
-            this.buttonBorrar.Text = "Borrar";
+            this.buttonBorrar.Text = "Editar";
             this.buttonBorrar.UseCompatibleTextRendering = true;
             this.buttonBorrar.UseVisualStyleBackColor = false;
-            this.buttonBorrar.Click += new System.EventHandler(this.buttonBorrar_Click);
             // 
             // buttonAgregar
             // 
@@ -111,10 +110,10 @@
             this.buttonAgregar.Name = "buttonAgregar";
             this.buttonAgregar.Size = new System.Drawing.Size(126, 30);
             this.buttonAgregar.TabIndex = 7;
-            this.buttonAgregar.Text = "Agregar";
+            this.buttonAgregar.Text = "Salir";
             this.buttonAgregar.UseCompatibleTextRendering = true;
             this.buttonAgregar.UseVisualStyleBackColor = false;
-            this.buttonAgregar.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAgregar.Click += new System.EventHandler(this.buttonAceptar_Click);
             // 
             // buttonEditar
             // 
@@ -129,9 +128,10 @@
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(126, 30);
             this.buttonEditar.TabIndex = 5;
-            this.buttonEditar.Text = "Editar";
+            this.buttonEditar.Text = "Agregar";
             this.buttonEditar.UseCompatibleTextRendering = true;
             this.buttonEditar.UseVisualStyleBackColor = false;
+            this.buttonEditar.Click += new System.EventHandler(this.buttonAgregar_Click);
             // 
             // buttonAceptar
             // 
@@ -146,10 +146,10 @@
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(127, 30);
             this.buttonAceptar.TabIndex = 8;
-            this.buttonAceptar.Text = "Aceptar";
+            this.buttonAceptar.Text = "Borrar";
             this.buttonAceptar.UseCompatibleTextRendering = true;
             this.buttonAceptar.UseVisualStyleBackColor = false;
-            this.buttonAceptar.Click += new System.EventHandler(this.buttonAceptar_Click);
+            this.buttonAceptar.Click += new System.EventHandler(this.buttonBorrar_Click);
             // 
             // checkBoxMañana
             // 

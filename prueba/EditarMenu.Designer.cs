@@ -53,10 +53,10 @@
             this.buttonOcupar.Name = "buttonOcupar";
             this.buttonOcupar.Size = new System.Drawing.Size(126, 30);
             this.buttonOcupar.TabIndex = 19;
-            this.buttonOcupar.Text = "Aceptar";
+            this.buttonOcupar.Text = "Borrar";
             this.buttonOcupar.UseCompatibleTextRendering = true;
             this.buttonOcupar.UseVisualStyleBackColor = false;
-            this.buttonOcupar.Click += new System.EventHandler(this.button1_Click);
+            this.buttonOcupar.Click += new System.EventHandler(this.borrar_Click);
             // 
             // checkBoxSinTACC
             // 
@@ -132,10 +132,10 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(126, 30);
             this.button1.TabIndex = 19;
-            this.button1.Text = "Agregar";
+            this.button1.Text = "Salir";
             this.button1.UseCompatibleTextRendering = true;
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.AgregarComida_Click);
+            this.button1.Click += new System.EventHandler(this.salir_click);
             // 
             // button2
             // 
@@ -150,10 +150,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 30);
             this.button2.TabIndex = 19;
-            this.button2.Text = "Borrar";
+            this.button2.Text = "Editar";
             this.button2.UseCompatibleTextRendering = true;
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -168,10 +167,10 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 30);
             this.button3.TabIndex = 19;
-            this.button3.Text = "Editar";
+            this.button3.Text = "Agregar";
             this.button3.UseCompatibleTextRendering = true;
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.AgregarComida_Click);
             // 
             // EditarMenu
             // 

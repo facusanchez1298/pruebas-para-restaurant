@@ -29,11 +29,63 @@ namespace prueba
             
         }
 
-        private void Ver_KeyDown(object sender, KeyEventArgs e)
+        #region botones
+        /// <summary>
+        /// abre la ventana del editor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Editar_Click(object sender, EventArgs e)
         {
-            Mensaje.mensajeError("tocaste: " + e.KeyCode);
-            
+            Form1 form1 = new Form1(this, plantilla);
+            form1.Show();
+            this.Hide();
         }
+        #endregion
+
+        #region botones de cambio de plantilla
+        private void button3_Click(object sender, EventArgs e)
+        {
+            plantilla = 1;
+            recargarPlano();
+        }
+
+
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            plantilla = 2;
+            recargarPlano();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            plantilla = 3;
+            recargarPlano();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            plantilla = 4;
+            recargarPlano();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            plantilla = 5;
+            recargarPlano();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            plantilla = 6;
+            recargarPlano();
+        }
+
+
+        #endregion
+
+
 
         public void recargarPlano()
         {
@@ -85,60 +137,6 @@ namespace prueba
             labelDia.Text = DateTime.Now.ToString("dddd");
         }
 
-        /// <summary>
-        /// abre la ventana del editor
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Editar_Click(object sender, EventArgs e)
-        {
-            Form1 form1 = new Form1(this, plantilla);
-            form1.Show();
-            this.Hide();
-        }
-
-        #region botones de cambio de plantilla
-        private void button3_Click(object sender, EventArgs e)
-        {
-            plantilla = 1;
-            recargarPlano();
-        }
-
-        
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            plantilla = 2;
-            recargarPlano();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            plantilla = 3;
-            recargarPlano();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            plantilla = 4;
-            recargarPlano();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            plantilla = 5;
-            recargarPlano();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            plantilla = 6;
-            recargarPlano();
-        }
-
-
-        #endregion
-
         internal void Mouse_hover(object sender, EventArgs e)
         {            
             (sender as Item).BackColor = (sender as Item).ocupado ? Color.Red : Color.Green;
@@ -149,15 +147,23 @@ namespace prueba
             (sender as Item).BackColor = SystemColors.ActiveCaption;
         }
 
+        /// <summary>
+        /// lo usamos para abrir datos y pedidos
+        /// se deben poder usar ambos al mismo tiempo
+        /// y deberian cerrar a mozos y menu
+        /// </summary>
+        /// <typeparam name="form"></typeparam>
+        /// <param name="item"></param>
         public void AbrirFormEnPanel<form>(Item item) where form : Form, Dar, new() 
         {
             
-            form formulario;
-            formulario = panelDatos.Controls.OfType<form>().FirstOrDefault();
+            Form formulario;
+            formulario = panelDatos.Controls.OfType<Form>().FirstOrDefault();
 
             if (formulario != null)
             {
                 cerrarPaneles();
+                formulario = panelDatos.Controls.OfType<form>().FirstOrDefault();
             }
 
             //si el formulario/instancia no existe, creamos nueva instancia y mostramos
@@ -173,8 +179,8 @@ namespace prueba
                 formulario.Show();
                
 
-                formulario.darItem(item);
-                formulario.darPadre(this);
+                (formulario as Dar).darItem(item);
+                (formulario as Dar).darPadre(this);
                 
 
 
@@ -193,17 +199,15 @@ namespace prueba
 
             }
         }
+
+
         
+
         internal void AbrirFormEnPanel<form>(Item item, Datos datos) where form : Pedido, new()
         {
             form formulario;
             formulario = panelDatos.Controls.OfType<form>().FirstOrDefault();
-
-            //if (formulario != null)
-            //{
-            //    cerrarPaneles();
-            //}
-
+            
             //si el formulario/instancia no existe, creamos nueva instancia y mostramos
             if (formulario == null)
             {
@@ -243,19 +247,22 @@ namespace prueba
         {
             panelDatos.AutoSize = true;
         }
-
+        /// <summary>
+        /// abre el menu y los mozos, deberia cerrar todo lo demas
+        /// </summary>
+        /// <typeparam name="form"></typeparam>
         internal void AbrirFormEnPanel<form>() where form : Form, new()
         {
-            form formulario;
-            formulario = panelDatos.Controls.OfType<form>().FirstOrDefault();
-
-            Form otro = panelDatos.Controls.OfType<Form>().FirstOrDefault();
+            Form formulario;
+            formulario = panelDatos.Controls.OfType<Form>().FirstOrDefault();
+            
 
             //si hay formularios del otro tipo los cerramos
 
-            if (otro != null)
+            if (formulario != null)
             {
                 cerrarPaneles();
+                formulario = panelDatos.Controls.OfType<form>().FirstOrDefault();
             }
 
             //si el formulario/instancia no existe, creamos nueva instancia y mostramos
@@ -286,10 +293,7 @@ namespace prueba
             }
         }
 
-        private void closeForms(object sender, FormClosedEventArgs e)
-        {
-            //panelPedido.Hide();
-        }
+       
 
         public void cerrarPaneles()
         {

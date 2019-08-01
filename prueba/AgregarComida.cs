@@ -53,6 +53,7 @@ namespace prueba
                     Conexion.AgregarComida(nombre, vegetariano, sinTACC, precio);
                     Mensaje.mensajeError("se agrego con exito");
                     vaciarCampos();
+                    Pedido.RecargarTabla();
                 }
                 else Mensaje.mensajeError("El precio ingresado debe ser flotante");
             }

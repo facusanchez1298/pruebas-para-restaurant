@@ -50,7 +50,7 @@ namespace prueba
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAgregar_Click(object sender, EventArgs e)
         {
             AgregarMozo agregarMozo = new AgregarMozo(this);
             agregarMozo.ShowDialog();

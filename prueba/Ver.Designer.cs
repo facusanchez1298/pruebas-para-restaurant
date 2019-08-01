@@ -48,14 +48,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelTurno = new System.Windows.Forms.Panel();
             this.labelAlto = new System.Windows.Forms.Label();
             this.labelAncho = new System.Windows.Forms.Label();
             this.planoVer = new prueba.Plano();
             this.panelReloj.SuspendLayout();
             this.panelDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.panelTurno.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelReloj
@@ -314,15 +314,15 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Turno:";
             // 
-            // panel1
+            // panelTurno
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Location = new System.Drawing.Point(359, 440);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(124, 24);
-            this.panel1.TabIndex = 13;
+            this.panelTurno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelTurno.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTurno.Controls.Add(this.comboBox1);
+            this.panelTurno.Location = new System.Drawing.Point(359, 440);
+            this.panelTurno.Name = "panelTurno";
+            this.panelTurno.Size = new System.Drawing.Size(124, 24);
+            this.panelTurno.TabIndex = 13;
             // 
             // labelAlto
             // 
@@ -378,7 +378,7 @@
             this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.panelDatos);
             this.Controls.Add(this.panelReloj);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelTurno);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Ver";
@@ -389,7 +389,7 @@
             this.panelReloj.ResumeLayout(false);
             this.panelDatos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.panelTurno.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,7 +415,7 @@
         private System.Windows.Forms.Button buttonMozo;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelTurno;
         private System.Windows.Forms.Label labelAlto;
         private System.Windows.Forms.Label labelAncho;
     }
