@@ -17,7 +17,7 @@ namespace prueba
             editor.Focus();
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
+        public void button1_Click(object sender, System.EventArgs e)
         {
             this.Close();
             padre.Show();

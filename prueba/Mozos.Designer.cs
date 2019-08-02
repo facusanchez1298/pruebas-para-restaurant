@@ -96,6 +96,7 @@
             this.buttonBorrar.Text = "Editar";
             this.buttonBorrar.UseCompatibleTextRendering = true;
             this.buttonBorrar.UseVisualStyleBackColor = false;
+            this.buttonBorrar.Click += new System.EventHandler(this.buttonBorrar_Click_1);
             // 
             // buttonAgregar
             // 

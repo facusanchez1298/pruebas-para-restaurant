@@ -10,37 +10,38 @@ using System.Windows.Forms;
 
 namespace prueba
 {
-    public partial class AgregarComida : Form
+    public partial class EditarComida : Form
     {
-
         Conexion Conexion;
+        int id;
         EditarMenu menu;
 
-        public AgregarComida(EditarMenu menu)
+        public EditarComida(int id, EditarMenu menu)
         {
-            this.menu = menu;
-            Conexion = new Conexion();
+            this.id = id;
             InitializeComponent();
+            Conexion = new Conexion();
+            Conexion.cargarComida(this, id);
+            this.menu = menu;
         }
 
-
-
-        private void button1_Click(object sender, EventArgs e)
+        private void cancelar_Click(object sender, EventArgs e)
         {
-            if (textBoxNombre.Text.Any() || textBoxPrecio.Text.Any())
+            if(Mensaje.mensajePregunta("Esta seguro que desea salir sin guardar?", "salir sin guardar"))
             {
-
-                if (Mensaje.mensajePregunta("seguro quieres salir sin guardar?", "seguro desea salir?"))
-                {
-                    this.Close();
-                    menu.RecargarTabla();
-                }
+                this.Close();
             }
-            else this.Close();
         }
 
-        private void buttonOcupar_Click(object sender, EventArgs e)
+        private void aceptar_Click(object sender, EventArgs e)
         {
+            //string nombre = textBoxNombre.Text;
+            //string precio = textBoxPrecio.Text;
+            //bool sinTacc = checkBoxSinTACC.Checked;
+            //bool vegetariano = checkBoxVegetariano.Checked;
+
+           
+
             if (!hayCamposVacios())
             {
                 if (esFloat(textBoxPrecio.Text))
@@ -48,9 +49,9 @@ namespace prueba
                     string nombre = textBoxNombre.Text;
                     bool vegetariano = checkBoxVegetariano.Checked;
                     bool sinTACC = checkBoxSinTACC.Checked;
-                    float precio = float.Parse(textBoxPrecio.Text);
+                    string precio = textBoxPrecio.Text;
 
-                    Conexion.AgregarComida(nombre, vegetariano, sinTACC, precio);
+                    Conexion.editarComida(id, nombre, precio, sinTACC, vegetariano);
                     Mensaje.mensajeError("se agrego con exito");
                     vaciarCampos();
                     menu.RecargarTabla();
@@ -73,7 +74,7 @@ namespace prueba
         {
             float x;
 
-            if(float.TryParse(numero, out x))
+            if (float.TryParse(numero, out x))
             {
                 return true;
             }
@@ -87,5 +88,7 @@ namespace prueba
             checkBoxSinTACC.Checked = false;
             checkBoxVegetariano.Checked = false;
         }
+
+
     }
 }

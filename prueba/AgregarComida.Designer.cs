@@ -54,7 +54,7 @@
             this.textBoxNombre.Location = new System.Drawing.Point(84, 21);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(168, 20);
-            this.textBoxNombre.TabIndex = 15;
+            this.textBoxNombre.TabIndex = 1;
             // 
             // button1
             // 
@@ -68,7 +68,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 23);
-            this.button1.TabIndex = 19;
+            this.button1.TabIndex = 6;
             this.button1.Text = "Salir";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -85,7 +85,7 @@
             this.buttonOcupar.Margin = new System.Windows.Forms.Padding(0);
             this.buttonOcupar.Name = "buttonOcupar";
             this.buttonOcupar.Size = new System.Drawing.Size(78, 23);
-            this.buttonOcupar.TabIndex = 20;
+            this.buttonOcupar.TabIndex = 5;
             this.buttonOcupar.Text = "Agregar";
             this.buttonOcupar.UseVisualStyleBackColor = false;
             this.buttonOcupar.Click += new System.EventHandler(this.buttonOcupar_Click);
@@ -95,7 +95,7 @@
             this.textBoxPrecio.Location = new System.Drawing.Point(84, 47);
             this.textBoxPrecio.Name = "textBoxPrecio";
             this.textBoxPrecio.Size = new System.Drawing.Size(168, 20);
-            this.textBoxPrecio.TabIndex = 15;
+            this.textBoxPrecio.TabIndex = 2;
             // 
             // label2
             // 
@@ -114,7 +114,7 @@
             this.checkBoxVegetariano.Location = new System.Drawing.Point(18, 73);
             this.checkBoxVegetariano.Name = "checkBoxVegetariano";
             this.checkBoxVegetariano.Size = new System.Drawing.Size(109, 19);
-            this.checkBoxVegetariano.TabIndex = 18;
+            this.checkBoxVegetariano.TabIndex = 3;
             this.checkBoxVegetariano.Text = " Vegetariano";
             this.checkBoxVegetariano.UseVisualStyleBackColor = true;
             // 
@@ -125,7 +125,7 @@
             this.checkBoxSinTACC.Location = new System.Drawing.Point(153, 73);
             this.checkBoxSinTACC.Name = "checkBoxSinTACC";
             this.checkBoxSinTACC.Size = new System.Drawing.Size(99, 19);
-            this.checkBoxSinTACC.TabIndex = 17;
+            this.checkBoxSinTACC.TabIndex = 4;
             this.checkBoxSinTACC.Text = "Sin T.A.C.C";
             this.checkBoxSinTACC.UseVisualStyleBackColor = true;
             // 

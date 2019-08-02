@@ -30,7 +30,7 @@ namespace prueba
         {
             if(seleccionado != null)
             {
-                float id = float.Parse(seleccionado.Cells[0].Value.ToString());
+                int id = int.Parse(seleccionado.Cells[0].Value.ToString());
                 conexion.borrarComida(id);
                 seleccionado = null;
                 RecargarTabla();
@@ -115,6 +115,16 @@ namespace prueba
             }
         }
 
-       
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (seleccionado != null)
+            {
+                int id = int.Parse(seleccionado.Cells[0].Value.ToString());
+                EditarComida editarComida = new EditarComida(id, this);
+                editarComida.Show();
+                seleccionado = null;
+                RecargarTabla();
+            }
+        }
     }
 }

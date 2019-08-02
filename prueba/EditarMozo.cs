@@ -10,23 +10,25 @@ using System.Windows.Forms;
 
 namespace prueba
 {
-    public partial class AgregarMozo : Form
+    public partial class EditarMozo : Form
     {
 
         Conexion Conexion;
         Mozos padre;
+        int id;
 
-        public AgregarMozo(Mozos padre)
+        public EditarMozo(Mozos padre, int id)
         {
+            this.id = id;
             this.padre = padre;
             Conexion = new Conexion();
             InitializeComponent();
-            
+            Conexion.cargarTablaMozos(this, id);
         }
 
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void salir_Click(object sender, EventArgs e)
         {
             if (textBoxNombre.Text.Any())
             {
@@ -40,27 +42,27 @@ namespace prueba
             else this.Close();
         }
 
-        private void buttonAgregar_Click(object sender, EventArgs e)
+        private void aceptar_Click(object sender, EventArgs e)
         {
-            
-                string nombre = textBoxNombre.Text;
-                bool estaALaMañana = checkBoxMañana.Checked;
-                bool estaALaTarde = checkBoxTarde.Checked;
-                bool estaALaNoche = checkBoxNoche.Checked;
 
-                if (nombre.Any())
+            string nombre = textBoxNombre.Text;
+            bool estaALaMañana = checkBoxMañana.Checked;
+            bool estaALaTarde = checkBoxTarde.Checked;
+            bool estaALaNoche = checkBoxNoche.Checked;
+
+            if (nombre.Any())
+            {
+                if (TieneTurno())
                 {
-                    if (TieneTurno())
-                    {
-                        Conexion.agregarMozo(nombre, estaALaMañana, estaALaTarde, estaALaNoche);
-                        vaciarCampos();
-                        padre.recargarTabla();
-                        Mensaje.mensajeError("se agrego con exito");
-                    }
-                    else Mensaje.mensajeError("El mozo no tiene un turno asignado");
+                    Conexion.editarMozo(id, nombre, estaALaMañana, estaALaTarde, estaALaNoche);
+                    vaciarCampos();
+                    padre.recargarTabla();
+                    Mensaje.mensajeError("se agrego con exito");
                 }
-                else Mensaje.mensajeError("El mozo no tiene nombre");
-            
+                else Mensaje.mensajeError("El mozo no tiene un turno asignado");
+            }
+            else Mensaje.mensajeError("El mozo no tiene nombre");
+
         }
 
 
@@ -73,7 +75,7 @@ namespace prueba
             if (!estaALaMañana && !estaALaTarde && !estaALaNoche) return false;
             else return true;
         }
-                
+
         public void vaciarCampos()
         {
             textBoxNombre.Text = "";
@@ -81,5 +83,7 @@ namespace prueba
             checkBoxTarde.Checked = false;
             checkBoxNoche.Checked = false;
         }
+
+        
     }
 }

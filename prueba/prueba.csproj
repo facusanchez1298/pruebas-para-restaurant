@@ -126,11 +126,23 @@
     <Compile Include="Datos.Designer.cs">
       <DependentUpon>Datos.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditarComida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarComida.Designer.cs">
+      <DependentUpon>EditarComida.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditarMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EditarMenu.Designer.cs">
       <DependentUpon>EditarMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditarMozo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarMozo.Designer.cs">
+      <DependentUpon>EditarMozo.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -197,8 +209,14 @@
     <EmbeddedResource Include="Datos.resx">
       <DependentUpon>Datos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditarComida.resx">
+      <DependentUpon>EditarComida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditarMenu.resx">
       <DependentUpon>EditarMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarMozo.resx">
+      <DependentUpon>EditarMozo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

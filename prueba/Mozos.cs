@@ -98,6 +98,18 @@ namespace prueba
                 seleccionado = dataGridView1.Rows[e.RowIndex];
 
             }
-        }       
+        }
+
+        private void buttonBorrar_Click_1(object sender, EventArgs e)
+        {
+            if(seleccionado != null)
+            {
+                int index = int.Parse(seleccionado.Cells["id"].Value.ToString());
+                EditarMozo editarMozo = new EditarMozo(this, index);
+                editarMozo.ShowDialog();
+                seleccionado = null;
+                recargarTabla();                
+            }
+        }
     }
 }

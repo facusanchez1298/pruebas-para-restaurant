@@ -1,6 +1,6 @@
 ﻿namespace prueba
 {
-    partial class AgregarMozo
+    partial class EditarMozo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarMozo));
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -71,7 +70,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Salir";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.salir_Click);
             // 
             // buttonOcupar
             // 
@@ -88,7 +87,7 @@
             this.buttonOcupar.TabIndex = 5;
             this.buttonOcupar.Text = "Agregar";
             this.buttonOcupar.UseVisualStyleBackColor = false;
-            this.buttonOcupar.Click += new System.EventHandler(this.buttonAgregar_Click);
+            this.buttonOcupar.Click += new System.EventHandler(this.aceptar_Click);
             // 
             // checkBoxNoche
             // 
@@ -136,7 +135,7 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "Turno:";
             // 
-            // AgregarMozo
+            // EditarMozo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -151,10 +150,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "AgregarMozo";
+            this.Name = "EditarMozo";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Mozo";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -163,12 +161,12 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonOcupar;
-        private System.Windows.Forms.CheckBox checkBoxNoche;
-        private System.Windows.Forms.CheckBox checkBoxTarde;
-        private System.Windows.Forms.CheckBox checkBoxMañana;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox textBoxNombre;
+        public System.Windows.Forms.CheckBox checkBoxNoche;
+        public System.Windows.Forms.CheckBox checkBoxTarde;
+        public System.Windows.Forms.CheckBox checkBoxMañana;
     }
 }

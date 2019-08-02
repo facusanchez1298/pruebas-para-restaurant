@@ -44,6 +44,7 @@
             this.textBoxAlto = new System.Windows.Forms.TextBox();
             this.textBoxAncho = new System.Windows.Forms.TextBox();
             this.panel = new prueba.Plano();
+            this.buttonEditar = new System.Windows.Forms.Button();
             this.selector.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -229,7 +230,7 @@
             // trackBarAltura
             // 
             this.trackBarAltura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.trackBarAltura.Location = new System.Drawing.Point(291, 437);
+            this.trackBarAltura.Location = new System.Drawing.Point(291, 438);
             this.trackBarAltura.Maximum = 100;
             this.trackBarAltura.Minimum = 10;
             this.trackBarAltura.Name = "trackBarAltura";
@@ -242,12 +243,12 @@
             // trackBarAncho
             // 
             this.trackBarAncho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.trackBarAncho.Location = new System.Drawing.Point(456, 437);
+            this.trackBarAncho.Location = new System.Drawing.Point(456, 438);
             this.trackBarAncho.Maximum = 100;
             this.trackBarAncho.Minimum = 10;
             this.trackBarAncho.Name = "trackBarAncho";
             this.trackBarAncho.Size = new System.Drawing.Size(104, 45);
-            this.trackBarAncho.TabIndex = 15;
+            this.trackBarAncho.TabIndex = 16;
             this.trackBarAncho.Value = 10;
             this.trackBarAncho.Scroll += new System.EventHandler(this.trackBar_Scroll);
             this.trackBarAncho.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tocarBoton);
@@ -255,7 +256,7 @@
             // textBoxAlto
             // 
             this.textBoxAlto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxAlto.Location = new System.Drawing.Point(413, 441);
+            this.textBoxAlto.Location = new System.Drawing.Point(413, 438);
             this.textBoxAlto.Name = "textBoxAlto";
             this.textBoxAlto.ReadOnly = true;
             this.textBoxAlto.Size = new System.Drawing.Size(37, 20);
@@ -289,12 +290,28 @@
             this.panel.TabStop = false;
             this.panel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tocarBoton);
             // 
+            // buttonEditar
+            // 
+            this.buttonEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonEditar.BackColor = System.Drawing.Color.Azure;
+            this.buttonEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonEditar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonEditar.Location = new System.Drawing.Point(618, 438);
+            this.buttonEditar.Name = "buttonEditar";
+            this.buttonEditar.Size = new System.Drawing.Size(93, 40);
+            this.buttonEditar.TabIndex = 17;
+            this.buttonEditar.Text = "Aceptar";
+            this.buttonEditar.UseVisualStyleBackColor = false;
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Azure;
+            this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.textBoxAncho);
             this.Controls.Add(this.textBoxAlto);
             this.Controls.Add(this.trackBarAncho);
@@ -305,7 +322,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Editor";
             this.Size = new System.Drawing.Size(809, 509);
-            this.Tag = "Mesa";
+            this.Tag = "Aceptar";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tocarBoton);
             this.Resize += new System.EventHandler(this.Editor_Resize);
             this.selector.ResumeLayout(false);
@@ -341,5 +358,6 @@
         private System.Windows.Forms.TrackBar trackBarAncho;
         private System.Windows.Forms.TextBox textBoxAlto;
         private System.Windows.Forms.TextBox textBoxAncho;
+        private System.Windows.Forms.Button buttonEditar;
     }
 }

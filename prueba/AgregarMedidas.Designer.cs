@@ -51,7 +51,7 @@
             this.textBoxAlto.Location = new System.Drawing.Point(55, 68);
             this.textBoxAlto.Name = "textBoxAlto";
             this.textBoxAlto.Size = new System.Drawing.Size(44, 20);
-            this.textBoxAlto.TabIndex = 15;
+            this.textBoxAlto.TabIndex = 1;
             // 
             // button1
             // 
@@ -65,7 +65,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(195, 23);
-            this.button1.TabIndex = 19;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -75,7 +75,7 @@
             this.textBoxAncho.Location = new System.Drawing.Point(163, 68);
             this.textBoxAncho.Name = "textBoxAncho";
             this.textBoxAncho.Size = new System.Drawing.Size(44, 20);
-            this.textBoxAncho.TabIndex = 15;
+            this.textBoxAncho.TabIndex = 2;
             // 
             // label2
             // 

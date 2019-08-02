@@ -20,7 +20,7 @@ namespace prueba
                             "ancho int," +
                             "plantilla int);";
 
-      
+
 
         string tablaMesa = "create table if not exists Mesa(" +
                                     "numero integer," +
@@ -36,7 +36,7 @@ namespace prueba
                                     "rotado int," +
                                     "primary key(dia, numero, turno) );";
 
-       
+      
 
         string tablaPedido = "create table if not exists Pedido(" +
                                      "numeroPedido int," +
@@ -44,8 +44,7 @@ namespace prueba
                                      "turnoPedido varchar," +
                                      "FOREIGN KEY(mesa) REFERENCES mesa(numero));";
 
-
-
+       
         string tablaComida = "create table if not exists Comida(" +
                                     "id_comida integer primary key autoincrement ," +
                                     "nombre varchar," +
@@ -122,7 +121,7 @@ namespace prueba
             }
         }
 
-        
+
 
         /// <summary>
         /// desconectamos al objeto connection, cerramos comunicacion con la base de datos
@@ -157,7 +156,7 @@ namespace prueba
 
                 //preparamos un objeto que va a ejecutar todo el comando
                 command = new SQLiteCommand(tablaPanel + tablaMesa + tablaPedido + tablaComida + tablaPedidoComida + tablaMozo, this.connection);
-                                         
+
                 //ejecutamos el comando
                 command.ExecuteNonQuery();
 
@@ -302,7 +301,7 @@ namespace prueba
                 string sql = "update pedido_Comida set cantidad = 0" +
                              " where numeroPedido =" + Pedido + "" +
                              " and turnoPedido = '" + turno + "'";
-                             
+
 
                 command = new SQLiteCommand(sql, connection);
                 command.ExecuteNonQuery();
@@ -334,7 +333,7 @@ namespace prueba
             try
             {
                 conectar();
-                string sql = "insert into panel values (" + alto +", " + ancho + ", " + plantilla + ")";
+                string sql = "insert into panel values (" + alto + ", " + ancho + ", " + plantilla + ")";
                 command = new SQLiteCommand(sql, connection);
                 command.ExecuteNonQuery();
                 command.Connection.Close();
@@ -689,7 +688,7 @@ namespace prueba
             }
         }
 
-        
+
         internal DataTable cargarTablaMozos(string filtro, bool mañana, bool tarde, bool noche)
         {
             try
@@ -697,9 +696,9 @@ namespace prueba
                 conectar();
                 string sql, tMañana, tTarde, tNoche;
 
-                tMañana = (mañana)? mañana.ToString(): "";
-                tTarde = (tarde)? tarde.ToString(): "";
-                tNoche = (noche)? noche.ToString(): "";
+                tMañana = (mañana) ? mañana.ToString() : "";
+                tTarde = (tarde) ? tarde.ToString() : "";
+                tNoche = (noche) ? noche.ToString() : "";
 
                 if (!mañana && !tarde && !noche) sql = "select * from Mozo where nombre like '%" + filtro + "%'";
                 else sql = "select * from Mozo where nombre like '%" + filtro + "%' and mañana like '%" + tMañana + "' and tarde like '%" + tTarde + "' and noche like '%" + tNoche + "'";
@@ -827,7 +826,7 @@ namespace prueba
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
-                            item.MouseLeave += ver.Mouse_Leave; 
+                            item.MouseLeave += ver.Mouse_Leave;
                             break;
 
 
@@ -872,13 +871,13 @@ namespace prueba
                         item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                         item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                     }
-                    else if(item.getEstado() == 4)
+                    else if (item.getEstado() == 4)
                     {
                         item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                         item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                         item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                     }
-                    ver.planoVer.Controls.Add(item);                 
+                    ver.planoVer.Controls.Add(item);
 
                 }
                 ver.planoVer.SendToBack();
@@ -896,7 +895,7 @@ namespace prueba
                 command.Connection.Close();
             }
         }
-               
+
         /// <summary>
         /// carga las mesas en un userControl.Editor
         /// </summary>
@@ -980,7 +979,7 @@ namespace prueba
                             item.SizeMode = PictureBoxSizeMode.StretchImage;
                             break;
                     }
-                    
+
                     //rota la imagen
                     if (item.getEstado() == 2)
                     {
@@ -1012,7 +1011,7 @@ namespace prueba
                 command.Connection.Close();
             }
         }
-        
+
         /// <summary>
         /// devuelve el numero de mesas dentro de una plantilla de edicion
         /// </summary>
@@ -1149,7 +1148,7 @@ namespace prueba
                 }
                 else return false;
 
-                
+
 
             }
             catch (Exception e)
@@ -1176,8 +1175,8 @@ namespace prueba
 
                 while (lector.Read())
                 {
-                    planoVer.Height = lector.GetInt32(0) * 6 + (lector.GetInt32(0)/10) * 6;                    
-                    planoVer.Width = lector.GetInt32(1) * 6 + (lector.GetInt32(1)/10) * 6;
+                    planoVer.Height = lector.GetInt32(0) * 6 + (lector.GetInt32(0) / 10) * 6;
+                    planoVer.Width = lector.GetInt32(1) * 6 + (lector.GetInt32(1) / 10) * 6;
                 }
 
                 return planoVer;
@@ -1202,8 +1201,8 @@ namespace prueba
                 string sql = "update panel " +
                     "set alto = " + trackBarAltura.Value +
                     ", ancho = " + trackBarAncho.Value +
-                    " where plantilla = " + plantilla;                    
-                    
+                    " where plantilla = " + plantilla;
+
 
                 command = new SQLiteCommand(sql, connection);
                 SQLiteDataReader lector = command.ExecuteReader();
@@ -1235,11 +1234,11 @@ namespace prueba
                 string sql = "select max(y + alto) from mesa where dia = " + plantilla;
                 command = new SQLiteCommand(sql, connection);
                 SQLiteDataReader lector = command.ExecuteReader();
-                
+
                 while (lector.Read())
                 {
                     if (!lector.IsDBNull(0))
-                    {                       
+                    {
                         numero = lector.GetInt32(0);
                     }
                 }
@@ -1316,5 +1315,120 @@ namespace prueba
                 desconectar();
             }
         }
+
+
+        internal void cargarComida(EditarComida editarComida, int id)
+        {
+            try
+            {
+
+                conectar();
+
+                string sql = "select * from comida where id_comida = " + id;
+
+                command = new SQLiteCommand(sql, connection);
+                SQLiteDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    editarComida.textBoxNombre.Text = lector.GetString(1);
+                    editarComida.checkBoxSinTACC.Checked = bool.Parse(lector.GetString(2));
+                    editarComida.checkBoxVegetariano.Checked = bool.Parse(lector.GetString(3));
+                    editarComida.textBoxPrecio.Text = lector.GetFloat(4).ToString();
+                }
+
+                command.Connection.Close(); ;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal void editarComida(int id, string nombre, string precio, bool sinTacc, bool vegetariano)
+        {
+            try
+            {
+
+                conectar();
+
+                string sql = "update comida set nombre = '" + nombre + "', precio = " + precio + " ," +
+                    "vegetariano = '" + vegetariano + "', sintacc = '" + sinTacc + "' where  id_comida = " + id; 
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal void cargarTablaMozos(EditarMozo editarMozo, int id)
+        {
+            try
+            {
+
+                conectar();
+
+                string sql = "select * from Mozo where id = " + id;
+
+                command = new SQLiteCommand(sql, connection);
+                SQLiteDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    editarMozo.textBoxNombre.Text = lector.GetString(0);
+                    editarMozo.checkBoxMañana.Checked = lector.GetBoolean(2);
+                    editarMozo.checkBoxTarde.Checked = lector.GetBoolean(3);
+                    editarMozo.checkBoxNoche.Checked = lector.GetBoolean(4);
+                }
+
+                command.Connection.Close(); ;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        internal void editarMozo(int id, string nombre, bool estaALaMañana, bool estaALaTarde, bool estaALaNoche)
+        {
+            try
+            {
+                conectar();
+
+                string sql = "update comida set nombre = '" + nombre + "', mañana = '" + estaALaMañana + "' , " +
+                    "tarde = '" + estaALaTarde + "', noche = '" + estaALaNoche + "' where  id = " + id;
+
+                command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+                command.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: " + e);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
     }
 }
