@@ -47,7 +47,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonBorrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -180,14 +180,14 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // button1
+            // buttonBorrar
             // 
-            this.button1.BackColor = System.Drawing.Color.Azure;
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Borrar_Click);
+            resources.ApplyResources(this.buttonBorrar, "buttonBorrar");
+            this.buttonBorrar.BackColor = System.Drawing.Color.Azure;
+            this.buttonBorrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(148)))), ((int)(((byte)(188)))));
+            this.buttonBorrar.Name = "buttonBorrar";
+            this.buttonBorrar.UseVisualStyleBackColor = false;
+            this.buttonBorrar.Click += new System.EventHandler(this.Borrar_Click);
             // 
             // Datos
             // 
@@ -195,11 +195,11 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
+            this.Controls.Add(this.buttonBorrar);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.buttonAgregar);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonSalir);
             this.Controls.Add(this.buttonOcupar);
             this.Controls.Add(this.labelActual);
@@ -242,6 +242,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonBorrar;
     }
 }

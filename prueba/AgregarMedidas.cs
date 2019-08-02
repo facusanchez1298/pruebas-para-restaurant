@@ -31,12 +31,27 @@ namespace prueba
             {
                 if (esInt(ancho))
                 {
-                    conexion.guardarMedidas(ancho, alto, plantilla);
-                    this.Close();
+                    if (estanEnRango(ancho))
+                    {
+                        if (estanEnRango(alto))
+                        {
+                            conexion.guardarMedidas(ancho, alto, plantilla);
+                            this.Close();
+                        }
+                        else Mensaje.mensajeError("el alto debe ser entero menor a 100 y mayor a 8");
+                    }
+                    else Mensaje.mensajeError("el ancho debe ser entero menor a 100 y mayor a 8");
                 }
                 else Mensaje.mensajeError("el ancho debe ser entero menor a 100 y mayor a 8");
             }
             else Mensaje.mensajeError("el alto debe ser entero menor a 100 y mayor a 8");
+        }
+
+        private bool estanEnRango(string ancho)
+        {
+            int num = int.Parse(ancho);
+
+            return (num >= 8) && (num <= 100);
         }
 
         public bool esInt(string numero)

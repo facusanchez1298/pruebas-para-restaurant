@@ -87,16 +87,9 @@ namespace prueba
             if (precionado)
             {
                 if (e.KeyCode == Keys.R)
-                {
-                    if (seleccionado.Image != null)
-                    {
-                        rotarSeleccionado();                       
-                    }
-                    else
-                    {
-                        borrarControl(seleccionado);
-                        conexion.borrarMesa(seleccionado, plantilla);
-                    }
+                {                   
+                    rotarSeleccionado();
+                    seleccionado.rotarEstado();
                 }
                 else if (e.KeyCode == Keys.D)
                 {
@@ -314,92 +307,37 @@ namespace prueba
 
             switch (control.Tag)
             {
-                case "Mesa Redonda":
+                case "Mesa Blanca 4":
+                    seleccionado.Size = mesaNormal;                    
+                    break;
+
+                case "Mesa Negra 4":
                     seleccionado.Size = mesaNormal;
-                    seleccionado.Tag = "Mesa Redonda";
+                    break;
+
+                case "Mesa Roja 4":
+                    seleccionado.Size = mesaNormal;
+                    break;
+
+                case "Mesa Blanca 6":
+                    seleccionado.Size = MesaRectangular;
+                    break;
+
+                case "Mesa Negra 6":
+                    seleccionado.Size = MesaRectangular;
                     break;
 
                 case "Tabla Bar":
                     seleccionado.Size = TablaBar;
-                    seleccionado.Tag = "Tabla Bar";
-                    break;
-
-                case "Tabla Cocina":
-                    seleccionado.Size = pared;
-                    seleccionado.Tag = "Tabla Cocina";
-                    break;
-
-                case "Mesita":
-                    seleccionado.Size = mesita;
-                    seleccionado.Tag = "Mesita";
-                    break;
-
-                case "Mesa Redonda Transparente":
-                    seleccionado.Size = mesaNormal;
-                    seleccionado.Tag = "Mesa Redonda Transparente";
-                    break;
-
-                case "Mesa Redonda Negra":
-                    seleccionado.Size = MesaRectangular;
-                    seleccionado.Tag = "Mesa Redonda Negra";
-                    break;
-
-                case "Mesa Redonda Madera":
-                    seleccionado.Size = mesaNormal;
-                    seleccionado.Tag = "Mesa Redonda Madera";
-                    break;
-
-                case "Mesa Cuadrada":
-                    seleccionado.Size = mesaNormal;
-                    seleccionado.Tag = "Mesa Cuadrada";
-                    break;
-
-                case "Mesa cuadrada 4 sillas":
-                    seleccionado.Size = mesaNormal;
-                    seleccionado.Tag = "Mesa cuadrada 4 sillas";
-                    break;
-
-                case "Mesa Rectangular":
-                    seleccionado.Size = MesaRectangular;
-                    seleccionado.Tag = "Mesa Rectangular";
-                    break;
-
-                case "Mesa Redonda 8 sillas":
-                    seleccionado.Size = MesaRectangular;
-                    seleccionado.Tag = "Mesa Redonda 8 sillas";
-                    break;
-
-                case "Mesa Redonda 6 sillas":
-                    seleccionado.Size = MesaGrande;
-                    seleccionado.Tag = "Mesa Redonda 6 sillas";
                     break;                
-
-                case "Mesa Redonda 4 sillas":
-                    seleccionado.Size = mesaNormal;
-                    seleccionado.Tag = "Mesa Redonda 4 sillas";
-                    break;
 
                 case "Pared":
                     seleccionado.Size = pared;
-                    seleccionado.Tag = "Pared";
                     seleccionado.SizeMode = seleccionado.SizeMode = PictureBoxSizeMode.StretchImage;
-                    break;
-
-                case "Mesa Grande":
-                    seleccionado.Size = MesaGrande;
-                    seleccionado.Tag = "Mesa Grande";
-                    break;
-
-                case "Silla":
-                    seleccionado.Size = silla;
-                    seleccionado.Tag = "Silla";
-                    break;
-
-                case "Silla Roja":
-                    seleccionado.Size = silla;
-                    seleccionado.Tag = "Silla Roja";
-                    break;
+                    break;               
             }
+
+            seleccionado.Tag = control.Tag;
 
             seleccionado.Show();
             this.Controls.Add(seleccionado);

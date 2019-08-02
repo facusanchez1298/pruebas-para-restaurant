@@ -14,6 +14,7 @@ namespace prueba
         public DateTime Llegada;
         public int index;
         public bool ocupado;
+        int estado = 1;
 
         public void estaOcupado(bool ocupado)
         {
@@ -23,6 +24,25 @@ namespace prueba
         public void darIndex(int index)
         {
             this.index = index;
+        }
+
+        public void rotarEstado()
+        {
+            if (estado < 4)
+            {
+                estado += 1;
+            }
+            else estado = 1;
+        }
+
+        internal int getEstado()
+        {
+            return estado;
+        }
+
+        public void darEstado(int estado)
+        {
+            this.estado = estado;
         }
     }
 }

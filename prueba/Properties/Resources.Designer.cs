@@ -63,16 +63,6 @@ namespace prueba.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1 {
-            get {
-                object obj = ResourceManager.GetObject("1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap _11 {
             get {
                 object obj = ResourceManager.GetObject("11", resourceCulture);
@@ -123,9 +113,9 @@ namespace prueba.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap dining_table {
+        internal static System.Drawing.Bitmap mesa_blanca_6_personas {
             get {
-                object obj = ResourceManager.GetObject("dining-table", resourceCulture);
+                object obj = ResourceManager.GetObject("mesa blanca 6 personas", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +123,9 @@ namespace prueba.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap mesa_cuadrada {
+        internal static System.Drawing.Bitmap mesa_de_madera_4_ {
             get {
-                object obj = ResourceManager.GetObject("mesa cuadrada", resourceCulture);
+                object obj = ResourceManager.GetObject("mesa de madera 4 ", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +133,9 @@ namespace prueba.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap mesa_cuadrada_4_sillas {
+        internal static System.Drawing.Bitmap mesa_negra_4 {
             get {
-                object obj = ResourceManager.GetObject("mesa cuadrada 4 sillas", resourceCulture);
+                object obj = ResourceManager.GetObject("mesa negra 4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +143,9 @@ namespace prueba.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap mesa_cuadrada_4_sillas1 {
+        internal static System.Drawing.Bitmap mesa_negra_6 {
             get {
-                object obj = ResourceManager.GetObject("mesa cuadrada 4 sillas1", resourceCulture);
+                object obj = ResourceManager.GetObject("mesa negra 6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,169 +153,9 @@ namespace prueba.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap mesa_grande_negra {
+        internal static System.Drawing.Bitmap mesa_roja_4 {
             get {
-                object obj = ResourceManager.GetObject("mesa grande negra", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mesa_grande_negra_recorte {
-            get {
-                object obj = ResourceManager.GetObject("mesa grande negra recorte", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mesa_grande_negra1 {
-            get {
-                object obj = ResourceManager.GetObject("mesa grande negra1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mesa_negra {
-            get {
-                object obj = ResourceManager.GetObject("mesa negra", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mesa_negra1 {
-            get {
-                object obj = ResourceManager.GetObject("mesa negra1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mesa_negra2 {
-            get {
-                object obj = ResourceManager.GetObject("mesa negra2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mesa_redonda_4_sillas {
-            get {
-                object obj = ResourceManager.GetObject("mesa redonda 4 sillas", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mesa_redonda_6_sillas {
-            get {
-                object obj = ResourceManager.GetObject("mesa redonda 6 sillas", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mesa_redonda_8_sillas {
-            get {
-                object obj = ResourceManager.GetObject("mesa redonda 8 sillas", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mesa_redonda_8_sillas1 {
-            get {
-                object obj = ResourceManager.GetObject("mesa redonda 8 sillas1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mesa_redonda_normal {
-            get {
-                object obj = ResourceManager.GetObject("mesa redonda normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MesaCuadrada_grande {
-            get {
-                object obj = ResourceManager.GetObject("MesaCuadrada grande", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MesaP6 {
-            get {
-                object obj = ResourceManager.GetObject("MesaP6", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MesaP8 {
-            get {
-                object obj = ResourceManager.GetObject("MesaP8", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MesaRedondaMadera {
-            get {
-                object obj = ResourceManager.GetObject("MesaRedondaMadera", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MesaRedondaMadera1 {
-            get {
-                object obj = ResourceManager.GetObject("MesaRedondaMadera1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mesita_redonda {
-            get {
-                object obj = ResourceManager.GetObject("mesita redonda", resourceCulture);
+                object obj = ResourceManager.GetObject("mesa roja 4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -353,59 +183,9 @@ namespace prueba.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Silla {
-            get {
-                object obj = ResourceManager.GetObject("Silla", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap silla_Roja {
-            get {
-                object obj = ResourceManager.GetObject("silla Roja", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Silla1 {
-            get {
-                object obj = ResourceManager.GetObject("Silla1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap tabla_bar {
             get {
                 object obj = ResourceManager.GetObject("tabla bar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap tabla_bar1 {
-            get {
-                object obj = ResourceManager.GetObject("tabla bar1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap tabla_grande {
-            get {
-                object obj = ResourceManager.GetObject("tabla grande", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

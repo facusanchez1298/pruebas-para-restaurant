@@ -33,6 +33,7 @@ namespace prueba
                                     "ocupada boolean," +
                                     "llegada varchar default ''," +
                                     "turno varchar," +
+                                    "rotado int," +
                                     "primary key(dia, numero, turno) );";
 
        
@@ -367,15 +368,16 @@ namespace prueba
                 int ancho = control.Width;
                 string tag = control.Tag.ToString();
                 bool ocupada = false;
+                int rotado = control.getEstado();
 
                 conectar();
 
-                string sql = "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada, turno) values" +
-                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "', 'Mañana');";
-                sql += "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada, turno) values" +
-                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "', 'Tarde');";
-                sql += "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada, turno) values" +
-                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "', 'Noche');";
+                string sql = "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada, turno, rotado) values" +
+                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "', 'Mañana'," + rotado + ");";
+                sql += "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada, turno, rotado) values" +
+                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "', 'Tarde'," + rotado + ");";
+                sql += "insert into mesa(numero, dia, y, x, alto, ancho, tag, ocupada, turno, rotado) values" +
+                         "(" + numero + "," + dia + "," + y + "," + x + "," + alto + "," + ancho + ",'" + tag + "','" + ocupada + "', 'Noche'," + rotado + ");";
 
                 command = new SQLiteCommand(sql, connection);
                 command.ExecuteNonQuery();
@@ -764,23 +766,15 @@ namespace prueba
         /// <param name="plantilla"></param>
         internal void cargarMesas(Ver ver, int plantilla)
         {
-
-
-
             conectar();
             String consulta = "select * from mesa where dia = " + plantilla;
-
-
             SQLiteCommand command = new SQLiteCommand(consulta, connection);
-
-
             try
             {
                 SQLiteDataReader lector = command.ExecuteReader();
 
                 while (lector.Read())
                 {
-
                     int numero = lector.GetInt32(0);
                     int dia = lector.GetInt32(1);
                     int y = lector.GetInt32(2);
@@ -789,6 +783,7 @@ namespace prueba
                     int ancho = lector.GetInt32(5);
                     string tag = lector.GetString(6);
                     bool ocupado = bool.Parse(lector.GetString(7));
+                    int estado = lector.GetInt32(10);
 
                     DateTime dateTime;
 
@@ -806,14 +801,14 @@ namespace prueba
                     item.Tag = tag;
                     item.estaOcupado(ocupado);
                     item.BackColor = SystemColors.ActiveCaption;
+                    item.darEstado(estado);
                     item.Show();
-
 
 
                     switch (tag)
                     {
-                        case "Mesa Grande":
-                            item.Image = Resources.mesa_grande_negra_recorte;
+                        case "Mesa Blanca 4":
+                            item.Image = Resources.mesa_de_madera_4_;
                             item.SizeMode = PictureBoxSizeMode.StretchImage;
                             item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
@@ -821,106 +816,32 @@ namespace prueba
 
                             break;
 
-                        case "Mesita":
-                            item.Image = Resources.mesita_redonda;
+                        case "Mesa Roja 4":
+                            item.Image = Resources.mesa_roja_4;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
 
                             break;
 
-                        case "Tabla Cocina":
-                            item.Image = Resources.tabla_grande;
-                            item.SizeMode = PictureBoxSizeMode.StretchImage;
-
+                        case "Mesa Negra 4":
+                            item.Image = Resources.mesa_negra_4;
+                            item.SizeMode = PictureBoxSizeMode.Zoom;
+                            item.Click += ver.item_DoubleClick;
+                            item.MouseHover += ver.Mouse_hover;
+                            item.MouseLeave += ver.Mouse_Leave; 
                             break;
 
-                        case "Tabla Bar":
-                            item.Image = Resources.tabla_bar;
-                            item.SizeMode = PictureBoxSizeMode.StretchImage;
-                            break;
 
-                        case "Mesa Redonda":
-                            item.Image = Resources.mesa_redonda_normal;
+
+                        case "Mesa Negra 6":
+                            item.Image = Resources.mesa_negra_6;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
 
-                        case "Mesa Redonda Negra":
-                            item.Image = Resources.dining_table; ;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.Click += ver.item_DoubleClick;
-                            item.MouseHover += ver.Mouse_hover;
-                            item.MouseLeave += ver.Mouse_Leave;
-                            break;
-
-                        case "Mesa Redonda Madera":
-                            item.Image = Resources.MesaRedondaMadera1;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.Click += ver.item_DoubleClick;
-                            item.MouseHover += ver.Mouse_hover;
-                            item.MouseLeave += ver.Mouse_Leave;
-                            break;
-
-                        case "Mesa Cuadrada":
-                            item.Image = Resources.mesa_cuadrada;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.Click += ver.item_DoubleClick;
-                            item.MouseHover += ver.Mouse_hover;
-                            item.MouseLeave += ver.Mouse_Leave;
-                            break;
-
-                        case "Mesa cuadrada 4 sillas":
-                            item.Image = Resources.mesa_cuadrada_4_sillas1;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.Click += ver.item_DoubleClick;
-                            item.MouseHover += ver.Mouse_hover;
-                            item.MouseLeave += ver.Mouse_Leave;
-                            break;
-
-                        case "Mesa Rectangular":
-                            item.Image = Resources.MesaCuadrada_grande;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.Click += ver.item_DoubleClick;
-                            item.MouseHover += ver.Mouse_hover;
-                            item.MouseLeave += ver.Mouse_Leave;
-                            break;
-
-                        case "Mesa Redonda 8 sillas":
-                            item.Image = Resources.mesa_redonda_8_sillas1;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.Click += ver.item_DoubleClick;
-                            item.MouseHover += ver.Mouse_hover;
-                            item.MouseLeave += ver.Mouse_Leave;
-                            break;
-
-                        case "Mesa Redonda 6 sillas":
-                            item.Image = Resources.mesa_redonda_6_sillas;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.Click += ver.item_DoubleClick;
-                            item.MouseHover += ver.Mouse_hover;
-                            item.MouseLeave += ver.Mouse_Leave;
-                            break;
-
-
-                        case "Mesa Redonda 4 sillas":
-                            item.Image = Resources.mesa_redonda_4_sillas;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.Click += ver.item_DoubleClick;
-                            item.MouseHover += ver.Mouse_hover;
-                            item.MouseLeave += ver.Mouse_Leave;
-                            break;
-
-                        case "Silla":
-                            item.Image = Resources.Silla1;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            item.Click += ver.item_DoubleClick;
-                            item.MouseHover += ver.Mouse_hover;
-                            item.MouseLeave += ver.Mouse_Leave;
-                            break;
-
-                        case "Silla Roja":
-                            item.Image = Resources.silla_Roja;
+                        case "Mesa Blanca 6":
+                            item.Image = Resources.mesa_blanca_6_personas;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             item.Click += ver.item_DoubleClick;
                             item.MouseHover += ver.Mouse_hover;
@@ -933,21 +854,33 @@ namespace prueba
                             item.MouseHover += ver.Mouse_hover;
                             item.MouseLeave += ver.Mouse_Leave;
                             break;
+
+                        case "Tabla Bar":
+                            item.Image = Resources.tabla_bar;
+                            item.SizeMode = PictureBoxSizeMode.StretchImage;
+                            break;
                     }
 
 
                     //rota la imagen
-                    if (item.Height >= item.Width)
+                    if (item.getEstado() == 2)
                     {
                         item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                     }
-                    ver.planoVer.Controls.Add(item);
-
-                  
+                    else if (item.getEstado() == 3)
+                    {
+                        item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                        item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    }
+                    else if(item.getEstado() == 4)
+                    {
+                        item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                        item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                        item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    }
+                    ver.planoVer.Controls.Add(item);                 
 
                 }
-
-
                 ver.planoVer.SendToBack();
                 lector.Close();
                 command.Connection.Close();
@@ -973,10 +906,7 @@ namespace prueba
         {
             conectar();
             String consulta = "select * from mesa where dia = " + plantilla + " and turno = 'Mañana'";
-
-
             SQLiteCommand command = new SQLiteCommand(consulta, connection);
-
             try
             {
                 SQLiteDataReader lector = command.ExecuteReader();
@@ -992,6 +922,7 @@ namespace prueba
                     int ancho = lector.GetInt32(5);
                     string tag = lector.GetString(6);
                     bool ocupado = bool.Parse(lector.GetString(7));
+                    int estado = lector.GetInt32(10);
                     DateTime dateTime;
 
                     if (!lector.GetString(8).Equals(""))
@@ -1010,81 +941,37 @@ namespace prueba
                     item.estaOcupado(ocupado);
                     item.BackColor = SystemColors.ActiveCaption;
                     item.Show();
+                    item.darEstado(estado);
 
                     switch (tag)
                     {
-                        case "Mesa Grande":
-                            item.Image = Resources.mesa_grande_negra_recorte;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            break;
-
-                        case "Mesita":
-                            item.Image = Resources.mesita_redonda;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            break;
-
-                        case "Tabla Cocina":
-                            item.Image = Resources.tabla_grande;
-                            item.SizeMode = PictureBoxSizeMode.StretchImage;
-                            break;
-
                         case "Tabla Bar":
                             item.Image = Resources.tabla_bar;
                             item.SizeMode = PictureBoxSizeMode.StretchImage;
                             break;
 
-                        case "Mesa Redonda":
-                            item.Image = Resources.mesa_redonda_normal;
+                        case "Mesa Roja 4":
+                            item.Image = Resources.mesa_roja_4;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             break;
 
-                        case "Mesa Redonda Negra":
-                            item.Image = Resources.dining_table;
+                        case "Mesa Negra 4":
+                            item.Image = Resources.mesa_negra_4;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             break;
 
-                        case "Mesa Redonda Madera":
-                            item.Image = Resources.MesaRedondaMadera1;
+                        case "Mesa Blanca 4":
+                            item.Image = Resources.mesa_de_madera_4_;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             break;
 
-                        case "Mesa Cuadrada":
-                            item.Image = Resources.mesa_cuadrada;
+                        case "Mesa Negra 6":
+                            item.Image = Resources.mesa_negra_6;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             break;
 
-                        case "Mesa cuadrada 4 sillas":
-                            item.Image = Resources.mesa_cuadrada_4_sillas1;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            break;
-
-                        case "Mesa Rectangular":
-                            item.Image = Resources.MesaCuadrada_grande;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            break;
-
-                        case "Mesa Redonda 8 sillas":
-                            item.Image = Resources.mesa_redonda_8_sillas1;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            break;
-
-                        case "Mesa Redonda 6 sillas":
-                            item.Image = Resources.mesa_redonda_6_sillas;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            break;
-
-                        case "Mesa Redonda 4 sillas":
-                            item.Image = Resources.mesa_redonda_4_sillas;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            break;
-
-                        case "Silla":
-                            item.Image = Resources.Silla1;
-                            item.SizeMode = PictureBoxSizeMode.Zoom;
-                            break;
-
-                        case "Silla Roja":
-                            item.Image = Resources.silla_Roja;
+                        case "Mesa Blanca 6":
+                            item.Image = Resources.mesa_blanca_6_personas;
                             item.SizeMode = PictureBoxSizeMode.Zoom;
                             break;
 
@@ -1093,19 +980,27 @@ namespace prueba
                             item.SizeMode = PictureBoxSizeMode.StretchImage;
                             break;
                     }
-
-
-                    if (item.Height >= item.Width)
+                    
+                    //rota la imagen
+                    if (item.getEstado() == 2)
                     {
                         item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                     }
+                    else if (item.getEstado() == 3)
+                    {
+                        item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                        item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    }
+                    else if (item.getEstado() == 4)
+                    {
+                        item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                        item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                        item.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    }
                     editor.panel.Controls.Add(item);
-
                 }
-
                 lector.Close();
                 command.Connection.Close();
-
             }
             catch (Exception e)
             {
@@ -1190,7 +1085,7 @@ namespace prueba
                 conectar();
 
                 string sql = "update mesa set y = " + seleccionado.Location.Y + ", x = " + seleccionado.Location.X + " ," +
-                    "alto = " + seleccionado.Height + ", ancho = " + seleccionado.Width +
+                    "alto = " + seleccionado.Height + ", ancho = " + seleccionado.Width + ", rotado = " + seleccionado.getEstado() +
                     "  where numero = " + seleccionado.index + " and dia = " + plantilla;
 
                 command = new SQLiteCommand(sql, connection);
